@@ -1,0 +1,1391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>main_window</class>
+ <widget class="QMainWindow" name="main_window">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1216</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Analise da Cobertura de ERBs - v.1.0.0</string>
+  </property>
+  <property name="locale">
+   <locale language="Portuguese" country="Brazil"/>
+  </property>
+  <widget class="QWidget" name="central_widget">
+   <layout class="QVBoxLayout" name="verticalLayout_3">
+    <property name="spacing">
+     <number>6</number>
+    </property>
+    <property name="leftMargin">
+     <number>9</number>
+    </property>
+    <property name="topMargin">
+     <number>9</number>
+    </property>
+    <property name="rightMargin">
+     <number>9</number>
+    </property>
+    <property name="bottomMargin">
+     <number>9</number>
+    </property>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QFrame" name="frame_tab_menus">
+        <property name="minimumSize">
+         <size>
+          <width>333</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>300</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_5">
+         <item>
+          <widget class="QTabWidget" name="tab_widget_menus">
+           <property name="minimumSize">
+            <size>
+             <width>320</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>270</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="tabPosition">
+            <enum>QTabWidget::West</enum>
+           </property>
+           <property name="currentIndex">
+            <number>0</number>
+           </property>
+           <widget class="QWidget" name="tab_transmitter">
+            <attribute name="title">
+             <string>Transmissor</string>
+            </attribute>
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <property name="leftMargin">
+              <number>5</number>
+             </property>
+             <property name="topMargin">
+              <number>5</number>
+             </property>
+             <property name="rightMargin">
+              <number>5</number>
+             </property>
+             <property name="bottomMargin">
+              <number>5</number>
+             </property>
+             <item>
+              <widget class="QScrollArea" name="scroll_area_transmitter_anatel">
+               <property name="widgetResizable">
+                <bool>true</bool>
+               </property>
+               <widget class="QWidget" name="scroll_area_widget_contents_anatel">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>265</width>
+                  <height>846</height>
+                 </rect>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_7">
+                 <property name="spacing">
+                  <number>2</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>5</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>2</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>2</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>2</number>
+                 </property>
+                 <item>
+                  <widget class="QGroupBox" name="group_box_anatel_transmitter_details">
+                   <property name="title">
+                    <string>Detalhes do Transmissor (Anatel)</string>
+                   </property>
+                   <layout class="QFormLayout" name="formLayout_5">
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="label_anatel_base_station">
+                      <property name="text">
+                       <string>Estação Radio Base</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="0" colspan="2">
+                     <widget class="QComboBox" name="combo_box_anatel_base_station">
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="currentText">
+                       <string>Selecionar</string>
+                      </property>
+                      <item>
+                       <property name="text">
+                        <string>Selecionar</string>
+                       </property>
+                      </item>
+                     </widget>
+                    </item>
+                    <item row="2" column="0">
+                     <widget class="QLabel" name="label_anatel_entity">
+                      <property name="text">
+                       <string>Entidade</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="4" column="0">
+                     <widget class="QLabel" name="label_anatel_station_number">
+                      <property name="text">
+                       <string>Número Fistel</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="5" column="0">
+                     <widget class="QLabel" name="label_anatel_station_number_value">
+                      <property name="font">
+                       <font>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>-</string>
+                      </property>
+                      <property name="wordWrap">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="6" column="0">
+                     <widget class="QLabel" name="label_anatel_uf">
+                      <property name="text">
+                       <string>UF</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="7" column="0">
+                     <widget class="QLabel" name="label_anatel_uf_value">
+                      <property name="font">
+                       <font>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>-</string>
+                      </property>
+                      <property name="wordWrap">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="8" column="0">
+                     <widget class="QLabel" name="label_anatel_contry">
+                      <property name="text">
+                       <string>Município</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="9" column="0">
+                     <widget class="QLabel" name="label_anatel_contry_value">
+                      <property name="font">
+                       <font>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>-</string>
+                      </property>
+                      <property name="wordWrap">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="10" column="0">
+                     <widget class="QLabel" name="label_anatel_address">
+                      <property name="text">
+                       <string>Endereço</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="11" column="0" colspan="2">
+                     <widget class="QLabel" name="label_anatel_address_value">
+                      <property name="maximumSize">
+                       <size>
+                        <width>155</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>-</string>
+                      </property>
+                      <property name="wordWrap">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="12" column="0">
+                     <widget class="QLabel" name="label_anatel_initial_frenquency">
+                      <property name="text">
+                       <string>Frequência Final (MHz)</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="13" column="0">
+                     <widget class="QLabel" name="label_anatel_final_frequency_value">
+                      <property name="font">
+                       <font>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>-</string>
+                      </property>
+                      <property name="wordWrap">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="14" column="0">
+                     <widget class="QLabel" name="label_anatel_final_frenquency">
+                      <property name="text">
+                       <string>Frequência Inicial (MHz)</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="15" column="0">
+                     <widget class="QLabel" name="label_anatel_initial_frequency_value">
+                      <property name="font">
+                       <font>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>-</string>
+                      </property>
+                      <property name="wordWrap">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="16" column="0">
+                     <widget class="QLabel" name="label_anatel_azimute">
+                      <property name="text">
+                       <string>Azimute</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="17" column="0">
+                     <widget class="QLabel" name="label_anatel_azimute_value">
+                      <property name="font">
+                       <font>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>-</string>
+                      </property>
+                      <property name="wordWrap">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="18" column="0">
+                     <widget class="QLabel" name="label_anatel_gain_antenna">
+                      <property name="text">
+                       <string>Ganho Antena</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="19" column="0">
+                     <widget class="QLabel" name="label_anatel_gain_antenna_value">
+                      <property name="font">
+                       <font>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>-</string>
+                      </property>
+                      <property name="wordWrap">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="20" column="0">
+                     <widget class="QLabel" name="label_anatel_front_back">
+                      <property name="text">
+                       <string>Frente Costa</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="21" column="0">
+                     <widget class="QLabel" name="label_anatel_front_back_value">
+                      <property name="font">
+                       <font>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>-</string>
+                      </property>
+                      <property name="wordWrap">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="22" column="0">
+                     <widget class="QLabel" name="label_anatel_angulo_half_pot">
+                      <property name="text">
+                       <string>Anglo 1/2 Potência</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="23" column="0">
+                     <widget class="QLabel" name="label_anatel_half_pot_value">
+                      <property name="font">
+                       <font>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>-</string>
+                      </property>
+                      <property name="wordWrap">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="24" column="0">
+                     <widget class="QLabel" name="label_anatel_elevation">
+                      <property name="text">
+                       <string>Elevação</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="25" column="0">
+                     <widget class="QLabel" name="label_anatel_elevation_value">
+                      <property name="font">
+                       <font>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>-</string>
+                      </property>
+                      <property name="wordWrap">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="26" column="0">
+                     <widget class="QLabel" name="label_anatel_polarization">
+                      <property name="text">
+                       <string>Polarização</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="27" column="0">
+                     <widget class="QLabel" name="label_anatel_polarization_value">
+                      <property name="font">
+                       <font>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>-</string>
+                      </property>
+                      <property name="wordWrap">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="28" column="0">
+                     <widget class="QLabel" name="label_anatel_height_antenna">
+                      <property name="text">
+                       <string>Altura Antena (m)</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="29" column="0">
+                     <widget class="QLabel" name="label_anatel_height_antenna_value">
+                      <property name="font">
+                       <font>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>-</string>
+                      </property>
+                      <property name="wordWrap">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="31" column="0">
+                     <widget class="QLabel" name="label_anatel_power_transmission_value">
+                      <property name="font">
+                       <font>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>-</string>
+                      </property>
+                      <property name="wordWrap">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="32" column="0">
+                     <widget class="QLabel" name="label_anatel_latitude">
+                      <property name="text">
+                       <string>Latitude</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="33" column="0">
+                     <widget class="QLabel" name="label_anatel_latitude_value">
+                      <property name="font">
+                       <font>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>-</string>
+                      </property>
+                      <property name="wordWrap">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="34" column="0">
+                     <widget class="QLabel" name="label_anatel_longitude">
+                      <property name="text">
+                       <string>Longitude</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="35" column="0">
+                     <widget class="QLabel" name="label_anatel_longitude_value">
+                      <property name="font">
+                       <font>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>-</string>
+                      </property>
+                      <property name="wordWrap">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="36" column="0">
+                     <widget class="QLabel" name="label_anatel_first_licensing">
+                      <property name="text">
+                       <string>Data Primeiro Licenciamento</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="37" column="0">
+                     <widget class="QLabel" name="label_anatel_first_licensing_value">
+                      <property name="font">
+                       <font>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>-</string>
+                      </property>
+                      <property name="wordWrap">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="3" column="0">
+                     <widget class="QLabel" name="label_anatel_entity_value">
+                      <property name="font">
+                       <font>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>-</string>
+                      </property>
+                      <property name="wordWrap">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="30" column="0" colspan="2">
+                     <widget class="QLabel" name="label_anatel_power_trasmission">
+                      <property name="text">
+                       <string> Potência de Transmissão (W)</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="tab_receiver">
+            <attribute name="title">
+             <string>Receptor</string>
+            </attribute>
+            <layout class="QVBoxLayout" name="verticalLayout_12">
+             <property name="leftMargin">
+              <number>5</number>
+             </property>
+             <property name="topMargin">
+              <number>5</number>
+             </property>
+             <property name="rightMargin">
+              <number>5</number>
+             </property>
+             <property name="bottomMargin">
+              <number>5</number>
+             </property>
+             <item>
+              <widget class="QScrollArea" name="scroll_area_tab_receiver">
+               <property name="widgetResizable">
+                <bool>true</bool>
+               </property>
+               <widget class="QWidget" name="scroll_area_widget_contents_receiver">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>279</width>
+                  <height>613</height>
+                 </rect>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_11">
+                 <property name="spacing">
+                  <number>2</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>5</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>2</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>2</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>2</number>
+                 </property>
+                 <item>
+                  <widget class="QGroupBox" name="group_box_receive_details">
+                   <property name="title">
+                    <string>Detalhes do Receptor (Base Móvel)</string>
+                   </property>
+                   <layout class="QFormLayout" name="formLayout_12">
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="label_rx_height">
+                      <property name="text">
+                       <string>Altura</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="0" colspan="2">
+                     <widget class="QLineEdit" name="input_rx_height"/>
+                    </item>
+                    <item row="2" column="0">
+                     <widget class="QLabel" name="label_rx_gain">
+                      <property name="text">
+                       <string>Ganho</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="3" column="0">
+                     <widget class="QLineEdit" name="input_rx_gain"/>
+                    </item>
+                    <item row="3" column="1">
+                     <widget class="QLabel" name="label_rx_gain_dbi">
+                      <property name="text">
+                       <string>dBi</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="4" column="0">
+                     <widget class="QLabel" name="label_rx_sensitivity">
+                      <property name="text">
+                       <string>Sensibilidade</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="5" column="0">
+                     <widget class="QLineEdit" name="input_rx_sensitivity"/>
+                    </item>
+                    <item row="5" column="1">
+                     <widget class="QLabel" name="label_rx_sensitivity_dbm">
+                      <property name="text">
+                       <string>dBm</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="tab_model">
+            <attribute name="title">
+             <string>Modelo Prop.</string>
+            </attribute>
+            <layout class="QVBoxLayout" name="verticalLayout_13">
+             <property name="leftMargin">
+              <number>5</number>
+             </property>
+             <property name="topMargin">
+              <number>5</number>
+             </property>
+             <property name="rightMargin">
+              <number>5</number>
+             </property>
+             <property name="bottomMargin">
+              <number>5</number>
+             </property>
+             <item>
+              <widget class="QScrollArea" name="scroll_area_tab_model">
+               <property name="widgetResizable">
+                <bool>true</bool>
+               </property>
+               <widget class="QWidget" name="scroll_area_widget_contents_model">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>279</width>
+                  <height>613</height>
+                 </rect>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_14">
+                 <property name="leftMargin">
+                  <number>5</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>2</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>2</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>2</number>
+                 </property>
+                 <item>
+                  <widget class="QGroupBox" name="group_box_propagation_model_details">
+                   <property name="title">
+                    <string>Propagation details</string>
+                   </property>
+                   <layout class="QFormLayout" name="formLayout_13">
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="label_propagation_model">
+                      <property name="text">
+                       <string>Modelo de Propagação</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="0" colspan="2">
+                     <widget class="QComboBox" name="combo_box_propagation_model">
+                      <property name="currentText">
+                       <string>Selecionar</string>
+                      </property>
+                      <item>
+                       <property name="text">
+                        <string>Selecionar</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>COST231-Hata</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>HATA Path Loss</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>Friis model</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>Two-rays ground reflection</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>Log-distance</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>One-slope</string>
+                       </property>
+                      </item>
+                     </widget>
+                    </item>
+                    <item row="2" column="0">
+                     <widget class="QLabel" name="label_enviroment">
+                      <property name="text">
+                       <string>Ambiente</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="3" column="0" colspan="2">
+                     <widget class="QComboBox" name="combo_box_environment">
+                      <item>
+                       <property name="text">
+                        <string>Selecionar</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>Conservador / Cidade</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>Otimista / Desobstruído</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>Misto</string>
+                       </property>
+                      </item>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="tab_sa">
+            <attribute name="title">
+             <string>Meta-heurística</string>
+            </attribute>
+            <layout class="QVBoxLayout" name="verticalLayout_6">
+             <property name="leftMargin">
+              <number>5</number>
+             </property>
+             <property name="topMargin">
+              <number>5</number>
+             </property>
+             <property name="rightMargin">
+              <number>5</number>
+             </property>
+             <property name="bottomMargin">
+              <number>5</number>
+             </property>
+             <item>
+              <widget class="QScrollArea" name="scroll_area_tab_sa">
+               <property name="widgetResizable">
+                <bool>true</bool>
+               </property>
+               <widget class="QWidget" name="scroll_area_widget_contents_output_2">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>279</width>
+                  <height>613</height>
+                 </rect>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_9">
+                 <property name="leftMargin">
+                  <number>5</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>2</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>2</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>2</number>
+                 </property>
+                 <item>
+                  <widget class="QGroupBox" name="group_box_output_settings_2">
+                   <property name="title">
+                    <string>Configurações Simulated Annealing</string>
+                   </property>
+                   <layout class="QFormLayout" name="formLayout">
+                    <item row="1" column="0">
+                     <widget class="QLabel" name="label_sa_temp_initial">
+                      <property name="text">
+                       <string>Temperatura Inicial</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="0">
+                     <widget class="QLabel" name="label_sa_num_max_iterations">
+                      <property name="text">
+                       <string>N Max. de Iterações</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="1">
+                     <widget class="QLineEdit" name="input_sa_num_max_iterations"/>
+                    </item>
+                    <item row="3" column="0">
+                     <widget class="QLabel" name="label_sa_num_max_perturbation_per_iteration">
+                      <property name="minimumSize">
+                       <size>
+                        <width>143</width>
+                        <height>0</height>
+                       </size>
+                      </property>
+                      <property name="text">
+                       <string>N Max. de Perturbações por Iteração</string>
+                      </property>
+                      <property name="wordWrap">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="3" column="1">
+                     <widget class="QLineEdit" name="input_sa_num_max_perturbation_per_iteration"/>
+                    </item>
+                    <item row="4" column="0">
+                     <widget class="QLabel" name="label_sa_num_max_success_per_iteration">
+                      <property name="text">
+                       <string>N Max de Sucessos por Iteração</string>
+                      </property>
+                      <property name="wordWrap">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="4" column="1">
+                     <widget class="QLineEdit" name="input_sa_num_max_success_per_iteration"/>
+                    </item>
+                    <item row="5" column="0">
+                     <widget class="QLabel" name="label_sa_alpha">
+                      <property name="text">
+                       <string>Alpha</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="5" column="1">
+                     <widget class="QLineEdit" name="input_sa_alpha"/>
+                    </item>
+                    <item row="1" column="1">
+                     <widget class="QLineEdit" name="input_sa_temp_initial"/>
+                    </item>
+                    <item row="7" column="0">
+                     <widget class="QCheckBox" name="check_box_optimize_height">
+                      <property name="text">
+                       <string>Otimizar Altura</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="8" column="0">
+                     <widget class="QCheckBox" name="check_box_optimize_power">
+                      <property name="text">
+                       <string>Otimizar Potência</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="0">
+                     <widget class="QCheckBox" name="check_box_optimize_solution">
+                      <property name="text">
+                       <string>Otimizar Solução</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="9" column="0">
+                     <widget class="QCheckBox" name="check_box_save_simulations">
+                      <property name="text">
+                       <string>Salvar dados</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="6" column="0">
+                     <widget class="QLabel" name="label_number_of_simulations">
+                      <property name="text">
+                       <string>N de Simulações</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="6" column="1">
+                     <widget class="QLineEdit" name="input_number_of_simulations"/>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="tab_output">
+            <attribute name="title">
+             <string>Saída</string>
+            </attribute>
+            <layout class="QVBoxLayout" name="verticalLayout_16">
+             <property name="leftMargin">
+              <number>5</number>
+             </property>
+             <property name="topMargin">
+              <number>5</number>
+             </property>
+             <property name="rightMargin">
+              <number>5</number>
+             </property>
+             <property name="bottomMargin">
+              <number>5</number>
+             </property>
+             <item>
+              <widget class="QScrollArea" name="scroll_area_tab_output">
+               <property name="widgetResizable">
+                <bool>true</bool>
+               </property>
+               <widget class="QWidget" name="scroll_area_widget_contents_output">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>279</width>
+                  <height>613</height>
+                 </rect>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_15">
+                 <property name="leftMargin">
+                  <number>5</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>2</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>2</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>2</number>
+                 </property>
+                 <item>
+                  <widget class="QGroupBox" name="group_box_output_settings">
+                   <property name="title">
+                    <string>Configurações de Saída</string>
+                   </property>
+                   <layout class="QFormLayout" name="formLayout_15">
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="label_output_colour_scheme">
+                      <property name="text">
+                       <string>Esquema de Cores</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="0" colspan="2">
+                     <widget class="QComboBox" name="combo_box_output_colour_scheme">
+                      <item>
+                       <property name="text">
+                        <string>Selecionar</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>Rainbow</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>Microwave</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>Green</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>Blue</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>Red</string>
+                       </property>
+                      </item>
+                     </widget>
+                    </item>
+                    <item row="2" column="0">
+                     <widget class="QLabel" name="label_output_radius">
+                      <property name="text">
+                       <string>Raio</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="3" column="0">
+                     <widget class="QLineEdit" name="input_output_radius">
+                      <property name="text">
+                       <string>60</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="3" column="1">
+                     <widget class="QLabel" name="label_output_radius_meters">
+                      <property name="text">
+                       <string>m</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="4" column="0">
+                     <widget class="QLabel" name="label_actual_resolution">
+                      <property name="text">
+                       <string>Resolução Atual</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="4" column="1">
+                     <widget class="QLabel" name="label_actual_resolution_value">
+                      <property name="text">
+                       <string>60m</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="frame_calculate">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <property name="lineWidth">
+            <number>0</number>
+           </property>
+           <layout class="QFormLayout" name="formLayout_3">
+            <property name="labelAlignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="formAlignment">
+             <set>Qt::AlignHCenter|Qt::AlignTop</set>
+            </property>
+            <property name="horizontalSpacing">
+             <number>0</number>
+            </property>
+            <property name="verticalSpacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item row="0" column="1">
+             <widget class="QPushButton" name="button_calculate">
+              <property name="maximumSize">
+               <size>
+                <width>150</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string notr="true"/>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="text">
+               <string>Executar Simulação</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="frame_result">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <property name="lineWidth">
+         <number>1</number>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_10">
+         <property name="spacing">
+          <number>6</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QTabWidget" name="tab_widget_maps">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>500</width>
+             <height>500</height>
+            </size>
+           </property>
+           <property name="currentIndex">
+            <number>0</number>
+           </property>
+           <widget class="QWidget" name="tab_coverage">
+            <attribute name="title">
+             <string>Resultado da Simulação</string>
+            </attribute>
+            <layout class="QVBoxLayout" name="verticalLayout">
+             <item>
+              <widget class="QWebEngineView" name="web_view" native="true"/>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="frame_simulation_infos">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>35</height>
+            </size>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QGridLayout" name="gridLayout">
+            <property name="bottomMargin">
+             <number>9</number>
+            </property>
+            <item row="0" column="1">
+             <widget class="QLabel" name="label_geral_info_2">
+              <property name="text">
+               <string>v1.0.0</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_geral_info_1">
+              <property name="text">
+               <string>Pronto para execução!</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1216</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_file">
+    <property name="title">
+     <string>Arquivo</string>
+    </property>
+    <addaction name="menu_action_anatel_base"/>
+    <addaction name="menu_action_settings"/>
+    <addaction name="separator"/>
+    <addaction name="menu_action_exit"/>
+   </widget>
+   <widget class="QMenu" name="menu_help">
+    <property name="title">
+     <string>Ajuda</string>
+    </property>
+    <addaction name="menu_action_help"/>
+    <addaction name="menu_action_about"/>
+   </widget>
+   <addaction name="menu_file"/>
+   <addaction name="menu_help"/>
+  </widget>
+  <action name="menu_action_exit">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="menu_action_anatel_base">
+   <property name="text">
+    <string>Anatel database</string>
+   </property>
+   <property name="iconText">
+    <string>Base Anatel</string>
+   </property>
+  </action>
+  <action name="menu_action_help">
+   <property name="text">
+    <string>Ajuda</string>
+   </property>
+  </action>
+  <action name="menu_action_about">
+   <property name="text">
+    <string>Sobre</string>
+   </property>
+  </action>
+  <action name="menu_action_settings">
+   <property name="text">
+    <string>Configurações</string>
+   </property>
+   <property name="iconText">
+    <string>Configurações</string>
+   </property>
+   <property name="toolTip">
+    <string>Configurações</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QWebEngineView</class>
+   <extends>QWidget</extends>
+   <header>qwebengineview.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

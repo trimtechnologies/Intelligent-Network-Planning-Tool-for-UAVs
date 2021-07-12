@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>anatel_dialog</class>
+ <widget class="QDialog" name="anatel_dialog">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1176</width>
+    <height>546</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Base de Dados Anatel</string>
+  </property>
+  <property name="locale">
+   <locale language="Portuguese" country="Brazil"/>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>false</bool>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <widget class="QFrame" name="main_frame">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QTableWidget" name="anatel_table">
+        <property name="showGrid">
+         <bool>true</bool>
+        </property>
+        <property name="sortingEnabled">
+         <bool>false</bool>
+        </property>
+        <property name="rowCount">
+         <number>1</number>
+        </property>
+        <property name="columnCount">
+         <number>37</number>
+        </property>
+        <attribute name="horizontalHeaderCascadingSectionResizes">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="horizontalHeaderStretchLastSection">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="verticalHeaderCascadingSectionResizes">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="verticalHeaderStretchLastSection">
+         <bool>false</bool>
+        </attribute>
+        <row/>
+        <column>
+         <property name="text">
+          <string>ID</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>STATUS</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>ENTIDADE</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>FISPEL</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>NUM. SERVIÇO</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>ATO DE RF</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>NUM ESTAÇÃO</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>ENDEREÇO</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>UF</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>MUNICIPIO</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>EMISSÃO</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>TECNOLOGIA</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>MEIO DE ACESSO</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>FREQ. INICIAL (MHz)</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>FREQ. FINAL (MHz)</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>AZIMUTE</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>TIPO ESTAÇÃO</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>CLASS. INFRA FISICA</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>COMPARTILHAMENTO INFRA FISICA</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>DISP COMPARTILHAMENTO INFRA FISICA</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>TIPO ANTENA</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>HOMOLOGAÇÃO ANT.</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>GANHO ANTENA</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>FRENTE COSTA</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>ÂNGULO 1/2 POT.</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>ELEVAÇÃO</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>POLARIZAÇÃO</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>ALTURA ANTENA (m)</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>HOMOLOGAÇÃO TRANSM. (W)</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>POTENCIA TRANSMISSAO</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>LATITUDE</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>LONGITUDE</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>LATITUDE DMS</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>LONGITUDE DMS</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>CODIGO DEBITO TFI</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>DATA PRIM. LICENC.</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>CRIADO EM</string>
+         </property>
+        </column>
+        <item row="0" column="0">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="1">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="2">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="3">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="4">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="5">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="6">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="7">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="8">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="9">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="10">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="13">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="14">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="15">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="16">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="20">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="21">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="22">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="23">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="24">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="25">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="26">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="27">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="28">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="30">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="31">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="35">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="bottom_frame">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>100</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>100</height>
+         </size>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="1" column="1">
+          <widget class="QLabel" name="label_last_update">
+           <property name="text">
+            <string>Base de Dados Anatel</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QPushButton" name="update_database_button">
+           <property name="text">
+            <string>Atualizar Base de Dados</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QComboBox" name="combo_box_state">
+           <property name="editable">
+            <bool>false</bool>
+           </property>
+           <property name="currentIndex">
+            <number>0</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>Selecionar Estado</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="1" column="2" colspan="2">
+          <widget class="QProgressBar" name="progress_bar_anatel">
+           <property name="value">
+            <number>0</number>
+           </property>
+           <property name="format">
+            <string>%p% completo</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="QComboBox" name="combo_box_county">
+           <property name="currentIndex">
+            <number>0</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>Selecionar Município</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
