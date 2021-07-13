@@ -107,6 +107,9 @@ class MainWindow(QMainWindow):
             (max_lat, min_lng),
         ]
 
+        # For more of one BS
+        self.max_erb = 1
+
     def set_default_values(self):
         # Transmissor tab
         self.combo_box_anatel_base_station: QComboBox
