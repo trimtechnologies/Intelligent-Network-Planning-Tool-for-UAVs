@@ -108,7 +108,7 @@ class MainWindow(QMainWindow):
         ]
 
         # For more of one BS
-        self.max_erb = 1
+        self.max_erb = 2
 
     def set_default_values(self):
         # Transmissor tab
@@ -150,9 +150,9 @@ class MainWindow(QMainWindow):
         self.input_sa_alpha.setText("0.85")
         self.input_number_of_simulations.setText("1")
         self.check_box_optimize_solution.setChecked(True)
-        self.check_box_optimize_height.setChecked(True)
-        self.check_box_optimize_power.setChecked(True)
-        self.check_box_save_simulations.setChecked(True)
+        self.check_box_optimize_height.setChecked(False)
+        self.check_box_optimize_power.setChecked(False)
+        self.check_box_save_simulations.setChecked(False)
 
         # Output tab
         self.combo_box_output_colour_scheme: QComboBox
@@ -394,7 +394,7 @@ class MainWindow(QMainWindow):
             location=erb_location,
             popup=base_station.entidade,
             draggable=False,
-            icon=folium.Icon(prefix='glyphicon', icon='tower', color=base_station.color)
+            icon=folium.Icon(prefix='glyphicon', icon='plane', color=base_station.color)
         ).add_to(m)
 
         data = io.BytesIO()
@@ -534,6 +534,14 @@ class MainWindow(QMainWindow):
 
         fo_alpha = 7
         return (fo_alpha * coverage_percent) - ((10 - fo_alpha) * shadow_percent)  # pesos 7 pra 3
+
+    @staticmethod
+    def solution_overlap_max(propagation_array) -> ndarray:
+        max_value = propagation_array[0]
+        for i in range(1, len(propagation_array)):
+            max_value = np.maximum(propagation_array[i], max_value)
+
+        return max_value
 
     @staticmethod
     def __get_simulation_bounds(lat: float, long: float, dx: float, dy: float) \
@@ -696,7 +704,7 @@ class MainWindow(QMainWindow):
                     location=erb_location,
                     popup=erb.entidade,
                     draggable=False,
-                    icon=folium.Icon(prefix='glyphicon', icon='tower', color=erb.color)
+                    icon=folium.Icon(prefix='glyphicon', icon='plane', color=erb.color)
                 ).add_to(m)
 
         # Print main point
@@ -704,7 +712,7 @@ class MainWindow(QMainWindow):
             location=erb_location,
             popup=base_station_selected.entidade,
             draggable=False,
-            icon=folium.Icon(prefix='glyphicon', icon='tower', color=base_station_selected.color)
+            icon=folium.Icon(prefix='glyphicon', icon='plane', color=base_station_selected.color)
         ).add_to(m)
 
         data = io.BytesIO()
@@ -744,66 +752,68 @@ class MainWindow(QMainWindow):
                 best_fo = FOs[-1]
 
                 # The best solution found
-                best = base_station_selected  # Just for clone
-                best.latitude = best_fo["lat"]
-                best.longitude = best_fo["lng"]
-                best.potencia_transmissao = best_fo["power"]
-                best.altura = best_fo["height"]
-                best.color = 'red'
+                best_array = base_station_selected  # Just for clone
+                best_array.latitude = best_fo["lat"]
+                best_array.longitude = best_fo["lng"]
+                best_array.potencia_transmissao = best_fo["power"]
+                best_array.altura = best_fo["height"]
+                best_array.color = 'red'
 
             else:
                 # Run simulated annealing
-                best, _, FOs = self.simulated_annealing(base_station=base_station_selected, M=3, P=5, L=140, T0=200.0,
-                                                        alpha=.85)
+                best_array, _, FOs = self.simulated_annealing(base_station=base_station_selected, M=2, P=2, L=3,
+                                                              T0=200.0, alpha=.85)
 
             end = time.time()
             print("End of Simulated Annealing")
 
             #  print best solution found
             print("obtaining propagation matrix of the best solution...")
-            matrix_solution, _, _ = self.simulates_propagation(best)
-            best_fo = round(self.objective_function(matrix_solution), 2)
+            # matrix_solution, _, _ = self.simulates_propagation(best_array)
+            # best_fo = round(self.objective_function(matrix_solution), 2)
+            best_fo, matrix_solution = self.evaluate_solution_array(best_array)
 
             print("generating visualization of the solution...")
             extra_bs = []
 
-            extra_bs.append(initial_solution)
+            # extra_bs.append(initial_solution)
+            #
+            # for fo in FOs:
+            #     bs = BaseStation()
+            #     bs.latitude = fo["lat"]
+            #     bs.longitude = fo["lng"]
+            #     bs.potencia_transmissao = fo["power"]
+            #     bs.altura = fo["height"]
+            #     bs.color = 'gray'
+            #
+            #     extra_bs.append(bs)
 
-            for fo in FOs:
-                bs = BaseStation()
-                bs.latitude = fo["lat"]
-                bs.longitude = fo["lng"]
-                bs.potencia_transmissao = fo["power"]
-                bs.altura = fo["height"]
-                bs.color = 'gray'
-
-                extra_bs.append(bs)
-
-            best.color = 'red'
-            self.print_simulation_result(best, extra_bs)
+            # best_array.color = 'red'
+            # self.print_simulation_result(best_array, extra_bs)
+            self.print_simulation_result(best_array[0], best_array[1:])
 
             print("len(FOs)=", len(FOs))
 
             print('(propagation_model)=', propagation_model)
-
-            print("(initial.latitude, initial.longitude)=",
-                  (round(initial_solution.latitude, 6), round(initial_solution.longitude, 6)))
-            print("(initial.altura)=", initial_solution.altura)
-            print("(initial.potencia_transmissao)=", initial_solution.potencia_transmissao)
-            print('(initial.fo)=', round(initial_fo, 2))
-            print()
-            print("(best.latitude, best.longitude)=", (round(best.latitude, 6), round(best.longitude, 6)))
-            print("(best.altura)=", best.altura)
-            print("(best.potencia_transmissao)=", best.potencia_transmissao)
-            print('(best.fo)=', best_fo)
-            print()
-            distance_of_solutions = calculates_distance_between_coordinates(
-                (initial_solution.latitude, initial_solution.longitude), (best.latitude, best.longitude))
-            print("Distance of solutions=", round(distance_of_solutions, 2))
+            #
+            # print("(initial.latitude, initial.longitude)=",
+            #       (round(initial_solution.latitude, 6), round(initial_solution.longitude, 6)))
+            # print("(initial.altura)=", initial_solution.altura)
+            # print("(initial.potencia_transmissao)=", initial_solution.potencia_transmissao)
+            # print('(initial.fo)=', round(initial_fo, 2))
+            # print()
+            # print("(best.latitude, best.longitude)=", (round(best_array.latitude, 6), round(best_array.longitude, 6)))
+            # print("(best.altura)=", best_array.altura)
+            # print("(best.potencia_transmissao)=", best_array.potencia_transmissao)
+            # print('(best.fo)=', best_fo)
+            # print()
+            # distance_of_solutions = calculates_distance_between_coordinates(
+            #     (initial_solution.latitude, initial_solution.longitude), (best_array.latitude, best_array.longitude))
+            # print("Distance of solutions=", round(distance_of_solutions, 2))
 
             # Plot the objective function line chart
             print("generating graph of the behavior of the objective function...")
-            FOs_to_plot = [item['of'] for item in FOs]
+            FOs_to_plot = [item for item in FOs]
             print("FOs_to_plot=", FOs_to_plot)
             plt.plot(FOs_to_plot)
             plt.title("Comportamento do Simulated Annealing (" + str(propagation_model) + ")")
@@ -825,10 +835,10 @@ class MainWindow(QMainWindow):
                     "ended_at": str(end),
                     "propagation_model": str(propagation_model),
                     "distance_of_solutions": str(distance_of_solutions),
-                    "best_latitude": str(best.latitude),
-                    "best_longitude": str(best.longitude),
-                    "best_height": str(best.altura),
-                    "best_power_transmission": str(best.potencia_transmissao),
+                    "best_latitude": str(best_array.latitude),
+                    "best_longitude": str(best_array.longitude),
+                    "best_height": str(best_array.altura),
+                    "best_power_transmission": str(best_array.potencia_transmissao),
                     "best_objective_function": str(best_fo),
                     "solutions": FOs
                 }
@@ -853,8 +863,19 @@ class MainWindow(QMainWindow):
 
         return self.objective_function(matrix_solution)
 
+    def evaluate_solution_array(self, points: List[BaseStation]) -> Tuple[float, ndarray]:
+        propagation_matrices = []
+
+        for point in points:
+            matrix_solution, _, _ = self.simulates_propagation(point)
+            propagation_matrices.append(matrix_solution)
+
+        overlaid_matrix = self.solution_overlap_max(propagation_matrices)
+
+        return self.objective_function(overlaid_matrix), overlaid_matrix
+
     @staticmethod
-    def disturb_solution(solution: BaseStation, disturbance_radius: float = 460) -> BaseStation:
+    def disturb_solution(solution: BaseStation, disturbance_radius: float = 600) -> BaseStation:
         """
         Disturb a specific solution
         :param solution: A base station solution
@@ -911,7 +932,7 @@ class MainWindow(QMainWindow):
         return [power]
 
     def simulated_annealing(self, base_station: BaseStation, M: int, P: int, L: int, T0: float, alpha: float) \
-            -> Tuple[Union[BaseStation, Any], float, List[Dict[str, float]]]:
+            -> Tuple[Union[List[BaseStation], Any], float, List[float]]:
         """
         :param base_station: Dados do problema principal
         :param M: Número máximo de iterações.
@@ -925,8 +946,12 @@ class MainWindow(QMainWindow):
         # List of solutions found
         FOs = []
 
-        # Initial solution
-        s = base_station
+        # generate the array of solution
+        s_array = []
+        for _ in range(self.max_erb):
+            s_array.append(copy.deepcopy(base_station))
+
+        s0 = s_array.copy()
 
         antenna_height = float(base_station.altura)
         possible_heights = self.generates_heights(antenna_height)
@@ -936,19 +961,21 @@ class MainWindow(QMainWindow):
         possible_powers_received = self.generates_received_powers(antenna_power_received)
         print("possible_powers_received=", str(possible_powers_received))
 
-        s0 = s
-        print("Solução inicial: " + str((s0.latitude, s0.longitude)))
+        print("Solução inicial: ")
+        print(s0)
 
-        result_fo = self.evaluate_solution(s)
+        result = self.evaluate_solution_array(s_array)
 
-        f_s = result_fo
+        f_s = result[0]
 
         T = T0
         j = 1
 
+        i_ap = 0
+
         # Store the BEST solution found
+        best_s_array = s_array.copy()
         best_fs = f_s
-        best_erb = s0
 
         # Loop principal – Verifica se foram atendidas as condições de termino do algoritmo
         while True:
@@ -962,23 +989,30 @@ class MainWindow(QMainWindow):
                 print("i/P=", i, "/", P)
                 print("n_success/L=", n_success, "/", L)
 
+                initial_solutions_array = s_array.copy()
+
+                # a cada iteração do SA, disturb_solution um dos APs
+                i_ap = (i_ap + 1) % self.max_erb
+
+                initial_solutions_array[i_ap] = self.disturb_solution(s_array[i_ap])
+
                 # Get a different position to ERB
-                Si = self.disturb_solution(s)
+                # Si = self.disturb_solution(s)
 
                 # For all possible antenna heights
                 for height in possible_heights:
                     print("-----------------------")
                     print("antenna height=", height)
-                    Si.altura = height
+                    initial_solutions_array[i_ap].altura = height
 
                     for power in possible_powers_received:
                         print("transmission power=", power)
-                        Si.potencia_transmissao = power
+                        initial_solutions_array[i_ap].potencia_transmissao = power
 
                         # Get objective function value
-                        result_fo = self.evaluate_solution(Si)
+                        result = self.evaluate_solution_array(initial_solutions_array)
 
-                        f_si = result_fo
+                        f_si = result[0]
 
                         # Verificar se o retorno da função objetivo está correto. f(x) é a função objetivo
                         delta_fi = f_si - f_s
@@ -988,22 +1022,23 @@ class MainWindow(QMainWindow):
                         # Teste de aceitação de uma nova solução
                         if (delta_fi <= 0) or (exp(-delta_fi / T) > random.random()):
 
-                            s = copy.deepcopy(Si)
+                            s_array = initial_solutions_array.copy()
                             f_s = f_si
 
                             n_success = n_success + 1
 
                             if f_s > best_fs:
                                 best_fs = f_s
-                                best_erb = copy.deepcopy(Si)
+                                best_s_array = s_array.copy()
 
-                            FOs.append({
-                                "lat": Si.latitude,
-                                "lng": Si.longitude,
-                                "height": Si.altura,
-                                "power": Si.potencia_transmissao,
-                                "of": f_s
-                            })
+                            FOs.append(f_s)
+                            # FOs.append({
+                            #     "lat": Si.latitude,
+                            #     "lng": Si.longitude,
+                            #     "height": Si.altura,
+                            #     "power": Si.potencia_transmissao,
+                            #     "of": f_s
+                            # })
 
                 i = i + 1
 
@@ -1025,12 +1060,13 @@ class MainWindow(QMainWindow):
         print(len(FOs), " solutions covered")
         print('FOs=', str(FOs))
 
-        FOs.append({
-            "lat": best_erb.latitude,
-            "lng": best_erb.longitude,
-            "height": best_erb.altura,
-            "power": best_erb.potencia_transmissao,
-            "of": best_fs
-        })
+        FOs.append(best_fs)
+        # FOs.append({
+        #     "lat": best_s_array.latitude,
+        #     "lng": best_s_array.longitude,
+        #     "height": best_s_array.altura,
+        #     "power": best_s_array.potencia_transmissao,
+        #     "of": best_fs
+        # })
 
-        return best_erb, best_fs, FOs
+        return best_s_array, best_fs, FOs
