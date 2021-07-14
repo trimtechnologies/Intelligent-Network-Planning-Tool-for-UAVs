@@ -1,4 +1,5 @@
 altgraph==0.17
+-e git+git@github.com:trimtechnologies/Analysis-of-antenna-coverage-master.git@43695ac3ba266934236bfbdb3918bcf347a180df#egg=Analysis_of_antenna_coverage
 appdirs==1.4.4
 aspy.yaml==1.3.0
 astroid==2.6.2
@@ -14,7 +15,6 @@ chardet==4.0.0
 click==8.0.1
 colour==0.1.5
 cycler==0.10.0
-Cython==3.0.0a8
 distlib==0.3.2
 elevation==1.1.3
 fasteners==0.16.3
@@ -64,9 +64,8 @@ pycparser==2.20
 pydocstyle==6.1.1
 pyerfa==1.7.3
 pyflakes==2.3.1
-PyInstaller==4.3
+PyInstaller==3.4
 pyinstaller-hooks-contrib==2021.2
-pylint==3.0.0a4
 pyparsing==3.0.0b2
 pypesq==1.2.4
 pyproj==3.0.1
@@ -83,7 +82,7 @@ python-dotenv==0.18.0
 python-editor==1.0.4
 python-jsonrpc-server==0.4.0
 python-language-server==0.36.2
-git+git://github.com/samuelterra22/python-srtm@master#egg=python-srtm
+python-srtm @ git+git://github.com/samuelterra22/python-srtm@d45e44dd81aebf6de8d0791e9088d1ac0ddf153a
 pytz==2021.1
 PyYAML==5.4.1
 regex==2021.7.6
