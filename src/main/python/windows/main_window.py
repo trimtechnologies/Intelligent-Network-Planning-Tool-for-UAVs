@@ -379,17 +379,6 @@ class MainWindow(QMainWindow):
 
         m = self.get_folium_map(location=erb_location)
 
-        # html = f"""
-        #         <h1> {base_station.entidade}</h1>
-        #         <p>You can use any html here! Let's do a list:</p>
-        #         <ul>
-        #             <li>Latitude: {base_station.latitude}</li>
-        #             <li>Longitude: {base_station.longitude}</li>
-        #         </ul>
-        #         """
-        # iframe = folium.IFrame(html=html, width=200, height=200)
-        # popup = folium.Popup(iframe, max_width=2650)
-
         folium.Marker(
             location=erb_location,
             popup=base_station.entidade,
@@ -529,11 +518,11 @@ class MainWindow(QMainWindow):
                 if value >= MIN_SENSITIVITY:
                     fo_value += 1
 
-        coverage_percent = (fo_value / total_of_points) * 100  # porcentagem de cobertura
-        shadow_percent = 100 - coverage_percent  # porcentagem de sombra
+        coverage_percent = (fo_value / total_of_points) * 100  # coverage percentage
+        shadow_percent = 100 - coverage_percent  # shadow percentage
 
         fo_alpha = 7
-        return (fo_alpha * coverage_percent) - ((10 - fo_alpha) * shadow_percent)  # pesos 7 pra 3
+        return (fo_alpha * coverage_percent) - ((10 - fo_alpha) * shadow_percent)  # weight 7 to 3
 
     @staticmethod
     def solution_overlap_max(propagation_array) -> ndarray:
@@ -558,7 +547,8 @@ class MainWindow(QMainWindow):
 
         return lat_bounds, long_bounds
 
-    def find_point(self, x1, y1, x2, y2, x, y):
+    @staticmethod
+    def find_point(x1, y1, x2, y2, x, y):
         # print(x1, y1, x2, y2, x, y)
 
         return x1 < x < x2 and y1 < y < y2
@@ -726,6 +716,7 @@ class MainWindow(QMainWindow):
 
         start = time.time()
         end = None
+
         self.check_box_optimize_solution: QCheckBox
         optimize_solution = self.check_box_optimize_solution.isChecked()
 
@@ -740,29 +731,14 @@ class MainWindow(QMainWindow):
 
         initial_fo = self.objective_function(propagation_matrix)
 
-        # print(propagation_matrix)
         print('propagation_matrix.shape=', propagation_matrix.shape)
         print('objective_function=', initial_fo)
 
         if optimize_solution:
-            run_only_test = False
 
-            if run_only_test:
-                FOs = [{'lat': -21.222768035349166, 'lng': -44.97706843930947, 'height': 39.2, 'power': 42.0, 'of': -130.94}, {'lat': -21.222768035349166, 'lng': -44.97706843930947, 'height': 47.6, 'power': 42.0, 'of': -111.24399999999997}, {'lat': -21.222768035349166, 'lng': -44.97706843930947, 'height': 56.0, 'power': 42.0, 'of': -93.22}, {'lat': -21.222768035349166, 'lng': -44.97706843930947, 'height': 64.4, 'power': 42.0, 'of': -74.976}, {'lat': -21.222768035349166, 'lng': -44.97706843930947, 'height': 64.4, 'power': 51.0, 'of': 144.652}, {'lat': -21.222768035349166, 'lng': -44.97706843930947, 'height': 72.8, 'power': 42.0, 'of': -58.52400000000003}, {'lat': -21.222768035349166, 'lng': -44.97706843930947, 'height': 72.8, 'power': 51.0, 'of': 177.092}, {'lat': -21.2232355324757, 'lng': -44.980804836844214, 'height': 39.2, 'power': 42.0, 'of': -110.29599999999999}, {'lat': -21.2232355324757, 'lng': -44.980804836844214, 'height': 47.6, 'power': 42.0, 'of': -90.49999999999997}, {'lat': -21.2232355324757, 'lng': -44.980804836844214, 'height': 56.0, 'power': 42.0, 'of': -73.77199999999999}, {'lat': -21.2232355324757, 'lng': -44.980804836844214, 'height': 64.4, 'power': 42.0, 'of': -58.59200000000001}, {'lat': -21.2232355324757, 'lng': -44.980804836844214, 'height': 72.8, 'power': 42.0, 'of': -44.77199999999999}, {'lat': -21.22345617331082, 'lng': -44.97882015383907, 'height': 39.2, 'power': 42.0, 'of': -101.80399999999997}, {'lat': -21.22345617331082, 'lng': -44.97882015383907, 'height': 39.2, 'power': 51.0, 'of': 104.20800000000003}, {'lat': -21.22345617331082, 'lng': -44.97882015383907, 'height': 47.6, 'power': 42.0, 'of': -83.27600000000001}, {'lat': -21.22345617331082, 'lng': -44.97882015383907, 'height': 56.0, 'power': 42.0, 'of': -67.04800000000003}, {'lat': -21.22345617331082, 'lng': -44.97882015383907, 'height': 56.0, 'power': 51.0, 'of': 171.12800000000001}, {'lat': -21.22345617331082, 'lng': -44.97882015383907, 'height': 56.0, 'power': 78.0, 'of': 694.26}, {'lat': -21.22345617331082, 'lng': -44.97882015383907, 'height': 64.4, 'power': 42.0, 'of': -52.27599999999998}, {'lat': -21.22345617331082, 'lng': -44.97882015383907, 'height': 72.8, 'power': 42.0, 'of': -39.22799999999998}, {'lat': -21.223571424305284, 'lng': -44.97521470970552, 'height': 39.2, 'power': 42.0, 'of': -92.088}, {'lat': -21.223571424305284, 'lng': -44.97521470970552, 'height': 47.6, 'power': 42.0, 'of': -74.16799999999998}, {'lat': -21.223571424305284, 'lng': -44.97521470970552, 'height': 56.0, 'power': 42.0, 'of': -57.391999999999996}, {'lat': -21.223571424305284, 'lng': -44.97521470970552, 'height': 64.4, 'power': 42.0, 'of': -42.644000000000005}, {'lat': -21.223571424305284, 'lng': -44.97521470970552, 'height': 72.8, 'power': 42.0, 'of': -28.887999999999977}, {'lat': -21.222903643448394, 'lng': -44.971665304779734, 'height': 39.2, 'power': 42.0, 'of': -67.424}, {'lat': -21.222903643448394, 'lng': -44.971665304779734, 'height': 39.2, 'power': 60.0, 'of': 517.2239999999999}, {'lat': -21.222903643448394, 'lng': -44.971665304779734, 'height': 39.2, 'power': 69.0, 'of': 662.4719999999999}, {'lat': -21.222903643448394, 'lng': -44.971665304779734, 'height': 47.6, 'power': 42.0, 'of': -49.98399999999998}, {'lat': -21.222903643448394, 'lng': -44.971665304779734, 'height': 56.0, 'power': 42.0, 'of': -34.920000000000016}, {'lat': -21.222903643448394, 'lng': -44.971665304779734, 'height': 56.0, 'power': 51.0, 'of': 219.64}, {'lat': -21.222903643448394, 'lng': -44.971665304779734, 'height': 56.0, 'power': 60.0, 'of': 566.54}, {'lat': -21.222903643448394, 'lng': -44.971665304779734, 'height': 56.0, 'power': 78.0, 'of': 696.576}, {'lat': -21.222903643448394, 'lng': -44.971665304779734, 'height': 64.4, 'power': 42.0, 'of': -21.560000000000002}, {'lat': -21.222903643448394, 'lng': -44.971665304779734, 'height': 64.4, 'power': 69.0, 'of': 676.1800000000001}, {'lat': -21.222903643448394, 'lng': -44.971665304779734, 'height': 64.4, 'power': 78.0, 'of': 697.188}, {'lat': -21.222903643448394, 'lng': -44.971665304779734, 'height': 72.8, 'power': 42.0, 'of': -8.69599999999997}, {'lat': -21.223601964785495, 'lng': -44.972126784619846, 'height': 39.2, 'power': 42.0, 'of': -50.867999999999995}, {'lat': -21.223601964785495, 'lng': -44.972126784619846, 'height': 39.2, 'power': 51.0, 'of': 193.18}, {'lat': -21.223601964785495, 'lng': -44.972126784619846, 'height': 39.2, 'power': 69.0, 'of': 670.088}, {'lat': -21.223601964785495, 'lng': -44.972126784619846, 'height': 39.2, 'power': 78.0, 'of': 696.3280000000001}, {'lat': -21.223601964785495, 'lng': -44.972126784619846, 'height': 47.6, 'power': 42.0, 'of': -35.831999999999994}, {'lat': -21.223601964785495, 'lng': -44.972126784619846, 'height': 56.0, 'power': 42.0, 'of': -22.127999999999986}, {'lat': -21.223601964785495, 'lng': -44.972126784619846, 'height': 64.4, 'power': 42.0, 'of': -8.623999999999967}, {'lat': -21.223601964785495, 'lng': -44.972126784619846, 'height': 72.8, 'power': 42.0, 'of': 5.271999999999991}, {'lat': -21.22650793382981, 'lng': -44.974883196009905, 'height': 39.2, 'power': 42.0, 'of': -54.355999999999995}, {'lat': -21.22650793382981, 'lng': -44.974883196009905, 'height': 39.2, 'power': 51.0, 'of': 215.48000000000002}, {'lat': -21.22650793382981, 'lng': -44.974883196009905, 'height': 47.6, 'power': 42.0, 'of': -38.067999999999955}, {'lat': -21.22650793382981, 'lng': -44.974883196009905, 'height': 47.6, 'power': 51.0, 'of': 249.80799999999996}, {'lat': -21.22650793382981, 'lng': -44.974883196009905, 'height': 56.0, 'power': 42.0, 'of': -20.924000000000007}, {'lat': -21.22650793382981, 'lng': -44.974883196009905, 'height': 64.4, 'power': 42.0, 'of': -3.9799999999999898}, {'lat': -21.22650793382981, 'lng': -44.974883196009905, 'height': 72.8, 'power': 42.0, 'of': 12.379999999999995}, {'lat': -21.225441378951523, 'lng': -44.97774259617032, 'height': 39.2, 'power': 42.0, 'of': -70.77200000000002}, {'lat': -21.225441378951523, 'lng': -44.97774259617032, 'height': 47.6, 'power': 42.0, 'of': -55.551999999999964}, {'lat': -21.225441378951523, 'lng': -44.97774259617032, 'height': 47.6, 'power': 51.0, 'of': 211.192}, {'lat': -21.225441378951523, 'lng': -44.97774259617032, 'height': 56.0, 'power': 42.0, 'of': -39.668000000000006}, {'lat': -21.225441378951523, 'lng': -44.97774259617032, 'height': 56.0, 'power': 51.0, 'of': 245.372}, {'lat': -21.225441378951523, 'lng': -44.97774259617032, 'height': 56.0, 'power': 78.0, 'of': 697.056}, {'lat': -21.225441378951523, 'lng': -44.97774259617032, 'height': 64.4, 'power': 42.0, 'of': -24.055999999999955}, {'lat': -21.225441378951523, 'lng': -44.97774259617032, 'height': 72.8, 'power': 42.0, 'of': -9.584000000000003}, {'lat': -21.225145180739826, 'lng': -44.974517464623894, 'height': 39.2, 'power': 42.0, 'of': -60.964}, {'lat': -21.225145180739826, 'lng': -44.974517464623894, 'height': 47.6, 'power': 42.0, 'of': -44.964}, {'lat': -21.225145180739826, 'lng': -44.974517464623894, 'height': 56.0, 'power': 42.0, 'of': -29.50799999999998}, {'lat': -21.225145180739826, 'lng': -44.974517464623894, 'height': 64.4, 'power': 42.0, 'of': -14.724000000000075}, {'lat': -21.22537366539022, 'lng': -44.973303068618115, 'height': 39.2, 'power': 42.0, 'of': -44.843999999999994}, {'lat': -21.22537366539022, 'lng': -44.973303068618115, 'height': 47.6, 'power': 42.0, 'of': -29.17199999999997}, {'lat': -21.22537366539022, 'lng': -44.973303068618115, 'height': 56.0, 'power': 42.0, 'of': -13.604000000000013}, {'lat': -21.22537366539022, 'lng': -44.973303068618115, 'height': 64.4, 'power': 42.0, 'of': 1.3719999999999288}, {'lat': -21.22537366539022, 'lng': -44.973303068618115, 'height': 72.8, 'power': 42.0, 'of': 16.876000000000005}, {'lat': -21.22460679000056, 'lng': -44.970318114129384, 'height': 39.2, 'power': 42.0, 'of': -7.69199999999995}, {'lat': -21.22460679000056, 'lng': -44.970318114129384, 'height': 39.2, 'power': 51.0, 'of': 288.96400000000006}, {'lat': -21.22460679000056, 'lng': -44.970318114129384, 'height': 39.2, 'power': 60.0, 'of': 600.696}, {'lat': -21.22460679000056, 'lng': -44.970318114129384, 'height': 39.2, 'power': 69.0, 'of': 682.3120000000001}, {'lat': -21.22460679000056, 'lng': -44.970318114129384, 'height': 39.2, 'power': 78.0, 'of': 697.464}, {'lat': -21.22460679000056, 'lng': -44.970318114129384, 'height': 47.6, 'power': 42.0, 'of': 7.904000000000025}, {'lat': -21.22460679000056, 'lng': -44.970318114129384, 'height': 47.6, 'power': 69.0, 'of': 685.168}, {'lat': -21.22460679000056, 'lng': -44.970318114129384, 'height': 47.6, 'power': 78.0, 'of': 697.968}, {'lat': -21.22460679000056, 'lng': -44.970318114129384, 'height': 56.0, 'power': 42.0, 'of': 23.50799999999998}, {'lat': -21.22460679000056, 'lng': -44.970318114129384, 'height': 64.4, 'power': 42.0, 'of': 38.872000000000014}, {'lat': -21.22460679000056, 'lng': -44.970318114129384, 'height': 72.8, 'power': 42.0, 'of': 55.46799999999996}, {'lat': -21.224760927328912, 'lng': -44.968680982551376, 'height': 39.2, 'power': 42.0, 'of': 12.688000000000017}, {'lat': -21.224760927328912, 'lng': -44.968680982551376, 'height': 47.6, 'power': 42.0, 'of': 28.19999999999999}, {'lat': -21.224760927328912, 'lng': -44.968680982551376, 'height': 56.0, 'power': 51.0, 'of': 394.1159999999999}, {'lat': -21.224760927328912, 'lng': -44.968680982551376, 'height': 56.0, 'power': 69.0, 'of': 688.424}, {'lat': -21.224760927328912, 'lng': -44.968680982551376, 'height': 56.0, 'power': 78.0, 'of': 698.356}, {'lat': -21.224760927328912, 'lng': -44.968680982551376, 'height': 64.4, 'power': 42.0, 'of': 60.45599999999999}, {'lat': -21.225908887294224, 'lng': -44.96625550028057, 'height': 39.2, 'power': 42.0, 'of': -36.084}, {'lat': -21.225908887294224, 'lng': -44.96625550028057, 'height': 47.6, 'power': 42.0, 'of': -17.335999999999956}, {'lat': -21.225908887294224, 'lng': -44.96625550028057, 'height': 56.0, 'power': 42.0, 'of': -0.10000000000005116}, {'lat': -21.225908887294224, 'lng': -44.96625550028057, 'height': 56.0, 'power': 60.0, 'of': 604.956}, {'lat': -21.225908887294224, 'lng': -44.96625550028057, 'height': 56.0, 'power': 69.0, 'of': 681.94}, {'lat': -21.225908887294224, 'lng': -44.96625550028057, 'height': 56.0, 'power': 78.0, 'of': 695.752}, {'lat': -21.225908887294224, 'lng': -44.96625550028057, 'height': 64.4, 'power': 42.0, 'of': 16.767999999999972}, {'lat': -21.228004857501524, 'lng': -44.96663171818059, 'height': 39.2, 'power': 42.0, 'of': 76.67200000000003}, {'lat': -21.228004857501524, 'lng': -44.96663171818059, 'height': 47.6, 'power': 42.0, 'of': 96.01199999999997}, {'lat': -21.228004857501524, 'lng': -44.96663171818059, 'height': 64.4, 'power': 42.0, 'of': 134.29200000000003}, {'lat': -21.228004857501524, 'lng': -44.96663171818059, 'height': 64.4, 'power': 51.0, 'of': 505.664}, {'lat': -21.228004857501524, 'lng': -44.96663171818059, 'height': 64.4, 'power': 60.0, 'of': 662.532}, {'lat': -21.228004857501524, 'lng': -44.96663171818059, 'height': 64.4, 'power': 69.0, 'of': 693.552}, {'lat': -21.228004857501524, 'lng': -44.96663171818059, 'height': 64.4, 'power': 78.0, 'of': 699.688}, {'lat': -21.228004857501524, 'lng': -44.96663171818059, 'height': 72.8, 'power': 42.0, 'of': 153.71200000000005}, {'lat': -21.228004857501524, 'lng': -44.96663171818059, 'height': 72.8, 'power': 51.0, 'of': 522.9680000000001}, {'lat': -21.22758158898211, 'lng': -44.96701973056145, 'height': 39.2, 'power': 42.0, 'of': 47.512}, {'lat': -21.22758158898211, 'lng': -44.96701973056145, 'height': 47.6, 'power': 42.0, 'of': 66.93599999999995}, {'lat': -21.22758158898211, 'lng': -44.96701973056145, 'height': 56.0, 'power': 42.0, 'of': 86.15600000000003}, {'lat': -21.22758158898211, 'lng': -44.96701973056145, 'height': 56.0, 'power': 60.0, 'of': 649.1840000000001}, {'lat': -21.22758158898211, 'lng': -44.96701973056145, 'height': 56.0, 'power': 78.0, 'of': 699.052}, {'lat': -21.22758158898211, 'lng': -44.96701973056145, 'height': 64.4, 'power': 42.0, 'of': 105.22000000000008}, {'lat': -21.22758158898211, 'lng': -44.96701973056145, 'height': 72.8, 'power': 42.0, 'of': 124.0}, {'lat': -21.228004857501524, 'lng': -44.96663171818059, 'height': 64.4, 'power': 78.0, 'of': 699.688}]
-                best_fo = FOs[-1]
-
-                # The best solution found
-                best_array = base_station_selected  # Just for clone
-                best_array.latitude = best_fo["lat"]
-                best_array.longitude = best_fo["lng"]
-                best_array.potencia_transmissao = best_fo["power"]
-                best_array.altura = best_fo["height"]
-                best_array.color = 'red'
-
-            else:
-                # Run simulated annealing
-                best_array, _, FOs = self.simulated_annealing(base_station=base_station_selected, M=2, P=2, L=3,
-                                                              T0=200.0, alpha=.85)
+            # Run simulated annealing
+            best_array, _, FOs = self.simulated_annealing(base_station=base_station_selected, M=2, P=2, L=3,
+                                                          T0=200.0, alpha=.85)
 
             end = time.time()
             print("End of Simulated Annealing")
@@ -776,18 +752,6 @@ class MainWindow(QMainWindow):
             print("generating visualization of the solution...")
             extra_bs = []
 
-            # extra_bs.append(initial_solution)
-            #
-            # for fo in FOs:
-            #     bs = BaseStation()
-            #     bs.latitude = fo["lat"]
-            #     bs.longitude = fo["lng"]
-            #     bs.potencia_transmissao = fo["power"]
-            #     bs.altura = fo["height"]
-            #     bs.color = 'gray'
-            #
-            #     extra_bs.append(bs)
-
             # best_array.color = 'red'
             # self.print_simulation_result(best_array, extra_bs)
             self.print_simulation_result(best_array[0], best_array[1:])
@@ -795,21 +759,6 @@ class MainWindow(QMainWindow):
             print("len(FOs)=", len(FOs))
 
             print('(propagation_model)=', propagation_model)
-            #
-            # print("(initial.latitude, initial.longitude)=",
-            #       (round(initial_solution.latitude, 6), round(initial_solution.longitude, 6)))
-            # print("(initial.altura)=", initial_solution.altura)
-            # print("(initial.potencia_transmissao)=", initial_solution.potencia_transmissao)
-            # print('(initial.fo)=', round(initial_fo, 2))
-            # print()
-            # print("(best.latitude, best.longitude)=", (round(best_array.latitude, 6), round(best_array.longitude, 6)))
-            # print("(best.altura)=", best_array.altura)
-            # print("(best.potencia_transmissao)=", best_array.potencia_transmissao)
-            # print('(best.fo)=', best_fo)
-            # print()
-            # distance_of_solutions = calculates_distance_between_coordinates(
-            #     (initial_solution.latitude, initial_solution.longitude), (best_array.latitude, best_array.longitude))
-            # print("Distance of solutions=", round(distance_of_solutions, 2))
 
             # Plot the objective function line chart
             print("generating graph of the behavior of the objective function...")
@@ -821,7 +770,7 @@ class MainWindow(QMainWindow):
             plt.xlabel('Solução candidata')
             plt.show()
 
-            if save_simulations and not run_only_test:
+            if save_simulations:
                 print("Saving simulation in database...")
                 data = {
                     "initial_latitude": str(initial_solution.latitude),
@@ -834,7 +783,6 @@ class MainWindow(QMainWindow):
                     "started_at": str(start),
                     "ended_at": str(end),
                     "propagation_model": str(propagation_model),
-                    "distance_of_solutions": str(distance_of_solutions),
                     "best_latitude": str(best_array.latitude),
                     "best_longitude": str(best_array.longitude),
                     "best_height": str(best_array.altura),
@@ -852,7 +800,6 @@ class MainWindow(QMainWindow):
             end = time.time()
 
         self.label_geral_info_1: QLabel
-        # self.label_geral_info_1.setText("Simulação executada em %s segundos" % round(end - start, 2))
         self.label_geral_info_1.setText("Simulação realizada com sucesso!")
         print("Simulation run in %s seconds" % round(end - start, 2))
 
@@ -934,13 +881,13 @@ class MainWindow(QMainWindow):
     def simulated_annealing(self, base_station: BaseStation, M: int, P: int, L: int, T0: float, alpha: float) \
             -> Tuple[Union[List[BaseStation], Any], float, List[float]]:
         """
-        :param base_station: Dados do problema principal
-        :param M: Número máximo de iterações.
-        :param P: Número máximo de Perturbações por iteração.
-        :param L: Número máximo de sucessos por iteração.
-        :param T0: Temperatura inicial.
-        :param alpha: Factor de redução da temperatura.
-        :return: Retorna um ponto (tupla de coordenadas) sendo a mais indicada.
+        :param base_station: Main problem data.
+        :param M: Maximum number of iterations.
+        :param P: Maximum number of Disturbances per iteration.
+        :param L: Maximum number of successes per iteration.
+        :param T0: Initial temperature.
+        :param alpha: Temperature reduction factor.
+        :return: Returns a point (tuple of coordinates) being the most indicated.
         """
 
         # List of solutions found
