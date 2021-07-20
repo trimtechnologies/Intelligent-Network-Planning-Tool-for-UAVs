@@ -4,7 +4,7 @@
 
 ### Visualização do software:
 
-![](screenshots/main_screen.png)
+![](images/main_screen.png)
 
 ### Configuração para desenvolvimento:
 
