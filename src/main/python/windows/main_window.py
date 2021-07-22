@@ -736,10 +736,18 @@ class MainWindow(QMainWindow):
 
         if optimize_solution:
 
-            # Run simulated annealing
-            best_array, _, FOs = self.simulated_annealing(base_station=base_station_selected, M=2, P=2, L=3,
-                                                          T0=200.0, alpha=.85)
+            # Get values from inputs
+            sa_temp_initial = float(self.sa_temp_initial.text())
+            sa_num_max_iterations = int(self.sa_num_max_iterations.text())
+            sa_num_max_perturbation_per_iteration = int(self.sa_num_max_perturbation_per_iteration.text())
+            sa_num_max_success_per_iteration = int(self.sa_num_max_success_per_iteration.text())
+            sa_alpha = float(self.sa_alpha.text())
 
+            # Run simulated annealing
+            best_array, _, FOs = self.simulated_annealing(base_station=base_station_selected, M=sa_num_max_iterations,
+                                                          P=sa_num_max_perturbation_per_iteration,
+                                                          L=sa_num_max_success_per_iteration,
+                                                          T0=sa_temp_initial, alpha=sa_alpha)
             end = time.time()
             print("End of Simulated Annealing")
 
@@ -825,9 +833,13 @@ class MainWindow(QMainWindow):
     def disturb_solution(solution: BaseStation, disturbance_radius: float = 600) -> BaseStation:
         """
         Disturb a specific solution
-        :param solution: A base station solution
-        :param disturbance_radius: The ray of disturbance in meters
-        :return: Return the base station with a new position (lat long)
+
+        Args:
+            solution: A base station solution
+            disturbance_radius: The ray of disturbance in meters
+
+        Returns:
+            BaseStation:  Return the base station with a new position (lat long)
         """
         latitude = solution.latitude
         longitude = solution.longitude
@@ -840,6 +852,15 @@ class MainWindow(QMainWindow):
         return solution
 
     def generates_heights(self, height: float) -> list:
+        """
+        Function to get the possible heights for simulation
+
+        Args:
+            height (float): The main height
+
+        Returns:
+            list: Return a list of heights
+        """
         percentage_height_15 = self.percentage(15, height)
         percentage_height_30 = self.percentage(30, height)
 
@@ -861,6 +882,15 @@ class MainWindow(QMainWindow):
         return [height]
 
     def generates_received_powers(self, power: float) -> list:
+        """
+        Function to get the possible transmission powers for simulation
+
+        Args:
+            power (float): The main transmission power
+
+        Returns:
+            list: Return a list of transmission powers
+        """
         percentage_power_15 = self.percentage(15, power)
         percentage_power_30 = self.percentage(30, power)
 
@@ -881,13 +911,18 @@ class MainWindow(QMainWindow):
     def simulated_annealing(self, base_station: BaseStation, M: int, P: int, L: int, T0: float, alpha: float) \
             -> Tuple[Union[List[BaseStation], Any], float, List[float]]:
         """
-        :param base_station: Main problem data.
-        :param M: Maximum number of iterations.
-        :param P: Maximum number of Disturbances per iteration.
-        :param L: Maximum number of successes per iteration.
-        :param T0: Initial temperature.
-        :param alpha: Temperature reduction factor.
-        :return: Returns a point (tuple of coordinates) being the most indicated.
+        Performs the search using meta-heuristics
+
+        Args:
+            base_station: Main problem data.
+            M: Maximum number of iterations.
+            P: Maximum number of Disturbances per iteration.
+            L: Maximum number of successes per iteration.
+            T0: Initial temperature.
+            alpha: Temperature reduction factor.
+
+        Returns:
+            Tuple: Returns a point (tuple of coordinates) being the most indicated.
         """
 
         # List of solutions found
