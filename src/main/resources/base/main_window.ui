@@ -83,7 +83,7 @@
             <enum>QTabWidget::West</enum>
            </property>
            <property name="currentIndex">
-            <number>0</number>
+            <number>4</number>
            </property>
            <widget class="QWidget" name="tab_transmitter">
             <attribute name="title">
@@ -112,8 +112,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>265</width>
-                  <height>846</height>
+                  <width>263</width>
+                  <height>924</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -619,8 +619,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>279</width>
-                  <height>613</height>
+                  <width>277</width>
+                  <height>611</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -725,8 +725,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>279</width>
-                  <height>613</height>
+                  <width>277</width>
+                  <height>611</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_14">
@@ -864,8 +864,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>279</width>
-                  <height>613</height>
+                  <width>277</width>
+                  <height>611</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -996,6 +996,85 @@
              </item>
             </layout>
            </widget>
+           <widget class="QWidget" name="tab_drone">
+            <attribute name="title">
+             <string>Drone</string>
+            </attribute>
+            <layout class="QVBoxLayout" name="verticalLayout_8">
+             <property name="leftMargin">
+              <number>5</number>
+             </property>
+             <property name="topMargin">
+              <number>5</number>
+             </property>
+             <property name="rightMargin">
+              <number>5</number>
+             </property>
+             <property name="bottomMargin">
+              <number>5</number>
+             </property>
+             <item>
+              <widget class="QScrollArea" name="scroll_area_tab_drone">
+               <property name="widgetResizable">
+                <bool>true</bool>
+               </property>
+               <widget class="QWidget" name="scroll_area_widget_contents_drone">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>277</width>
+                  <height>611</height>
+                 </rect>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_4">
+                 <property name="leftMargin">
+                  <number>5</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>2</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>2</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>2</number>
+                 </property>
+                 <item>
+                  <widget class="QGroupBox" name="group_box_drone">
+                   <property name="title">
+                    <string>Configurações Drone</string>
+                   </property>
+                   <layout class="QFormLayout" name="formLayout_2">
+                    <item row="1" column="0">
+                     <widget class="QLabel" name="label_drone_config_2">
+                      <property name="text">
+                       <string>Config 2</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="1">
+                     <widget class="QLineEdit" name="input_drone_config_2"/>
+                    </item>
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="label_drone_config_1">
+                      <property name="text">
+                       <string>Config 1</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="1">
+                     <widget class="QLineEdit" name="input_drone_config_1"/>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </widget>
+             </item>
+            </layout>
+           </widget>
            <widget class="QWidget" name="tab_output">
             <attribute name="title">
              <string>Saída</string>
@@ -1023,8 +1102,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>279</width>
-                  <height>613</height>
+                  <width>277</width>
+                  <height>611</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_15">
@@ -1316,7 +1395,7 @@
      <x>0</x>
      <y>0</y>
      <width>1216</width>
-     <height>20</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_file">
