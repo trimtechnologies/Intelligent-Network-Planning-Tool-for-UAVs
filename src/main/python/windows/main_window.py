@@ -144,9 +144,9 @@ class MainWindow(QMainWindow):
         self.check_box_save_simulations: QCheckBox
 
         self.input_sa_temp_initial.setText("200.0")
-        self.input_sa_num_max_iterations.setText("3")
-        self.input_sa_num_max_perturbation_per_iteration.setText("5")
-        self.input_sa_num_max_success_per_iteration.setText("140")
+        self.input_sa_num_max_iterations.setText("2")
+        self.input_sa_num_max_perturbation_per_iteration.setText("2")
+        self.input_sa_num_max_success_per_iteration.setText("2")
         self.input_sa_alpha.setText("0.85")
         self.input_number_of_simulations.setText("1")
         self.check_box_optimize_solution.setChecked(True)
@@ -652,7 +652,7 @@ class MainWindow(QMainWindow):
 
         propagation_matrix, lats_deg, longs_deg = self.simulates_propagation(base_station_selected)
 
-        erb_location = (base_station_selected.latitude, base_station_selected.longitude)
+        main_erb_location = (base_station_selected.latitude, base_station_selected.longitude)
 
         lats_in_rad = np.deg2rad(lats_deg)
         longs_in_rad = np.deg2rad(longs_deg)
@@ -667,14 +667,13 @@ class MainWindow(QMainWindow):
         print("propagation_matrix.min()=", propagation_matrix.min())
         print("propagation_matrix.max()=", propagation_matrix.max())
 
-        # dados normatizados
         # normed_data = (propagation_matrix - bm_min_sensitivity) / (bm_max_sensitivity - bm_min_sensitivity)
         normed_data = (propagation_matrix - propagation_matrix.min()) / (
                 propagation_matrix.max() - propagation_matrix.min())
 
         colored_data = color_map(normed_data)
 
-        m = self.get_folium_map(location=erb_location)
+        m = self.get_folium_map(location=main_erb_location)
 
         folium.raster_layers.ImageOverlay(
             image=np.flip(colored_data, 1),
@@ -688,10 +687,10 @@ class MainWindow(QMainWindow):
         # Print extra points in the map
         if extra_points is not None:
             for erb in extra_points:
-                erb_location = (erb.latitude, erb.longitude)
+                extra_erb_location = (erb.latitude, erb.longitude)
 
                 folium.Marker(
-                    location=erb_location,
+                    location=extra_erb_location,
                     popup=erb.entidade,
                     draggable=False,
                     icon=folium.Icon(prefix='glyphicon', icon='plane', color=erb.color)
@@ -699,7 +698,7 @@ class MainWindow(QMainWindow):
 
         # Print main point
         folium.Marker(
-            location=erb_location,
+            location=main_erb_location,
             popup=base_station_selected.entidade,
             draggable=False,
             icon=folium.Icon(prefix='glyphicon', icon='plane', color=base_station_selected.color)
@@ -737,11 +736,11 @@ class MainWindow(QMainWindow):
         if optimize_solution:
 
             # Get values from inputs
-            sa_temp_initial = float(self.sa_temp_initial.text())
-            sa_num_max_iterations = int(self.sa_num_max_iterations.text())
-            sa_num_max_perturbation_per_iteration = int(self.sa_num_max_perturbation_per_iteration.text())
-            sa_num_max_success_per_iteration = int(self.sa_num_max_success_per_iteration.text())
-            sa_alpha = float(self.sa_alpha.text())
+            sa_temp_initial = float(self.input_sa_temp_initial.text())
+            sa_num_max_iterations = int(self.input_sa_num_max_iterations.text())
+            sa_num_max_perturbation_per_iteration = int(self.input_sa_num_max_perturbation_per_iteration.text())
+            sa_num_max_success_per_iteration = int(self.input_sa_num_max_success_per_iteration.text())
+            sa_alpha = float(self.input_sa_alpha.text())
 
             # Run simulated annealing
             best_array, _, FOs = self.simulated_annealing(base_station=base_station_selected, M=sa_num_max_iterations,
@@ -759,6 +758,8 @@ class MainWindow(QMainWindow):
 
             print("generating visualization of the solution...")
             extra_bs = []
+
+            print(self.get_lat_lng_from_array_solution(best_array))
 
             # best_array.color = 'red'
             # self.print_simulation_result(best_array, extra_bs)
@@ -908,6 +909,18 @@ class MainWindow(QMainWindow):
 
         return [power]
 
+    @staticmethod
+    def get_lat_lng_from_array_solution(s_array: List[BaseStation]):
+        positions = []
+        for bs in s_array:
+            positions.append({
+                'latitude': bs.latitude,
+                'longitude': bs.longitude,
+                'color': bs.color
+            })
+
+        return positions
+
     def simulated_annealing(self, base_station: BaseStation, M: int, P: int, L: int, T0: float, alpha: float) \
             -> Tuple[Union[List[BaseStation], Any], float, List[float]]:
         """
@@ -944,7 +957,7 @@ class MainWindow(QMainWindow):
         print("possible_powers_received=", str(possible_powers_received))
 
         print("Solução inicial: ")
-        print(s0)
+        print(self.get_lat_lng_from_array_solution(s0))
 
         result = self.evaluate_solution_array(s_array)
 
