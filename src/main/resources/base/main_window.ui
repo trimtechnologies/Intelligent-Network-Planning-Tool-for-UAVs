@@ -112,8 +112,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>263</width>
-                  <height>924</height>
+                  <width>285</width>
+                  <height>621</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -619,8 +619,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>277</width>
-                  <height>611</height>
+                  <width>285</width>
+                  <height>621</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -725,8 +725,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>277</width>
-                  <height>611</height>
+                  <width>285</width>
+                  <height>621</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_14">
@@ -864,8 +864,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>277</width>
-                  <height>611</height>
+                  <width>285</width>
+                  <height>621</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -1023,8 +1023,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>277</width>
-                  <height>611</height>
+                  <width>285</width>
+                  <height>621</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -1049,7 +1049,7 @@
                     <item row="1" column="0">
                      <widget class="QLabel" name="label_drone_config_2">
                       <property name="text">
-                       <string>Config 2</string>
+                       <string>Altura</string>
                       </property>
                      </widget>
                     </item>
@@ -1059,7 +1059,7 @@
                     <item row="0" column="0">
                      <widget class="QLabel" name="label_drone_config_1">
                       <property name="text">
-                       <string>Config 1</string>
+                       <string>Potência</string>
                       </property>
                      </widget>
                     </item>
@@ -1102,8 +1102,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>277</width>
-                  <height>611</height>
+                  <width>285</width>
+                  <height>621</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_15">
@@ -1395,7 +1395,7 @@
      <x>0</x>
      <y>0</y>
      <width>1216</width>
-     <height>22</height>
+     <height>18</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_file">
