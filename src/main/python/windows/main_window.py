@@ -391,7 +391,7 @@ class MainWindow(QMainWindow):
             location=erb_location,
             popup=base_station.entidade,
             draggable=False,
-            icon=folium.Icon(prefix='glyphicon', icon='plane', color=base_station.color)
+            icon=folium.Icon(prefix='glyphicon', icon=base_station.icon, color=base_station.color)
         ).add_to(m)
 
         data = io.BytesIO()
@@ -701,7 +701,7 @@ class MainWindow(QMainWindow):
                     location=extra_erb_location,
                     popup=erb.entidade,
                     draggable=False,
-                    icon=folium.Icon(prefix='glyphicon', icon='plane', color=erb.color)
+                    icon=folium.Icon(prefix='glyphicon', icon=erb.icon, color=erb.color)
                 ).add_to(m)
 
         # Print main point
@@ -709,7 +709,7 @@ class MainWindow(QMainWindow):
             location=main_erb_location,
             popup=base_station_selected.entidade,
             draggable=False,
-            icon=folium.Icon(prefix='glyphicon', icon='plane', color=base_station_selected.color)
+            icon=folium.Icon(prefix='glyphicon', icon=base_station_selected.icon, color=base_station_selected.color)
         ).add_to(m)
 
         data = io.BytesIO()
