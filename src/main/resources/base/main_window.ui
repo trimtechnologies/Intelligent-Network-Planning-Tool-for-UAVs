@@ -987,6 +987,16 @@
                     <item row="6" column="1">
                      <widget class="QLineEdit" name="input_number_of_simulations"/>
                     </item>
+                    <item row="10" column="0">
+                     <widget class="QLabel" name="label_number_of_erb_solutions">
+                      <property name="text">
+                       <string>TextLabel</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="10" column="1">
+                     <widget class="QLineEdit" name="input_number_of_erb_solutions"/>
+                    </item>
                    </layout>
                   </widget>
                  </item>

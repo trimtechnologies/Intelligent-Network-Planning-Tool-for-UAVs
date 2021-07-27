@@ -107,9 +107,6 @@ class MainWindow(QMainWindow):
             (max_lat, min_lng),
         ]
 
-        # For more of one BS
-        self.max_erb = 2
-
     def set_default_values(self):
         # Transmissor tab
         self.combo_box_anatel_base_station: QComboBox
@@ -142,6 +139,7 @@ class MainWindow(QMainWindow):
         self.check_box_optimize_height: QCheckBox
         self.check_box_optimize_power: QCheckBox
         self.check_box_save_simulations: QCheckBox
+        self.input_number_of_erb_solutions: QLineEdit
 
         self.input_sa_temp_initial.setText("200.0")
         self.input_sa_num_max_iterations.setText("2")
@@ -153,6 +151,7 @@ class MainWindow(QMainWindow):
         self.check_box_optimize_height.setChecked(False)
         self.check_box_optimize_power.setChecked(False)
         self.check_box_save_simulations.setChecked(False)
+        self.input_number_of_erb_solutions.setText("2")
 
         # Output tab
         self.combo_box_output_colour_scheme: QComboBox
@@ -952,7 +951,7 @@ class MainWindow(QMainWindow):
 
         # generate the array of solution
         s_array = []
-        for _ in range(self.max_erb):
+        for _ in range(int(self.input_number_of_erb_solutions.text())):
             s_array.append(copy.deepcopy(base_station))
 
         s0 = s_array.copy()
@@ -996,7 +995,7 @@ class MainWindow(QMainWindow):
                 initial_solutions_array = s_array.copy()
 
                 # a cada iteração do SA, disturb_solution um dos APs
-                i_ap = (i_ap + 1) % self.max_erb
+                i_ap = (i_ap + 1) % int(self.input_number_of_erb_solutions.text())
 
                 initial_solutions_array[i_ap] = self.disturb_solution(s_array[i_ap])
 
