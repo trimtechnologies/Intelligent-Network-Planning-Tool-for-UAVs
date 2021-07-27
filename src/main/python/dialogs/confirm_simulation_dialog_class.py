@@ -56,11 +56,17 @@ class ConfirmSimulationDialogClass(QDialog):
         print('optimize_power=', heuristic['optimize_power'])
         print('save_simulations=', heuristic['save_simulations'])
         print('number_of_simulations=', heuristic['number_of_simulations'])
+        print('number_of_erb_solutions=', heuristic['number_of_erb_solutions'])  # ToDo
 
         heuristic['optimize_solution'] = "Sim" if heuristic['optimize_solution'] else "Não"
         heuristic['optimize_height'] = "Sim" if heuristic['optimize_height'] else "Não"
         heuristic['optimize_power'] = "Sim" if heuristic['optimize_power'] else "Não"
         heuristic['save_simulations'] = "Sim" if heuristic['save_simulations'] else "Não"
+
+        drone = data['drone']  # ToDo
+        print('transmit_power=', receptor['transmit_power'])
+        print('frequency=', receptor['frequency'])
+        print('height=', receptor['height'])
 
         # Simulation details
         self.label_modelo_propagacao_value: QLabel

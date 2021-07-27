@@ -368,7 +368,13 @@ class MainWindow(QMainWindow):
                 "optimize_power": self.check_box_optimize_power.isChecked(),
                 "save_simulations": self.check_box_save_simulations.isChecked(),
                 "number_of_simulations": self.input_number_of_simulations.text(),
+                "number_of_erb_solutions": self.input_number_of_erb_solutions.text(),
             },
+            "drone": {
+                "transmit_power": self.input_drone_transmit_power.text(),
+                "frequency": self.input_drone_frequency.text(),
+                "height": self.input_drone_height.text(),
+            }
         }
 
         confirm_simulation_dialog = ConfirmSimulationDialogClass(data)
