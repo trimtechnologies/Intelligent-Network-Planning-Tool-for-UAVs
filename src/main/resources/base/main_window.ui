@@ -112,8 +112,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>285</width>
-                  <height>621</height>
+                  <width>263</width>
+                  <height>924</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -619,8 +619,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>285</width>
-                  <height>621</height>
+                  <width>274</width>
+                  <height>204</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -725,8 +725,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>285</width>
-                  <height>621</height>
+                  <width>245</width>
+                  <height>150</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_14">
@@ -864,8 +864,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>285</width>
-                  <height>621</height>
+                  <width>277</width>
+                  <height>379</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -1023,8 +1023,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>285</width>
-                  <height>621</height>
+                  <width>277</width>
+                  <height>611</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -1047,24 +1047,34 @@
                    </property>
                    <layout class="QFormLayout" name="formLayout_2">
                     <item row="1" column="0">
-                     <widget class="QLabel" name="label_drone_config_2">
+                     <widget class="QLabel" name="label_drone_altura">
                       <property name="text">
                        <string>Altura</string>
                       </property>
                      </widget>
                     </item>
                     <item row="1" column="1">
-                     <widget class="QLineEdit" name="input_drone_config_2"/>
+                     <widget class="QLineEdit" name="input_drone_altura"/>
                     </item>
                     <item row="0" column="0">
-                     <widget class="QLabel" name="label_drone_config_1">
+                     <widget class="QLabel" name="label_drone_potencia">
                       <property name="text">
                        <string>Potência</string>
                       </property>
                      </widget>
                     </item>
                     <item row="0" column="1">
-                     <widget class="QLineEdit" name="input_drone_config_1"/>
+                     <widget class="QLineEdit" name="input_drone_potencia"/>
+                    </item>
+                    <item row="2" column="1">
+                     <widget class="QLineEdit" name="input_drone_frequencia"/>
+                    </item>
+                    <item row="2" column="0">
+                     <widget class="QLabel" name="label_drone_frequencia">
+                      <property name="text">
+                       <string>Frequência</string>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </widget>
@@ -1102,8 +1112,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>285</width>
-                  <height>621</height>
+                  <width>194</width>
+                  <height>173</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_15">
@@ -1395,7 +1405,7 @@
      <x>0</x>
      <y>0</y>
      <width>1216</width>
-     <height>18</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_file">
