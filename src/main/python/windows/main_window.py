@@ -161,6 +161,15 @@ class MainWindow(QMainWindow):
         self.combo_box_output_colour_scheme.setCurrentIndex(2)
         self.input_output_radius.setText("60")
 
+        # Drone tab
+        self.input_drone_transmit_power: QLineEdit
+        self.input_drone_height: QLineEdit
+        self.input_drone_frequency: QLineEdit
+
+        self.input_drone_transmit_power.setText("40")
+        self.input_drone_height.setText("70")
+        self.input_drone_frequency.setText("869.0")
+
     def init_simulated_annealing_components(self) -> None:
         self.input_sa_temp_initial: QLineEdit
         self.input_sa_num_max_iterations: QLineEdit

@@ -619,8 +619,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>274</width>
-                  <height>204</height>
+                  <width>277</width>
+                  <height>611</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -725,8 +725,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>245</width>
-                  <height>150</height>
+                  <width>277</width>
+                  <height>611</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_14">
@@ -865,7 +865,7 @@
                   <x>0</x>
                   <y>0</y>
                   <width>277</width>
-                  <height>379</height>
+                  <height>611</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -1047,30 +1047,30 @@
                    </property>
                    <layout class="QFormLayout" name="formLayout_2">
                     <item row="1" column="0">
-                     <widget class="QLabel" name="label_drone_altura">
+                     <widget class="QLabel" name="label_drone_height">
                       <property name="text">
                        <string>Altura</string>
                       </property>
                      </widget>
                     </item>
                     <item row="1" column="1">
-                     <widget class="QLineEdit" name="input_drone_altura"/>
+                     <widget class="QLineEdit" name="input_drone_height"/>
                     </item>
                     <item row="0" column="0">
-                     <widget class="QLabel" name="label_drone_potencia">
+                     <widget class="QLabel" name="label_drone_transmit_power">
                       <property name="text">
                        <string>Potência</string>
                       </property>
                      </widget>
                     </item>
                     <item row="0" column="1">
-                     <widget class="QLineEdit" name="input_drone_potencia"/>
+                     <widget class="QLineEdit" name="input_drone_transmit_power"/>
                     </item>
                     <item row="2" column="1">
-                     <widget class="QLineEdit" name="input_drone_frequencia"/>
+                     <widget class="QLineEdit" name="input_drone_frequency"/>
                     </item>
                     <item row="2" column="0">
-                     <widget class="QLabel" name="label_drone_frequencia">
+                     <widget class="QLabel" name="label_drone_frequency">
                       <property name="text">
                        <string>Frequência</string>
                       </property>
@@ -1112,8 +1112,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>194</width>
-                  <height>173</height>
+                  <width>277</width>
+                  <height>611</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_15">
