@@ -750,8 +750,19 @@ class MainWindow(QMainWindow):
             sa_num_max_success_per_iteration = int(self.input_sa_num_max_success_per_iteration.text())
             sa_alpha = float(self.input_sa_alpha.text())
 
+            # Init the drone as base station clone and change the properties
+            drone = copy.deepcopy(base_station_selected)
+            drone.potencia_transmissao = float(self.input_drone_transmit_power.text())
+            drone.frequencia_inicial = float(self.input_drone_frequency.text())
+            drone.altura = float(self.input_drone_height.text())
+            drone.entidade = "Drone"
+            drone.color = 'red'
+            drone.icon = 'plane'
+
             # Run simulated annealing
-            best_array, _, FOs = self.simulated_annealing(base_station=base_station_selected, M=sa_num_max_iterations,
+            best_array, _, FOs = self.simulated_annealing(base_station=base_station_selected,
+                                                          drone=drone,
+                                                          M=sa_num_max_iterations,
                                                           P=sa_num_max_perturbation_per_iteration,
                                                           L=sa_num_max_success_per_iteration,
                                                           T0=sa_temp_initial, alpha=sa_alpha)
@@ -929,13 +940,14 @@ class MainWindow(QMainWindow):
 
         return positions
 
-    def simulated_annealing(self, base_station: BaseStation, M: int, P: int, L: int, T0: float, alpha: float) \
+    def simulated_annealing(self, base_station: BaseStation, drone: BaseStation, M: int, P: int, L: int, T0: float, alpha: float) \
             -> Tuple[Union[List[BaseStation], Any], float, List[float]]:
         """
         Performs the search using meta-heuristics
 
         Args:
-            base_station: Main problem data.
+            base_station: The main base station.
+            drone: The drone config.
             M: Maximum number of iterations.
             P: Maximum number of Disturbances per iteration.
             L: Maximum number of successes per iteration.
@@ -949,11 +961,13 @@ class MainWindow(QMainWindow):
         # List of solutions found
         FOs = []
 
-        # generate the array of solution
-        s_array = []
+        # Add drone in array solution and add copies of base station selected in the array of solution
+        s_array = [drone]
         for _ in range(int(self.input_number_of_erb_solutions.text())):
+            # All base stations start with the same configuration
             s_array.append(copy.deepcopy(base_station))
 
+        # Clone solution array
         s0 = s_array.copy()
 
         antenna_height = float(base_station.altura)
@@ -967,6 +981,7 @@ class MainWindow(QMainWindow):
         print("Solução inicial: ")
         print(self.get_lat_lng_from_array_solution(s0))
 
+        # Get the first FO
         result = self.evaluate_solution_array(s_array)
 
         f_s = result[0]
@@ -980,27 +995,24 @@ class MainWindow(QMainWindow):
         best_s_array = s_array.copy()
         best_fs = f_s
 
-        # Loop principal – Verifica se foram atendidas as condições de termino do algoritmo
+        # Main Loop - Checks if algorithm end conditions are met
         while True:
             print('T=', T)
             print("j/M=", j, "/", M)
             i = 1
             n_success = 0
 
-            # Loop Interno – Realização de perturbação em uma iteração
+            # Internal Loop - Performing perturbation in an iteration
             while True:
                 print("i/P=", i, "/", P)
                 print("n_success/L=", n_success, "/", L)
 
                 initial_solutions_array = s_array.copy()
 
-                # a cada iteração do SA, disturb_solution um dos APs
+                # Disturbs one of the transmitters at each SA iteration
                 i_ap = (i_ap + 1) % int(self.input_number_of_erb_solutions.text())
 
                 initial_solutions_array[i_ap] = self.disturb_solution(s_array[i_ap])
-
-                # Get a different position to ERB
-                # Si = self.disturb_solution(s)
 
                 # For all possible antenna heights
                 for height in possible_heights:
@@ -1017,12 +1029,12 @@ class MainWindow(QMainWindow):
 
                         f_si = result[0]
 
-                        # Verificar se o retorno da função objetivo está correto. f(x) é a função objetivo
+                        # Check if the objective function return is correct. f(x) is the objective function
                         delta_fi = f_si - f_s
 
-                        # Minimização: delta_fi >= 0
-                        # Maximização: delta_fi <= 0
-                        # Teste de aceitação de uma nova solução
+                        # Minimization: delta_fi >= 0
+                        # Maximization: delta_fi <= 0
+                        # Acceptance test of a new solution
                         if (delta_fi <= 0) or (exp(-delta_fi / T) > random.random()):
 
                             s_array = initial_solutions_array.copy()
@@ -1035,23 +1047,15 @@ class MainWindow(QMainWindow):
                                 best_s_array = s_array.copy()
 
                             FOs.append(f_s)
-                            # FOs.append({
-                            #     "lat": Si.latitude,
-                            #     "lng": Si.longitude,
-                            #     "height": Si.altura,
-                            #     "power": Si.potencia_transmissao,
-                            #     "of": f_s
-                            # })
-
                 i = i + 1
 
                 if (n_success >= L) or (i > P):
                     break
 
-            # Atualização da temperatura (Decaimento geométrico)
+            # Temperature Update (Geometric Decay)
             T = alpha * T
 
-            # Atualização do contador de iterações
+            # Update the iteration counter
             j = j + 1
 
             if (n_success == 0) or (j > M):
@@ -1064,12 +1068,5 @@ class MainWindow(QMainWindow):
         print('FOs=', str(FOs))
 
         FOs.append(best_fs)
-        # FOs.append({
-        #     "lat": best_s_array.latitude,
-        #     "lng": best_s_array.longitude,
-        #     "height": best_s_array.altura,
-        #     "power": best_s_array.potencia_transmissao,
-        #     "of": best_fs
-        # })
 
         return best_s_array, best_fs, FOs
