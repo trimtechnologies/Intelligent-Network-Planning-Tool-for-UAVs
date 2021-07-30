@@ -87,7 +87,7 @@
            </property>
            <widget class="QWidget" name="tab_transmitter">
             <attribute name="title">
-             <string>Transmissor</string>
+             <string>Transmitter</string>
             </attribute>
             <layout class="QVBoxLayout" name="verticalLayout_2">
              <property name="leftMargin">
@@ -112,8 +112,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>263</width>
-                  <height>924</height>
+                  <width>285</width>
+                  <height>621</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -141,7 +141,7 @@
                     <item row="0" column="0">
                      <widget class="QLabel" name="label_anatel_base_station">
                       <property name="text">
-                       <string>Estação Radio Base</string>
+                       <string>Base Station</string>
                       </property>
                      </widget>
                     </item>
@@ -154,11 +154,11 @@
                        </size>
                       </property>
                       <property name="currentText">
-                       <string>Selecionar</string>
+                       <string>Select</string>
                       </property>
                       <item>
                        <property name="text">
-                        <string>Selecionar</string>
+                        <string>Select</string>
                        </property>
                       </item>
                      </widget>
@@ -619,8 +619,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>277</width>
-                  <height>611</height>
+                  <width>285</width>
+                  <height>621</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -725,8 +725,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>277</width>
-                  <height>611</height>
+                  <width>285</width>
+                  <height>621</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_14">
@@ -864,8 +864,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>277</width>
-                  <height>611</height>
+                  <width>285</width>
+                  <height>621</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -1033,8 +1033,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>277</width>
-                  <height>611</height>
+                  <width>285</width>
+                  <height>621</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -1097,7 +1097,7 @@
            </widget>
            <widget class="QWidget" name="tab_output">
             <attribute name="title">
-             <string>Saída</string>
+             <string>Output</string>
             </attribute>
             <layout class="QVBoxLayout" name="verticalLayout_16">
              <property name="leftMargin">
@@ -1122,8 +1122,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>277</width>
-                  <height>611</height>
+                  <width>285</width>
+                  <height>621</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_15">
@@ -1348,7 +1348,7 @@
            </property>
            <widget class="QWidget" name="tab_coverage">
             <attribute name="title">
-             <string>Resultado da Simulação</string>
+             <string>Simulation Result</string>
             </attribute>
             <layout class="QVBoxLayout" name="verticalLayout">
              <item>
@@ -1415,12 +1415,12 @@
      <x>0</x>
      <y>0</y>
      <width>1216</width>
-     <height>22</height>
+     <height>18</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_file">
     <property name="title">
-     <string>Arquivo</string>
+     <string>File</string>
     </property>
     <addaction name="menu_action_anatel_base"/>
     <addaction name="menu_action_settings"/>
@@ -1450,15 +1450,15 @@
   </action>
   <action name="menu_action_anatel_base">
    <property name="text">
-    <string>Anatel database</string>
+    <string>Anatel Database</string>
    </property>
    <property name="iconText">
-    <string>Base Anatel</string>
+    <string>Anatel Database</string>
    </property>
   </action>
   <action name="menu_action_help">
    <property name="text">
-    <string>Ajuda</string>
+    <string>Help</string>
    </property>
   </action>
   <action name="menu_action_about">
@@ -1468,13 +1468,13 @@
   </action>
   <action name="menu_action_settings">
    <property name="text">
-    <string>Configurações</string>
+    <string>Settings</string>
    </property>
    <property name="iconText">
-    <string>Configurações</string>
+    <string>Settings</string>
    </property>
    <property name="toolTip">
-    <string>Configurações</string>
+    <string>Settings</string>
    </property>
   </action>
  </widget>
