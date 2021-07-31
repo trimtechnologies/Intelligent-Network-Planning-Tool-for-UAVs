@@ -83,7 +83,7 @@
             <enum>QTabWidget::West</enum>
            </property>
            <property name="currentIndex">
-            <number>0</number>
+            <number>5</number>
            </property>
            <widget class="QWidget" name="tab_transmitter">
             <attribute name="title">
@@ -135,7 +135,7 @@
                  <item>
                   <widget class="QGroupBox" name="group_box_anatel_transmitter_details">
                    <property name="title">
-                    <string>Detalhes do Transmissor (Anatel)</string>
+                    <string>Transmitter Details (Anatel)</string>
                    </property>
                    <layout class="QFormLayout" name="formLayout_5">
                     <item row="0" column="0">
@@ -166,7 +166,7 @@
                     <item row="2" column="0">
                      <widget class="QLabel" name="label_anatel_entity">
                       <property name="text">
-                       <string>Entidade</string>
+                       <string>Entity</string>
                       </property>
                      </widget>
                     </item>
@@ -219,7 +219,7 @@
                     <item row="8" column="0">
                      <widget class="QLabel" name="label_anatel_contry">
                       <property name="text">
-                       <string>Município</string>
+                       <string>Municipal</string>
                       </property>
                      </widget>
                     </item>
@@ -242,7 +242,7 @@
                     <item row="10" column="0">
                      <widget class="QLabel" name="label_anatel_address">
                       <property name="text">
-                       <string>Endereço</string>
+                       <string>Address</string>
                       </property>
                      </widget>
                     </item>
@@ -271,7 +271,7 @@
                     <item row="12" column="0">
                      <widget class="QLabel" name="label_anatel_initial_frenquency">
                       <property name="text">
-                       <string>Frequência Final (MHz)</string>
+                       <string>Final Frequency (MHz)</string>
                       </property>
                      </widget>
                     </item>
@@ -294,7 +294,7 @@
                     <item row="14" column="0">
                      <widget class="QLabel" name="label_anatel_final_frenquency">
                       <property name="text">
-                       <string>Frequência Inicial (MHz)</string>
+                       <string>Initial Requency (MHz)</string>
                       </property>
                      </widget>
                     </item>
@@ -317,7 +317,7 @@
                     <item row="16" column="0">
                      <widget class="QLabel" name="label_anatel_azimute">
                       <property name="text">
-                       <string>Azimute</string>
+                       <string>Azimuth</string>
                       </property>
                      </widget>
                     </item>
@@ -340,7 +340,7 @@
                     <item row="18" column="0">
                      <widget class="QLabel" name="label_anatel_gain_antenna">
                       <property name="text">
-                       <string>Ganho Antena</string>
+                       <string>Antenna Gain</string>
                       </property>
                      </widget>
                     </item>
@@ -363,7 +363,7 @@
                     <item row="20" column="0">
                      <widget class="QLabel" name="label_anatel_front_back">
                       <property name="text">
-                       <string>Frente Costa</string>
+                       <string>Front Coast</string>
                       </property>
                      </widget>
                     </item>
@@ -386,7 +386,7 @@
                     <item row="22" column="0">
                      <widget class="QLabel" name="label_anatel_angulo_half_pot">
                       <property name="text">
-                       <string>Anglo 1/2 Potência</string>
+                       <string>1/2 Power Angle</string>
                       </property>
                      </widget>
                     </item>
@@ -409,7 +409,7 @@
                     <item row="24" column="0">
                      <widget class="QLabel" name="label_anatel_elevation">
                       <property name="text">
-                       <string>Elevação</string>
+                       <string>Elevation</string>
                       </property>
                      </widget>
                     </item>
@@ -432,7 +432,7 @@
                     <item row="26" column="0">
                      <widget class="QLabel" name="label_anatel_polarization">
                       <property name="text">
-                       <string>Polarização</string>
+                       <string>Polarization</string>
                       </property>
                      </widget>
                     </item>
@@ -455,7 +455,7 @@
                     <item row="28" column="0">
                      <widget class="QLabel" name="label_anatel_height_antenna">
                       <property name="text">
-                       <string>Altura Antena (m)</string>
+                       <string>Antenna Height (m)</string>
                       </property>
                      </widget>
                     </item>
@@ -540,7 +540,7 @@
                     <item row="36" column="0">
                      <widget class="QLabel" name="label_anatel_first_licensing">
                       <property name="text">
-                       <string>Data Primeiro Licenciamento</string>
+                       <string>First Licensing Date</string>
                       </property>
                      </widget>
                     </item>
@@ -579,7 +579,7 @@
                     <item row="30" column="0" colspan="2">
                      <widget class="QLabel" name="label_anatel_power_trasmission">
                       <property name="text">
-                       <string> Potência de Transmissão (W)</string>
+                       <string> Transmission Power (W)</string>
                       </property>
                      </widget>
                     </item>
@@ -594,7 +594,7 @@
            </widget>
            <widget class="QWidget" name="tab_receiver">
             <attribute name="title">
-             <string>Receptor</string>
+             <string>Receiver</string>
             </attribute>
             <layout class="QVBoxLayout" name="verticalLayout_12">
              <property name="leftMargin">
@@ -642,13 +642,13 @@
                  <item>
                   <widget class="QGroupBox" name="group_box_receive_details">
                    <property name="title">
-                    <string>Detalhes do Receptor (Base Móvel)</string>
+                    <string>Receiver Details (Mobile Base)</string>
                    </property>
                    <layout class="QFormLayout" name="formLayout_12">
                     <item row="0" column="0">
                      <widget class="QLabel" name="label_rx_height">
                       <property name="text">
-                       <string>Altura</string>
+                       <string>Height</string>
                       </property>
                      </widget>
                     </item>
@@ -658,7 +658,7 @@
                     <item row="2" column="0">
                      <widget class="QLabel" name="label_rx_gain">
                       <property name="text">
-                       <string>Ganho</string>
+                       <string>Gain</string>
                       </property>
                      </widget>
                     </item>
@@ -675,7 +675,7 @@
                     <item row="4" column="0">
                      <widget class="QLabel" name="label_rx_sensitivity">
                       <property name="text">
-                       <string>Sensibilidade</string>
+                       <string>Sensitivity</string>
                       </property>
                      </widget>
                     </item>
@@ -700,7 +700,7 @@
            </widget>
            <widget class="QWidget" name="tab_model">
             <attribute name="title">
-             <string>Modelo Prop.</string>
+             <string>Prop. Model</string>
             </attribute>
             <layout class="QVBoxLayout" name="verticalLayout_13">
              <property name="leftMargin">
@@ -751,18 +751,18 @@
                     <item row="0" column="0">
                      <widget class="QLabel" name="label_propagation_model">
                       <property name="text">
-                       <string>Modelo de Propagação</string>
+                       <string>Propagation Model</string>
                       </property>
                      </widget>
                     </item>
                     <item row="1" column="0" colspan="2">
                      <widget class="QComboBox" name="combo_box_propagation_model">
                       <property name="currentText">
-                       <string>Selecionar</string>
+                       <string>Select</string>
                       </property>
                       <item>
                        <property name="text">
-                        <string>Selecionar</string>
+                        <string>Select</string>
                        </property>
                       </item>
                       <item>
@@ -800,7 +800,7 @@
                     <item row="2" column="0">
                      <widget class="QLabel" name="label_enviroment">
                       <property name="text">
-                       <string>Ambiente</string>
+                       <string>Environment</string>
                       </property>
                      </widget>
                     </item>
@@ -808,7 +808,7 @@
                      <widget class="QComboBox" name="combo_box_environment">
                       <item>
                        <property name="text">
-                        <string>Selecionar</string>
+                        <string>Select</string>
                        </property>
                       </item>
                       <item>
@@ -839,7 +839,7 @@
            </widget>
            <widget class="QWidget" name="tab_sa">
             <attribute name="title">
-             <string>Meta-heurística</string>
+             <string>Meta-heuristic</string>
             </attribute>
             <layout class="QVBoxLayout" name="verticalLayout_6">
              <property name="leftMargin">
@@ -884,20 +884,20 @@
                  <item>
                   <widget class="QGroupBox" name="group_box_output_settings_2">
                    <property name="title">
-                    <string>Configurações Simulated Annealing</string>
+                    <string>Simulated Annealing Settings</string>
                    </property>
                    <layout class="QFormLayout" name="formLayout">
                     <item row="1" column="0">
                      <widget class="QLabel" name="label_sa_temp_initial">
                       <property name="text">
-                       <string>Temperatura Inicial</string>
+                       <string>Initial Temperature</string>
                       </property>
                      </widget>
                     </item>
                     <item row="2" column="0">
                      <widget class="QLabel" name="label_sa_num_max_iterations">
                       <property name="text">
-                       <string>N Max. de Iterações</string>
+                       <string>Max. No of Iterations</string>
                       </property>
                      </widget>
                     </item>
@@ -913,7 +913,7 @@
                        </size>
                       </property>
                       <property name="text">
-                       <string>N Max. de Perturbações por Iteração</string>
+                       <string>N Max. of Disturbances per Iteration</string>
                       </property>
                       <property name="wordWrap">
                        <bool>true</bool>
@@ -926,7 +926,7 @@
                     <item row="4" column="0">
                      <widget class="QLabel" name="label_sa_num_max_success_per_iteration">
                       <property name="text">
-                       <string>N Max de Sucessos por Iteração</string>
+                       <string>N Max. of Success per Iteration</string>
                       </property>
                       <property name="wordWrap">
                        <bool>true</bool>
@@ -952,35 +952,35 @@
                     <item row="7" column="0">
                      <widget class="QCheckBox" name="check_box_optimize_height">
                       <property name="text">
-                       <string>Otimizar Altura</string>
+                       <string>Optimize Height</string>
                       </property>
                      </widget>
                     </item>
                     <item row="8" column="0">
                      <widget class="QCheckBox" name="check_box_optimize_power">
                       <property name="text">
-                       <string>Otimizar Potência</string>
+                       <string>Optimize Power</string>
                       </property>
                      </widget>
                     </item>
                     <item row="0" column="0">
                      <widget class="QCheckBox" name="check_box_optimize_solution">
                       <property name="text">
-                       <string>Otimizar Solução</string>
+                       <string>Optimize Solution</string>
                       </property>
                      </widget>
                     </item>
                     <item row="9" column="0">
                      <widget class="QCheckBox" name="check_box_save_simulations">
                       <property name="text">
-                       <string>Salvar dados</string>
+                       <string>Save Data</string>
                       </property>
                      </widget>
                     </item>
                     <item row="6" column="0">
                      <widget class="QLabel" name="label_number_of_simulations">
                       <property name="text">
-                       <string>N de Simulações</string>
+                       <string>Number of Simulations</string>
                       </property>
                      </widget>
                     </item>
@@ -1053,13 +1053,13 @@
                  <item>
                   <widget class="QGroupBox" name="group_box_drone">
                    <property name="title">
-                    <string>Configurações Drone</string>
+                    <string>Drone Settings</string>
                    </property>
                    <layout class="QFormLayout" name="formLayout_2">
                     <item row="1" column="0">
                      <widget class="QLabel" name="label_drone_height">
                       <property name="text">
-                       <string>Altura</string>
+                       <string>Height</string>
                       </property>
                      </widget>
                     </item>
@@ -1069,7 +1069,7 @@
                     <item row="0" column="0">
                      <widget class="QLabel" name="label_drone_transmit_power">
                       <property name="text">
-                       <string>Potência</string>
+                       <string>Power</string>
                       </property>
                      </widget>
                     </item>
@@ -1082,7 +1082,7 @@
                     <item row="2" column="0">
                      <widget class="QLabel" name="label_drone_frequency">
                       <property name="text">
-                       <string>Frequência</string>
+                       <string>Frequency</string>
                       </property>
                      </widget>
                     </item>
@@ -1142,13 +1142,13 @@
                  <item>
                   <widget class="QGroupBox" name="group_box_output_settings">
                    <property name="title">
-                    <string>Configurações de Saída</string>
+                    <string>Output Settings</string>
                    </property>
                    <layout class="QFormLayout" name="formLayout_15">
                     <item row="0" column="0">
                      <widget class="QLabel" name="label_output_colour_scheme">
                       <property name="text">
-                       <string>Esquema de Cores</string>
+                       <string>Color scheme</string>
                       </property>
                      </widget>
                     </item>
@@ -1156,7 +1156,7 @@
                      <widget class="QComboBox" name="combo_box_output_colour_scheme">
                       <item>
                        <property name="text">
-                        <string>Selecionar</string>
+                        <string>Select</string>
                        </property>
                       </item>
                       <item>
@@ -1189,7 +1189,7 @@
                     <item row="2" column="0">
                      <widget class="QLabel" name="label_output_radius">
                       <property name="text">
-                       <string>Raio</string>
+                       <string>Lightning</string>
                       </property>
                      </widget>
                     </item>
@@ -1210,7 +1210,7 @@
                     <item row="4" column="0">
                      <widget class="QLabel" name="label_actual_resolution">
                       <property name="text">
-                       <string>Resolução Atual</string>
+                       <string>Current Resolution</string>
                       </property>
                      </widget>
                     </item>
@@ -1289,7 +1289,7 @@
                <enum>Qt::LeftToRight</enum>
               </property>
               <property name="text">
-               <string>Executar Simulação</string>
+               <string>Execute Simulation</string>
               </property>
              </widget>
             </item>
@@ -1395,7 +1395,7 @@
             <item row="0" column="0">
              <widget class="QLabel" name="label_geral_info_1">
               <property name="text">
-               <string>Pronto para execução!</string>
+               <string>Ready to run!</string>
               </property>
              </widget>
             </item>
@@ -1429,7 +1429,7 @@
    </widget>
    <widget class="QMenu" name="menu_help">
     <property name="title">
-     <string>Ajuda</string>
+     <string>Help</string>
     </property>
     <addaction name="menu_action_help"/>
     <addaction name="menu_action_about"/>
