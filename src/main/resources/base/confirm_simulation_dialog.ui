@@ -29,13 +29,13 @@
       <item row="0" column="0">
        <widget class="QGroupBox" name="group_box_detalhes">
         <property name="title">
-         <string>Detalhes da Simulação</string>
+         <string>Simulation Details</string>
         </property>
         <layout class="QFormLayout" name="formLayout">
          <item row="0" column="0">
           <widget class="QLabel" name="label_modelo_propagacao">
            <property name="text">
-            <string>Modelo de Propagação:</string>
+            <string>Propagation Model:</string>
            </property>
           </widget>
          </item>
@@ -58,7 +58,7 @@
          <item row="1" column="0">
           <widget class="QLabel" name="label_ambiente">
            <property name="text">
-            <string>Ambiente:</string>
+            <string>Environment:</string>
            </property>
           </widget>
          </item>
@@ -81,7 +81,7 @@
          <item row="2" column="0">
           <widget class="QLabel" name="label_radio_maximo">
            <property name="text">
-            <string>Raio Máximo de Perturbação:</string>
+            <string>Maximum Disturbance Radius:</string>
            </property>
           </widget>
          </item>
@@ -113,7 +113,7 @@
          <item row="0" column="0">
           <widget class="QLabel" name="label_entidade">
            <property name="text">
-            <string>Entidade:</string>
+            <string>Entity:</string>
            </property>
           </widget>
          </item>
@@ -136,21 +136,21 @@
          <item row="1" column="0">
           <widget class="QLabel" name="label_uf_municipio">
            <property name="text">
-            <string>UF/Municipio:</string>
+            <string>UF/Municipal:</string>
            </property>
           </widget>
          </item>
          <item row="3" column="0">
           <widget class="QLabel" name="label_frequencia">
            <property name="text">
-            <string>Frequência:</string>
+            <string>Frequency:</string>
            </property>
           </widget>
          </item>
          <item row="2" column="0">
           <widget class="QLabel" name="label_endereco">
            <property name="text">
-            <string>Endereco:</string>
+            <string>Address:</string>
            </property>
           </widget>
          </item>
@@ -205,7 +205,7 @@
          <item row="5" column="0">
           <widget class="QLabel" name="label_ganho">
            <property name="text">
-            <string>Ganho:</string>
+            <string>Gain:</string>
            </property>
           </widget>
          </item>
@@ -228,7 +228,7 @@
          <item row="6" column="0">
           <widget class="QLabel" name="label_elevacao">
            <property name="text">
-            <string>Elevacao:</string>
+            <string>Elevation::</string>
            </property>
           </widget>
          </item>
@@ -251,14 +251,14 @@
          <item row="7" column="0">
           <widget class="QLabel" name="label_polarizacao">
            <property name="text">
-            <string>Polarizacao:</string>
+            <string>Polarization:</string>
            </property>
           </widget>
          </item>
          <item row="8" column="0">
           <widget class="QLabel" name="label_altura">
            <property name="text">
-            <string>Altura:</string>
+            <string>Height:</string>
            </property>
           </widget>
          </item>
@@ -343,7 +343,7 @@
          <item row="4" column="0">
           <widget class="QLabel" name="label_potencia_transmissao">
            <property name="text">
-            <string>Potência de transmissão:</string>
+            <string>Transmission Power:</string>
            </property>
           </widget>
          </item>
@@ -369,13 +369,13 @@
       <item row="1" column="0" rowspan="2">
        <widget class="QGroupBox" name="groupBox">
         <property name="title">
-         <string>Meta-heurística</string>
+         <string>Meta-heuristic</string>
         </property>
         <layout class="QFormLayout" name="formLayout_4">
          <item row="0" column="0">
           <widget class="QLabel" name="label_optimize_solution">
            <property name="text">
-            <string>Otimizar Solução Utilizando Meta-heurística</string>
+            <string>Optimize Solution Using Meta-heuristics</string>
            </property>
           </widget>
          </item>
@@ -398,7 +398,7 @@
          <item row="1" column="0">
           <widget class="QLabel" name="label_solucao_inicial">
            <property name="text">
-            <string>Solução Inicial:</string>
+            <string>Initial Solution:</string>
            </property>
           </widget>
          </item>
@@ -421,7 +421,7 @@
          <item row="2" column="0">
           <widget class="QLabel" name="label_temperatura_inicial">
            <property name="text">
-            <string>Temperatura Inicial:</string>
+            <string>Initial Temperature:</string>
            </property>
           </widget>
          </item>
@@ -444,7 +444,7 @@
          <item row="3" column="0">
           <widget class="QLabel" name="label_num_maximo_iteracoes">
            <property name="text">
-            <string>Número Máximo de Iterações:</string>
+            <string>Maximum number of Iterations:</string>
            </property>
           </widget>
          </item>
@@ -467,7 +467,7 @@
          <item row="4" column="0">
           <widget class="QLabel" name="label_num_maximo_pertubacoes_iteracao">
            <property name="text">
-            <string>Número Máximo de Perturbações por Iteração:</string>
+            <string>Maximum Number of Disturbances per Iteration:</string>
            </property>
           </widget>
          </item>
@@ -490,7 +490,7 @@
          <item row="5" column="0">
           <widget class="QLabel" name="label_num_maximo_sucessos_iteracao">
            <property name="text">
-            <string>Número Máximo de Sucessos por Iteração:</string>
+            <string>Maximum Number of Successes per Iteration:</string>
            </property>
           </widget>
          </item>
@@ -536,7 +536,7 @@
          <item row="7" column="0">
           <widget class="QLabel" name="label_optimize_height">
            <property name="text">
-            <string>Otimizar Alturas</string>
+            <string>Optimize Height:</string>
            </property>
           </widget>
          </item>
@@ -559,7 +559,7 @@
          <item row="8" column="0">
           <widget class="QLabel" name="label_optimize_power">
            <property name="text">
-            <string>Otimizar Potencias</string>
+            <string>Optimize Power:</string>
            </property>
           </widget>
          </item>
@@ -582,7 +582,7 @@
          <item row="9" column="0">
           <widget class="QLabel" name="label_save_simulation">
            <property name="text">
-            <string>Salvar Simulações</string>
+            <string>Save Simulations:</string>
            </property>
           </widget>
          </item>
@@ -605,7 +605,7 @@
          <item row="10" column="0">
           <widget class="QLabel" name="label_number_of_simulations">
            <property name="text">
-            <string>Número Máximo de Simulações</string>
+            <string>Maximum Number of Simulations:</string>
            </property>
           </widget>
          </item>
@@ -628,7 +628,7 @@
          <item row="11" column="0">
           <widget class="QLabel" name="label_number_of_erbs">
            <property name="text">
-            <string>Número Máximo de ERBs</string>
+            <string>Maximum Number of ERBs:</string>
            </property>
           </widget>
          </item>
@@ -654,13 +654,13 @@
       <item row="1" column="1" rowspan="2">
        <widget class="QGroupBox" name="group_box_receptor">
         <property name="title">
-         <string>Detalhes Receptor</string>
+         <string>Receiver Details</string>
         </property>
         <layout class="QFormLayout" name="formLayout_3">
          <item row="0" column="0">
           <widget class="QLabel" name="label_bs_altura">
            <property name="text">
-            <string>Altura:</string>
+            <string>Height:</string>
            </property>
           </widget>
          </item>
@@ -683,7 +683,7 @@
          <item row="1" column="0">
           <widget class="QLabel" name="label_bs_ganho">
            <property name="text">
-            <string>Ganho:</string>
+            <string>Gain:</string>
            </property>
           </widget>
          </item>
@@ -706,7 +706,7 @@
          <item row="2" column="0">
           <widget class="QLabel" name="label_bs_sensibilidade">
            <property name="text">
-            <string>Sensibilidade:</string>
+            <string>Sensitivity:</string>
            </property>
           </widget>
          </item>
@@ -741,14 +741,14 @@
          <item row="0" column="1">
           <widget class="QPushButton" name="btn_confirmar_simulacao">
            <property name="text">
-            <string>CONFIRMAR</string>
+            <string>CONFIRM</string>
            </property>
           </widget>
          </item>
          <item row="0" column="0">
           <widget class="QPushButton" name="btn_cancelar_simulacao">
            <property name="text">
-            <string>CANCELAR</string>
+            <string>CANCEL</string>
            </property>
           </widget>
          </item>
