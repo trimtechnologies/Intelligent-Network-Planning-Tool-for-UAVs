@@ -86,7 +86,7 @@ class MainWindow(QMainWindow):
         #     (-21.238862, -44.984765),
         # ]
 
-        # area menor
+        # Smaller Area
         # max_lat = -21.238862
         # min_lat = -21.252142
         # min_lng = -44.984765
@@ -94,7 +94,7 @@ class MainWindow(QMainWindow):
 
         # -45.055532,-21.276338,-44.939575,-21.223221
 
-        # area maior
+        # Larger Area
         max_lat = -21.223221
         min_lat = -21.276338
         min_lng = -44.939575
@@ -108,11 +108,11 @@ class MainWindow(QMainWindow):
         ]
 
     def set_default_values(self):
-        # Transmissor tab
+        # Transmission tab
         self.combo_box_anatel_base_station: QComboBox
         self.combo_box_anatel_base_station.setCurrentIndex(14)
 
-        # Receptor tab
+        # Receiver tab
         self.input_rx_height: QLineEdit
         self.input_rx_gain: QLineEdit
         self.input_rx_sensitivity: QLineEdit
@@ -338,30 +338,30 @@ class MainWindow(QMainWindow):
                 "max_ray": str(self.input_output_radius.text()) + "m"
             },
             "transmitter": {
-                "entidade": str(base_station_selected.entidade),
-                "uf_municipio": str(base_station_selected.uf),
-                "endereco": str(base_station_selected.endereco)[0:35] + "...",
-                "frequencia": str(base_station_selected.frequencia_inicial),
-                "potencia_transmissao": str(base_station_selected.potencia_transmissao) + "W",
-                "ganho": str(base_station_selected.ganho_antena) + "dBi",
-                "elevacao": str(base_station_selected.elevacao),
-                "polarizacao": str(base_station_selected.polarizacao),
-                "altura": str(base_station_selected.altura) + "m",
+                "entity": str(base_station_selected.entidade),
+                "municipal": str(base_station_selected.uf),
+                "address": str(base_station_selected.endereco)[0:35] + "...",
+                "frequency": str(base_station_selected.frequencia_inicial),
+                "transmission_power": str(base_station_selected.potencia_transmissao) + "W",
+                "gain": str(base_station_selected.ganho_antena) + "dBi",
+                "elevation": str(base_station_selected.elevacao),
+                "polarization": str(base_station_selected.polarizacao),
+                "height": str(base_station_selected.altura) + "m",
                 "latitude": str(base_station_selected.latitude),
                 "longitude": str(base_station_selected.longitude),
             },
-            "receptor": {
-                "altura": str(self.input_rx_height.text()) + "m",
-                "ganho": str(self.input_rx_gain.text()) + "dBi",
-                "sensibilidade": str(self.input_rx_sensitivity.text()) + "dBm",
+            "receiver": {
+                "height": str(self.input_rx_height.text()) + "m",
+                "gain": str(self.input_rx_gain.text()) + "dBi",
+                "sensitivity": str(self.input_rx_sensitivity.text()) + "dBm",
             },
             "heuristic": {
-                "solucao_inicial": "(" + str(base_station_selected.latitude) + ", " + str(
+                "Initial Solution": "(" + str(base_station_selected.latitude) + ", " + str(
                     base_station_selected.longitude) + ")",
-                "temperatura_inicial": self.input_sa_temp_initial.text(),
-                "numero_maximo_iteracoes": self.input_sa_num_max_iterations.text(),
-                "numero_maximo_pertubacoes_por_iteracao": self.input_sa_num_max_perturbation_per_iteration.text(),
-                "numero_maximo_sucessos_por_iteracao": self.input_sa_num_max_success_per_iteration.text(),
+                "Initial_Temperature": self.input_sa_temp_initial.text(),
+                "Maximum_number_of_iterations": self.input_sa_num_max_iterations.text(),
+                "maximum_number_of_disturbances_per_iteration": self.input_sa_num_max_perturbation_per_iteration.text(),
+                "maximum number of success per iteration": self.input_sa_num_max_success_per_iteration.text(),
                 "alpha": self.input_sa_alpha.text(),
                 "optimize_solution": self.check_box_optimize_solution.isChecked(),
                 "optimize_height": self.check_box_optimize_height.isChecked(),
@@ -465,36 +465,36 @@ class MainWindow(QMainWindow):
         message = None
 
         if self.combo_box_anatel_base_station.currentIndex() == 0:
-            title = "Selecione uma ERB"
-            message = "ERB não selecionada! Selecione uma ERB para continuar..."
+            title = "Select an ERB"
+            message = "ERB not selected! Select an ERB to continue..."
 
         if self.combo_box_propagation_model.currentIndex() == 0:
-            title = "Selecione um modelo de propagação"
-            message = "Modelo de propagação não selecionado! Selecione um modelo de propagação para continuar..."
+            title = "Select a propagation model"
+            message = "Propagation model not selected! Please select a propagation model to continue..."
 
         if self.combo_box_environment.currentIndex() == 0:
-            title = "Selecione um ambiente"
-            message = "Ambiente de propagação não selecionado! Selecione um ambiente de propagação para continuar..."
+            title = "Select an environment"
+            message = "Propagation environment not selected! Please select a propagation environment to continue..."
 
         if self.combo_box_output_colour_scheme.currentIndex() == 0:
-            title = "Selecione um esquema de cores"
-            message = "Esquema de cores não selecionada! Selecione um esquema de cores da propagação para continuar..."
+            title = "Select a color scheme"
+            message = "Color scheme not selected! Select a spread color scheme to continue..."
 
         if not self.input_output_radius.text():
-            title = "Raio Simulação"
-            message = "Raio máximo de propagação não informado! Informe um raio máximo de propagação para continuar..."
+            title = "Simulation radius"
+            message = "Maximum propagation radius not informed! Enter a maximum propagation radius to continue..."
 
         if not self.input_rx_height.text():
-            title = "Altura RX"
-            message = "Altura da antena receptora não informada! Informe uma altura para continuar..."
+            title = "RX height"
+            message = "Height of receiving antenna not informed! Please enter a time to continue..."
 
         if not self.input_rx_gain.text():
-            title = "Ganho RX"
-            message = "Ganho da antena receptora não informado! Informe o ganho para continuar..."
+            title = "RX Gain"
+            message = "Receiver antenna gain not informed! Enter the gain to continue..."
 
         if not self.input_rx_sensitivity.text():
-            title = "Sensibilidade RX"
-            message = "Sensibilidade da antena receptora não informada! Informe a Sensibilidade para continuar..."
+            title = "RX Sensitivity"
+            message = "Receiver antenna sensitivity not selected! Select Sensitivity to continue..."
 
         if title is not None and message is not None:
             AlertDialogClass(title, message).exec_()
@@ -654,7 +654,7 @@ class MainWindow(QMainWindow):
                 received_power = transmitted_power - path_loss
 
                 consider_subareas = False
-                # check if the is placed inside subrarea
+                # check if the is placed inside subarea
                 if consider_subareas and self.is_point_inside_sub_area(mobile_base_location):
                     propagation_matrix[i][j] = received_power + self.percentage(10, abs(received_power))
                 else:
@@ -799,9 +799,9 @@ class MainWindow(QMainWindow):
             FOs_to_plot = [item for item in FOs]
             print("FOs_to_plot=", FOs_to_plot)
             plt.plot(FOs_to_plot)
-            plt.title("Comportamento do Simulated Annealing (" + str(propagation_model) + ")")
-            plt.ylabel('Valor da FO')
-            plt.xlabel('Solução candidata')
+            plt.title("Simulated Annealing Behavior (" + str(propagation_model) + ")")
+            plt.ylabel('Value of FO')
+            plt.xlabel('Candidate Solution')
             plt.show()
 
             if save_simulations:
@@ -834,7 +834,7 @@ class MainWindow(QMainWindow):
             end = time.time()
 
         self.label_geral_info_1: QLabel
-        self.label_geral_info_1.setText("Simulação realizada com sucesso!")
+        self.label_geral_info_1.setText("Simulation successfully completed")
         print("Simulation run in %s seconds" % round(end - start, 2))
 
         print("End of simulation!")
@@ -984,7 +984,7 @@ class MainWindow(QMainWindow):
         possible_powers_received = self.generates_received_powers(antenna_power_received)
         print("possible_powers_received=", str(possible_powers_received))
 
-        print("Solução inicial: ")
+        print("Initial Solution: ")
         print(self.get_lat_lng_from_array_solution(s0))
 
         # Get the first FO
