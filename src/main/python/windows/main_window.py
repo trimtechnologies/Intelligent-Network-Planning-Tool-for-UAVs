@@ -356,12 +356,12 @@ class MainWindow(QMainWindow):
                 "sensitivity": str(self.input_rx_sensitivity.text()) + "dBm",
             },
             "heuristic": {
-                "Initial Solution": "(" + str(base_station_selected.latitude) + ", " + str(
+                "initial_solution": "(" + str(base_station_selected.latitude) + ", " + str(
                     base_station_selected.longitude) + ")",
-                "Initial_Temperature": self.input_sa_temp_initial.text(),
-                "Maximum_number_of_iterations": self.input_sa_num_max_iterations.text(),
+                "initial_temperature": self.input_sa_temp_initial.text(),
+                "maximum_number_of_iterations": self.input_sa_num_max_iterations.text(),
                 "maximum_number_of_disturbances_per_iteration": self.input_sa_num_max_perturbation_per_iteration.text(),
-                "maximum number of success per iteration": self.input_sa_num_max_success_per_iteration.text(),
+                "maximum_number_of_successes_per_iteration": self.input_sa_num_max_success_per_iteration.text(),
                 "alpha": self.input_sa_alpha.text(),
                 "optimize_solution": self.check_box_optimize_solution.isChecked(),
                 "optimize_height": self.check_box_optimize_height.isChecked(),
@@ -724,6 +724,7 @@ class MainWindow(QMainWindow):
         self.web_view.setHtml(data.getvalue().decode())
 
     def run_simulation(self) -> None:
+        print("Running simulation...")
         self.check_box_save_simulations: QCheckBox
         save_simulations = self.check_box_save_simulations.isChecked()
 

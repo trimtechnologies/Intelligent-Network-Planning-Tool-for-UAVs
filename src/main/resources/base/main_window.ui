@@ -83,7 +83,7 @@
             <enum>QTabWidget::West</enum>
            </property>
            <property name="currentIndex">
-            <number>5</number>
+            <number>0</number>
            </property>
            <widget class="QWidget" name="tab_transmitter">
             <attribute name="title">
@@ -112,8 +112,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>285</width>
-                  <height>621</height>
+                  <width>263</width>
+                  <height>924</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -619,8 +619,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>285</width>
-                  <height>621</height>
+                  <width>241</width>
+                  <height>204</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -725,8 +725,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>285</width>
-                  <height>621</height>
+                  <width>245</width>
+                  <height>150</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_14">
@@ -864,8 +864,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>285</width>
-                  <height>621</height>
+                  <width>249</width>
+                  <height>393</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -1033,8 +1033,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>285</width>
-                  <height>621</height>
+                  <width>164</width>
+                  <height>135</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -1122,8 +1122,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>285</width>
-                  <height>621</height>
+                  <width>277</width>
+                  <height>611</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_15">
@@ -1415,7 +1415,7 @@
      <x>0</x>
      <y>0</y>
      <width>1216</width>
-     <height>18</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_file">
