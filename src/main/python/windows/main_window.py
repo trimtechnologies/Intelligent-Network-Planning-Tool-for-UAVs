@@ -411,16 +411,16 @@ class MainWindow(QMainWindow):
         self.label_anatel_uf_value.setText(base_station.uf)
         self.label_anatel_contry_value.setText(base_station.municipio)
         self.label_anatel_address_value.setText(base_station.endereco)
-        self.label_anatel_final_frequency_value.setText(base_station.frequencia_final)
-        self.label_anatel_initial_frequency_value.setText(base_station.frequencia_inicial)
+        self.label_anatel_final_frequency_value.setText(str(base_station.frequencia_final))
+        self.label_anatel_initial_frequency_value.setText(str(base_station.frequencia_inicial))
         self.label_anatel_azimute_value.setText(base_station.azimute)
-        self.label_anatel_gain_antenna_value.setText(base_station.ganho_antena)
+        self.label_anatel_gain_antenna_value.setText(str(base_station.ganho_antena))
         self.label_anatel_front_back_value.setText(base_station.ganho_frente_costa)
         self.label_anatel_half_pot_value.setText(base_station.angulo_meia_potencia)
         self.label_anatel_elevation_value.setText(base_station.elevacao)
         self.label_anatel_polarization_value.setText(base_station.polarizacao)
-        self.label_anatel_height_antenna_value.setText(base_station.altura)
-        self.label_anatel_power_transmission_value.setText(base_station.potencia_transmissao)
+        self.label_anatel_height_antenna_value.setText(str(base_station.altura))
+        self.label_anatel_power_transmission_value.setText(str(base_station.potencia_transmissao))
         self.label_anatel_latitude_value.setText(str(base_station.latitude))
         self.label_anatel_longitude_value.setText(str(base_station.longitude))
         self.label_anatel_first_licensing_value.setText(base_station.data_primeiro_licenciamento)
@@ -612,7 +612,7 @@ class MainWindow(QMainWindow):
 
         erb_location = (base_station_selected.latitude, base_station_selected.longitude)
 
-        transmitted_power = float(base_station_selected.potencia_transmissao)
+        transmitted_power = base_station_selected.potencia_transmissao
 
         altitude_tx = get_altitude(lat=erb_location[0], long=erb_location[1])
 
@@ -643,13 +643,13 @@ class MainWindow(QMainWindow):
 
                 distance = calculates_distance_between_coordinates(mobile_base_location, erb_location)
 
-                tx_h = (float(base_station_selected.altura) + altitude_tx) - min_altitude
+                tx_h = (base_station_selected.altura + altitude_tx) - min_altitude
                 rx_h = (height_rx + altitude_lat_long_rx) - min_altitude
 
-                path_loss = self.calculates_path_loss(frequency=float(base_station_selected.frequencia_inicial),
+                path_loss = self.calculates_path_loss(frequency=base_station_selected.frequencia_inicial,
                                                       tx_h=tx_h, rx_h=rx_h, distance=distance, mode=SUBURBAN,
-                                                      pt=float(base_station_selected.potencia_transmissao),
-                                                      g_t=float(base_station_selected.ganho_antena), g_r=rx_gain)
+                                                      pt=base_station_selected.potencia_transmissao,
+                                                      g_t=base_station_selected.ganho_antena, g_r=rx_gain)
 
                 received_power = transmitted_power - path_loss
 
@@ -765,6 +765,7 @@ class MainWindow(QMainWindow):
             drone.entidade = "Drone"
             drone.color = 'red'
             drone.icon = 'plane'
+            drone.is_to_move = True
 
             # Run simulated annealing
             best_array, _, FOs = self.simulated_annealing(base_station=base_station_selected,
@@ -977,11 +978,11 @@ class MainWindow(QMainWindow):
         # Clone solution array
         s0 = s_array.copy()
 
-        antenna_height = float(base_station.altura)
+        antenna_height = base_station.altura
         possible_heights = self.generates_heights(antenna_height)
         print("possible_heights=", str(possible_heights))
 
-        antenna_power_received = float(base_station.potencia_transmissao)
+        antenna_power_received = base_station.potencia_transmissao
         possible_powers_received = self.generates_received_powers(antenna_power_received)
         print("possible_powers_received=", str(possible_powers_received))
 

@@ -1,4 +1,3 @@
-
 from datetime import datetime
 
 from controllers.base_controller import BaseController
@@ -130,6 +129,25 @@ class BaseStationController(BaseController):
         """
         try:
             return BaseStation.select().group_by(BaseStation.endereco).order_by(BaseStation.id).execute()
+        except BaseException as be:
+            e = ApplicationException()
+            to_log_error(e.get_message())
+            print(be)
+            print(e)
+
+    def get_all_telefonica_available(self):
+        """
+        This method get all details for base stations
+        :return:
+        """
+        try:
+            return BaseStation\
+                .select()\
+                .where(BaseStation.entidade == 'TELEFÔNICA BRASIL S.A.')\
+                .where(BaseStation.frequencia_inicial <= 1000) \
+                .group_by(BaseStation.endereco) \
+                .order_by(BaseStation.id)\
+                .execute()
         except BaseException as be:
             e = ApplicationException()
             to_log_error(e.get_message())

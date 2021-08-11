@@ -99,6 +99,9 @@ def get_counties(uf: str) -> str:
 
 def dms_to_dd(coordinate_in_dms: str) -> float:
     # print(coordinate_in_dms)
+    if not any(c.isalpha() for c in coordinate_in_dms):
+        return coordinate_in_dms
+
     sign = -1 if re.search("[swSW]", coordinate_in_dms) else 1
     c = split_coordinates_dms(coordinate_in_dms)
     dd = sign * (float(c["d"]) + float(c["m"]) / 60 + float(c["s"]) / 3600)
