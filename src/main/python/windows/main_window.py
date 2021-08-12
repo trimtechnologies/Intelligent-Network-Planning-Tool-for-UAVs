@@ -326,9 +326,9 @@ class MainWindow(QMainWindow):
         """
         print("Calculate button!")
 
-        self.verticalLayout_17: QVBoxLayout
-        self.verticalLayout_17.insertWidget(0, QPushButton('teste'))
-        return
+        # self.verticalLayout_17: QVBoxLayout
+        # self.verticalLayout_17.insertWidget(0, QPushButton('teste'))
+        # return
 
         # Check if input fields is fillers
         if not self.required_fields_fillers():
