@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 
 from PyQt5 import uic, QtWebEngineWidgets
 from PyQt5.QtCore import pyqtSlot
-from PyQt5.QtWidgets import QMainWindow, QComboBox, QLineEdit, QLabel, QCheckBox
+from PyQt5.QtWidgets import QMainWindow, QComboBox, QLineEdit, QLabel, QCheckBox, QVBoxLayout, QPushButton
 from PyQt5 import QtCore, QtWidgets
 from folium import Map
 from numpy.core.multiarray import ndarray
@@ -106,6 +106,8 @@ class MainWindow(QMainWindow):
             (max_lat, max_lng),
             (max_lat, min_lng),
         ]
+
+        self.peripheral_coordinates = []
 
     def set_default_values(self):
         # Transmission tab
@@ -323,6 +325,10 @@ class MainWindow(QMainWindow):
         :return: None
         """
         print("Calculate button!")
+
+        self.verticalLayout_17: QVBoxLayout
+        self.verticalLayout_17.insertWidget(0, QPushButton('teste'))
+        return
 
         # Check if input fields is fillers
         if not self.required_fields_fillers():
