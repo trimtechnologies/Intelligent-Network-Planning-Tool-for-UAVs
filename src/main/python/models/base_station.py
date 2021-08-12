@@ -35,7 +35,7 @@ class BaseStation(BaseModel):
     angulo_meia_potencia: str = CharField()
     elevacao: str = CharField()
     polarizacao: str = CharField()
-    altura: str = CharField()
+    altura: float = FloatField()
     homologacao_transmissao: str = CharField()
     potencia_transmissao: float = FloatField()
     latitude: float = FloatField()
