@@ -96,10 +96,10 @@ class AnatelDialogClass(QDialog):
         print(last_update_date)
 
         if last_update_date is None:
-            label_last_update = "A base de dados ainda não foi atualizada"
+            label_last_update = "The database has not yet been updated."
         else:
             date = str(datetime.strptime(last_update_date[:-7], "%Y-%m-%d %H:%M:%S").strftime("%d/%m/%Y às %H:%M:%S"))
-            label_last_update = "Base de Dados Atualizada em " + date
+            label_last_update = "Database updated in " + date
 
         self.label_last_update: QLabel
         self.label_last_update.setText(label_last_update)
@@ -190,8 +190,8 @@ class AnatelDialogClass(QDialog):
             print('Result from store state id: ' + str(result))
 
             if result is not None:
-                AlertDialogClass("Atualizar base",
-                                 "Configurações de região atualizadas com sucesso! Lembre-se de atualizar a base de "
+                AlertDialogClass("update base",
+                                 "Region settings successfully updated! Remember to update the base of "
                                  "ERBs.").exec_()
         else:
             # The setting exists, then update

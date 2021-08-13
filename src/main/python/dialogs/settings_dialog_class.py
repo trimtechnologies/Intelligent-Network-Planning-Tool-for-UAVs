@@ -103,8 +103,8 @@ class SettingsDialogClass(QDialog):
             result = self.__settings_controller.store(data)
             print('Result from store state id: ' + str(result))
             if result is not None:
-                AlertDialogClass("Atualizar base",
-                                 "Configurações de região atualizadas com sucesso! Lembre-se de atualizar a base de "
+                AlertDialogClass("Update base",
+                                 "Region settings successfully updated! Remember to update the base of "
                                  "ERBs.").exec_()
         else:
             # The setting exists, then update

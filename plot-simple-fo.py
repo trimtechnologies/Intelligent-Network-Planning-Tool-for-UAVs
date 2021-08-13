@@ -6,7 +6,7 @@ FOs = [{'lat': -21.222768035349166, 'lng': -44.97706843930947, 'height': 39.2, '
 FOs_to_plot = [item['of'] for item in FOs]
 
 plt.plot(FOs_to_plot)
-plt.title("Comportamento do Simulated Annealing \n (Two-rays ground reflection)")
+plt.title("Simulated Annealing Behavior \n (Two-rays ground reflection)")
 plt.ylabel('Value of FO')
 plt.xlabel('Candidate Solution')
 plt.show()

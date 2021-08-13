@@ -814,7 +814,7 @@ plot_fo = [item['of'] for item in FOs]
 
 fig, (axs_height, axs_power, axs_fo) = plt.subplots(3, figsize=(10, 6))
 
-fig.suptitle('Altura e potência por solução candidata (' + mp + ') \n Considerando área específica')
+fig.suptitle('Height and power per candidate solution (' + mp + ') \n Considering specific area')
 
 # Gráfico de altura
 axs_height.plot(plot_height, 'tab:blue')
@@ -828,7 +828,7 @@ axs_height.text(len(plot_height) - 0.5, 47.6, '47.6')
 axs_height.text(len(plot_height) - 0.5, 56, '56')
 axs_height.text(len(plot_height) - 0.5, 64.4, '64.4')
 axs_height.text(len(plot_height) - 0.5, 72.8, '72.8')
-axs_height.set(ylabel='Altura')
+axs_height.set(ylabel='Height')
 if success_i is not None:
     axs_height.axvline(x=success_i, c='r')
 
@@ -844,17 +844,17 @@ axs_power.text(len(plot_power) - 0.5, 51, '51')
 axs_power.text(len(plot_power) - 0.5, 60, '60')
 axs_power.text(len(plot_power) - 0.5, 69, '69')
 axs_power.text(len(plot_power) - 0.5, 78, '78')
-axs_power.set(ylabel='Potência')
+axs_power.set(ylabel='Power')
 if success_i is not None:
     axs_power.axvline(x=success_i, c='r')
 
 # Grafico de potencia
 axs_fo.plot(plot_fo, 'tab:blue')
-axs_fo.set(ylabel='Função Objetivo')
+axs_fo.set(ylabel='Objective Function')
 if success_i is not None:
     axs_fo.axvline(x=success_i, c='r')
 
 plt.yscale('linear')
-plt.xlabel('Solução candidata')
+plt.xlabel('Candidate solution')
 plt.gca().yaxis.set_minor_formatter(NullFormatter())
 plt.show()
