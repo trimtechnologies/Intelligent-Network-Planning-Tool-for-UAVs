@@ -253,7 +253,7 @@ class MainWindow(QMainWindow):
         index = self.combo_box_anatel_base_station.currentIndex()
         data = self.combo_box_anatel_base_station.itemData(index)
 
-        erb = self.__base_station_controller.get_by_id(data)
+        erb = self.__base_station_controller.get_by_id(data)  # Check the function of this code
         print("Index: " + str(index))
         print(erb.endereco)
         self.add_erb_map(erb)
@@ -455,7 +455,7 @@ class MainWindow(QMainWindow):
 
         self.web_view.setHtml(data.getvalue().decode())
 
-    @staticmethod
+    @staticmethod # cartodb positron
     def get_folium_map(location=UFLA_LAT_LONG_POSITION, tiles="cartodb positron", zoom_start=16, control_scale=True) \
             -> Map:
         # tiles = "Stamen Terrain"
@@ -649,6 +649,7 @@ class MainWindow(QMainWindow):
 
                 distance = calculates_distance_between_coordinates(mobile_base_location, erb_location)
 
+                # concatenation issue
                 tx_h = (base_station_selected.altura + altitude_tx) - min_altitude
                 rx_h = (height_rx + altitude_lat_long_rx) - min_altitude
 
@@ -659,7 +660,7 @@ class MainWindow(QMainWindow):
 
                 received_power = transmitted_power - path_loss
 
-                consider_subareas = False
+                consider_subareas = False  # to consider subarea set = True
                 # check if the is placed inside subarea
                 if consider_subareas and self.is_point_inside_sub_area(mobile_base_location):
                     propagation_matrix[i][j] = received_power + self.percentage(10, abs(received_power))
