@@ -20,7 +20,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>Analise da Cobertura de ERBs - v.1.0.0</string>
+   <string>ERB Coverage Analysis - v.1.0.0</string>
   </property>
   <property name="locale">
    <locale language="Portuguese" country="Brazil"/>
@@ -83,7 +83,7 @@
             <enum>QTabWidget::West</enum>
            </property>
            <property name="currentIndex">
-            <number>0</number>
+            <number>5</number>
            </property>
            <widget class="QWidget" name="tab_transmitter">
             <attribute name="title">
@@ -112,8 +112,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>263</width>
-                  <height>932</height>
+                  <width>285</width>
+                  <height>621</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -173,7 +173,7 @@
                     <item row="5" column="0">
                      <widget class="QLabel" name="label_anatel_station_number">
                       <property name="text">
-                       <string>Número Fistel</string>
+                       <string>Fistel Number</string>
                       </property>
                      </widget>
                     </item>
@@ -219,7 +219,7 @@
                     <item row="9" column="0">
                      <widget class="QLabel" name="label_anatel_contry">
                       <property name="text">
-                       <string>Municipal</string>
+                       <string>City</string>
                       </property>
                      </widget>
                     </item>
@@ -622,8 +622,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>277</width>
-                  <height>611</height>
+                  <width>285</width>
+                  <height>621</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -728,8 +728,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>277</width>
-                  <height>611</height>
+                  <width>285</width>
+                  <height>621</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_14">
@@ -816,17 +816,17 @@
                       </item>
                       <item>
                        <property name="text">
-                        <string>Conservador / Cidade</string>
+                        <string>Conservative / City</string>
                        </property>
                       </item>
                       <item>
                        <property name="text">
-                        <string>Otimista / Desobstruído</string>
+                        <string>Optimistic / Clear</string>
                        </property>
                       </item>
                       <item>
                        <property name="text">
-                        <string>Misto</string>
+                        <string>Mixed</string>
                        </property>
                       </item>
                      </widget>
@@ -867,8 +867,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>277</width>
-                  <height>611</height>
+                  <width>285</width>
+                  <height>621</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -993,7 +993,7 @@
                     <item row="10" column="0">
                      <widget class="QLabel" name="label_number_of_erb_solutions">
                       <property name="text">
-                       <string>TextLabel</string>
+                       <string>Number of ERBs</string>
                       </property>
                      </widget>
                     </item>
@@ -1036,8 +1036,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>277</width>
-                  <height>611</height>
+                  <width>285</width>
+                  <height>621</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -1125,8 +1125,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>277</width>
-                  <height>611</height>
+                  <width>285</width>
+                  <height>621</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_15">
@@ -1418,7 +1418,7 @@
      <x>0</x>
      <y>0</y>
      <width>1216</width>
-     <height>22</height>
+     <height>18</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_file">

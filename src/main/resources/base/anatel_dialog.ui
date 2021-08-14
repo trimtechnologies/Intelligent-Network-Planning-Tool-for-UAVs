@@ -80,7 +80,7 @@
         </column>
         <column>
          <property name="text">
-          <string>ENTIDADE</string>
+          <string>ENTITY</string>
          </property>
         </column>
         <column>
@@ -90,22 +90,22 @@
         </column>
         <column>
          <property name="text">
-          <string>NUM. SERVIÇO</string>
+          <string>SERVICE NUMBER</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>ATO DE RF</string>
+          <string>RF ACT</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>NUM ESTAÇÃO</string>
+          <string>STATION NUMBER</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>ENDEREÇO</string>
+          <string>ADDRESS</string>
          </property>
         </column>
         <column>
@@ -115,107 +115,107 @@
         </column>
         <column>
          <property name="text">
-          <string>MUNICIPIO</string>
+          <string>COUNTY</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>EMISSÃO</string>
+          <string>ISSUE</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>TECNOLOGIA</string>
+          <string>TECHNOLOGY</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>MEIO DE ACESSO</string>
+          <string>HALF ACCESS</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>FREQ. INICIAL (MHz)</string>
+          <string>START FREQUENCY (MHz)</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>FREQ. FINAL (MHz)</string>
+          <string>END FREQUENCY (MHz)</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>AZIMUTE</string>
+          <string>AZIMUTH</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>TIPO ESTAÇÃO</string>
+          <string>SEASON TYPE</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>CLASS. INFRA FISICA</string>
+          <string>CLASS. INFRA PHYSICAL</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>COMPARTILHAMENTO INFRA FISICA</string>
+          <string>INFRA PHYSICAL SHARING</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>DISP COMPARTILHAMENTO INFRA FISICA</string>
+          <string>INFRA PHYSICAL SHARING DISP</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>TIPO ANTENA</string>
+          <string>ANTENNA TYPE</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>HOMOLOGAÇÃO ANT.</string>
+          <string>PREVIOUS APPROVAL</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>GANHO ANTENA</string>
+          <string>ANTENNA GAIN</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>FRENTE COSTA</string>
+          <string>FRONT COAST</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>ÂNGULO 1/2 POT.</string>
+          <string>1/2 POINT ANGLE</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>ELEVAÇÃO</string>
+          <string>ELEVATION</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>POLARIZAÇÃO</string>
+          <string>POLARIZATION</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>ALTURA ANTENA (m)</string>
+          <string>ANTENNA HEIGHT (m)</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>HOMOLOGAÇÃO TRANSM. (W)</string>
+          <string>TRANSMISSION APPROVAL (W)</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>POTENCIA TRANSMISSAO</string>
+          <string>TRANSMISSION POWER</string>
          </property>
         </column>
         <column>
@@ -240,17 +240,17 @@
         </column>
         <column>
          <property name="text">
-          <string>CODIGO DEBITO TFI</string>
+          <string>CODE DEBIT TFI</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>DATA PRIM. LICENC.</string>
+          <string>PRIMARY DATE LICENSED</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>CRIADO EM</string>
+          <string>CREATED IN</string>
          </property>
         </column>
         <item row="0" column="0">
@@ -414,14 +414,14 @@
          <item row="1" column="1">
           <widget class="QLabel" name="label_last_update">
            <property name="text">
-            <string>Base de Dados Anatel</string>
+            <string>Anatel Database</string>
            </property>
           </widget>
          </item>
          <item row="0" column="1">
           <widget class="QPushButton" name="update_database_button">
            <property name="text">
-            <string>Atualizar Base de Dados</string>
+            <string>Update Database</string>
            </property>
           </widget>
          </item>
@@ -435,7 +435,7 @@
            </property>
            <item>
             <property name="text">
-             <string>Selecionar Estado</string>
+             <string>Select State</string>
             </property>
            </item>
           </widget>
@@ -446,7 +446,7 @@
             <number>0</number>
            </property>
            <property name="format">
-            <string>%p% completo</string>
+            <string>%p% completed</string>
            </property>
           </widget>
          </item>
@@ -457,7 +457,7 @@
            </property>
            <item>
             <property name="text">
-             <string>Selecionar Município</string>
+             <string>Select City</string>
             </property>
            </item>
           </widget>
