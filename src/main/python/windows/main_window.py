@@ -391,7 +391,7 @@ class MainWindow(QMainWindow):
         if confirm_simulation_dialog.exec_() == QtWidgets.QDialog.Accepted:
             total_simulations = int(self.input_number_of_simulations.text())
             for i in range(total_simulations):
-                print("i/range=", i+1, "/", total_simulations)
+                print("i/range=", i + 1, "/", total_simulations)
                 self.run_simulation()
 
     def add_erb_map(self, base_station: BaseStation) -> None:
@@ -448,15 +448,15 @@ class MainWindow(QMainWindow):
         self.menu_action_help.triggered.connect(self.on_menu_help_triggered)
 
     def __init_rf_map(self) -> None:
-        m = self.get_folium_map(UFLA_LAT_LONG_POSITION)
+        m = self.get_folium_map(location=UFLA_LAT_LONG_POSITION)
 
         data = io.BytesIO()
         m.save(data, close_file=False)
 
         self.web_view.setHtml(data.getvalue().decode())
 
-    @staticmethod # cartodb positron
-    def get_folium_map(location=UFLA_LAT_LONG_POSITION, tiles="cartodb positron", zoom_start=16, control_scale=True) \
+    @staticmethod  # cartodb positron
+    def get_folium_map(location=UFLA_LAT_LONG_POSITION, tiles="cartodb positron", zoom_start=15, control_scale=True) \
             -> Map:
         # tiles = "Stamen Terrain"
         return folium.Map(
@@ -669,7 +669,8 @@ class MainWindow(QMainWindow):
 
         return propagation_matrix, lats_deg, longs_deg
 
-    def print_simulation_result(self, base_station_selected: BaseStation, extra_points: List[BaseStation] = None) -> None:
+    def print_simulation_result(self, base_station_selected: BaseStation,
+                                extra_points: List[BaseStation] = None) -> None:
 
         propagation_matrix, lats_deg, longs_deg = self.simulates_propagation(base_station_selected)
 
@@ -955,7 +956,8 @@ class MainWindow(QMainWindow):
 
         return positions
 
-    def simulated_annealing(self, base_station: BaseStation, drone: BaseStation, M: int, P: int, L: int, T0: float, alpha: float) \
+    def simulated_annealing(self, base_station: BaseStation, drone: BaseStation, M: int, P: int, L: int, T0: float,
+                            alpha: float) \
             -> Tuple[Union[List[BaseStation], Any], float, List[float]]:
         """
         Performs the search using meta-heuristics
