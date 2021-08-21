@@ -172,11 +172,12 @@ class MainWindow(QMainWindow):
         self.input_drone_frequency.setText("869.0")
 
         base_station_selected = self.get_bs_selected()
-        variants = self.get_bs_variants(base_station_selected)
-        drone = self.get_bs_drone(base_station_selected)
-        base_stations = [drone] + [base_station_selected] + variants
+        if base_station_selected is not None:
+            variants = self.get_bs_variants(base_station_selected)
+            drone = self.get_bs_drone(base_station_selected)
+            base_stations = [drone] + [base_station_selected] + variants
 
-        self.add_erb_map(base_stations)
+            self.add_erb_map(base_stations)
 
     def init_simulated_annealing_components(self) -> None:
         self.input_sa_temp_initial: QLineEdit
@@ -286,6 +287,9 @@ class MainWindow(QMainWindow):
         anatel_dialog.setModal(True)
         anatel_dialog.setFixedSize(anatel_dialog.size())
         anatel_dialog.show()
+
+        # Update list of base stations
+        self.init_transmitter_components()
 
     @pyqtSlot(name="on_menu_settings_triggered")
     def on_menu_settings_triggered(self) -> None:
