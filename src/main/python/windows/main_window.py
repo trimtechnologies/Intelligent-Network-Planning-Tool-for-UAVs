@@ -60,9 +60,6 @@ class MainWindow(QMainWindow):
         self.__base_station_controller = BaseStationController()
         self.__simulation_controller = SimulationController()
 
-        # Init main map
-        self.__init_rf_map()
-
         # Link calculate button with method
         self.button_calculate.clicked.disconnect()
         self.button_calculate.clicked.connect(self.on_button_calculate_clicked)
@@ -76,6 +73,9 @@ class MainWindow(QMainWindow):
         self.init_model_components()
         self.init_simulated_annealing_components()
         self.init_output_components()
+
+        # Init main map
+        self.__init_rf_map()
 
         self.set_default_values()
 
@@ -171,6 +171,13 @@ class MainWindow(QMainWindow):
         self.input_drone_height.setText("70")
         self.input_drone_frequency.setText("869.0")
 
+        base_station_selected = self.get_bs_selected()
+        variants = self.get_bs_variants(base_station_selected)
+        drone = self.get_bs_drone(base_station_selected)
+        base_stations = [drone] + [base_station_selected] + variants
+
+        self.add_erb_map(base_stations)
+
     def init_simulated_annealing_components(self) -> None:
         self.input_sa_temp_initial: QLineEdit
         self.input_sa_num_max_iterations: QLineEdit
@@ -256,7 +263,7 @@ class MainWindow(QMainWindow):
         erb = self.__base_station_controller.get_by_id(data)  # Check the function of this code
         print("Index: " + str(index))
         print(erb.endereco)
-        self.add_erb_map(erb)
+        self.add_erb_map([erb])
         self.add_erb_in_details(erb)
 
     @pyqtSlot(name="on_combo_box_tx_coordinates_changed")
@@ -394,17 +401,23 @@ class MainWindow(QMainWindow):
                 print("i/range=", i + 1, "/", total_simulations)
                 self.run_simulation()
 
-    def add_erb_map(self, base_station: BaseStation) -> None:
-        erb_location = (str(base_station.latitude), str(base_station.longitude))
+    def add_erb_map(self, base_stations: List[BaseStation]) -> None:
+        """
+        This method adds a list of points (Base Stations) on the map.
+        Returns:
+            object: None
+        """
+        m = self.get_folium_map()
 
-        m = self.get_folium_map(location=erb_location)
+        for base_station in base_stations:
+            erb_location = (str(base_station.latitude), str(base_station.longitude))
 
-        folium.Marker(
-            location=erb_location,
-            popup=base_station.entidade,
-            draggable=False,
-            icon=folium.Icon(prefix='glyphicon', icon=base_station.icon, color=base_station.color)
-        ).add_to(m)
+            folium.Marker(
+                location=erb_location,
+                popup=base_station.entidade,
+                draggable=False,
+                icon=folium.Icon(prefix='glyphicon', icon=base_station.icon, color=base_station.color)
+            ).add_to(m)
 
         data = io.BytesIO()
         m.save(data, close_file=False)
@@ -731,13 +744,51 @@ class MainWindow(QMainWindow):
 
         self.web_view.setHtml(data.getvalue().decode())
 
+    def get_bs_drone(self, base_station_selected) -> BaseStation:
+        # Init the drone as base station clone and change the properties
+        drone = copy.deepcopy(base_station_selected)
+        drone.potencia_transmissao = float(self.input_drone_transmit_power.text())
+        drone.frequencia_inicial = float(self.input_drone_frequency.text())
+        drone.altura = float(self.input_drone_height.text())
+        drone.entidade = "Drone"
+        drone.color = 'red'
+        drone.icon = 'plane'
+        drone.is_to_move = True
+        drone.latitude = -21.225747  # ToDo: get dynamic location
+        drone.longitude = -44.969755  # ToDo: get dynamic location
+
+        return drone
+
+    @staticmethod
+    def get_bs_variants(base_station_selected):
+        # Base stations with same configuration but with different positions
+        # This process will be improved in the future
+        base_stations = []
+
+        bs_copy_1 = copy.deepcopy(base_station_selected)
+        bs_copy_1.latitude = -21.229976
+        bs_copy_1.longitude = -44.974247
+        base_stations.append(bs_copy_1)
+
+        bs_copy_2 = copy.deepcopy(base_station_selected)
+        bs_copy_2.latitude = -21.222517
+        bs_copy_2.longitude = -44.968944
+        base_stations.append(bs_copy_2)
+
+        bs_copy_3 = copy.deepcopy(base_station_selected)
+        bs_copy_3.latitude = -21.230336
+        bs_copy_3.longitude = -44.981993
+        base_stations.append(bs_copy_3)
+
+        return base_stations
+
     def run_simulation(self) -> None:
         print("Running simulation...")
         self.check_box_save_simulations: QCheckBox
         save_simulations = self.check_box_save_simulations.isChecked()
 
-        start = time.time()
-        end = None
+        start_at = time.time()
+        end_at = None
 
         self.check_box_optimize_solution: QCheckBox
         optimize_solution = self.check_box_optimize_solution.isChecked()
@@ -765,24 +816,23 @@ class MainWindow(QMainWindow):
             sa_num_max_success_per_iteration = int(self.input_sa_num_max_success_per_iteration.text())
             sa_alpha = float(self.input_sa_alpha.text())
 
-            # Init the drone as base station clone and change the properties
-            drone = copy.deepcopy(base_station_selected)
-            drone.potencia_transmissao = float(self.input_drone_transmit_power.text())
-            drone.frequencia_inicial = float(self.input_drone_frequency.text())
-            drone.altura = float(self.input_drone_height.text())
-            drone.entidade = "Drone"
-            drone.color = 'red'
-            drone.icon = 'plane'
-            drone.is_to_move = True
+            drone = self.get_bs_drone(base_station_selected)
+
+            # get variantes of base station selected (with position fixed)
+            variants = self.get_bs_variants(base_station_selected)
+
+            # Get array of Base Stations
+            base_stations = [base_station_selected] + variants
 
             # Run simulated annealing
-            best_array, _, FOs = self.simulated_annealing(base_station=base_station_selected,
+            best_array, _, FOs = self.simulated_annealing(base_stations=base_stations,
                                                           drone=drone,
                                                           M=sa_num_max_iterations,
                                                           P=sa_num_max_perturbation_per_iteration,
                                                           L=sa_num_max_success_per_iteration,
-                                                          T0=sa_temp_initial, alpha=sa_alpha)
-            end = time.time()
+                                                          T0=sa_temp_initial,
+                                                          alpha=sa_alpha)
+            end_at = time.time()
             print("End of Simulated Annealing")
 
             #  print best solution found
@@ -823,9 +873,9 @@ class MainWindow(QMainWindow):
                     "initial_power_transmission": str(initial_solution.potencia_transmissao),
                     "initial_objective_function": str(initial_fo),
                     "number_of_solutions": len(FOs) - 1,
-                    "execution_seconds": str(end - start),
-                    "started_at": str(start),
-                    "ended_at": str(end),
+                    "execution_seconds": str(end_at - start_at),
+                    "started_at": str(start_at),
+                    "ended_at": str(end_at),
                     "propagation_model": str(propagation_model),
                     "best_latitude": str(best_array.latitude),
                     "best_longitude": str(best_array.longitude),
@@ -840,12 +890,12 @@ class MainWindow(QMainWindow):
             #  Show simulation map
             self.print_simulation_result(initial_solution)
 
-        if end is None:
-            end = time.time()
+        if end_at is None:
+            end_at = time.time()
 
         self.label_geral_info_1: QLabel
         self.label_geral_info_1.setText("Simulation successfully completed")
-        print("Simulation run in %s seconds" % round(end - start, 2))
+        print("Simulation run in %s seconds" % round(end_at - start_at, 2))
 
         print("End of simulation!")
 
@@ -956,14 +1006,15 @@ class MainWindow(QMainWindow):
 
         return positions
 
-    def simulated_annealing(self, base_station: BaseStation, drone: BaseStation, M: int, P: int, L: int, T0: float,
+    def simulated_annealing(self, base_stations: List[BaseStation], drone: BaseStation, M: int, P: int, L: int,
+                            T0: float,
                             alpha: float) \
             -> Tuple[Union[List[BaseStation], Any], float, List[float]]:
         """
         Performs the search using meta-heuristics
 
         Args:
-            base_station: The main base station.
+            base_stations: An array with the base stations.
             drone: The drone config.
             M: Maximum number of iterations.
             P: Maximum number of Disturbances per iteration.
@@ -980,18 +1031,15 @@ class MainWindow(QMainWindow):
 
         # Add drone in array solution and add copies of base station selected in the array of solution
         s_array = [drone]
-        for _ in range(int(self.input_number_of_erb_solutions.text())):
-            # All base stations start with the same configuration
-            s_array.append(copy.deepcopy(base_station))
 
         # Clone solution array
         s0 = s_array.copy()
 
-        antenna_height = base_station.altura
+        antenna_height = base_stations.altura
         possible_heights = self.generates_heights(antenna_height)
         print("possible_heights=", str(possible_heights))
 
-        antenna_power_received = base_station.potencia_transmissao
+        antenna_power_received = base_stations.potencia_transmissao
         possible_powers_received = self.generates_received_powers(antenna_power_received)
         print("possible_powers_received=", str(possible_powers_received))
 
