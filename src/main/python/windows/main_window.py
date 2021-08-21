@@ -893,7 +893,8 @@ class MainWindow(QMainWindow):
                     "best_height": str(best_solution.altura),
                     "best_power_transmission": str(best_solution.potencia_transmissao),
                     "best_objective_function": str(best_fo),
-                    "solutions": FOs
+                    "solutions": FOs,
+                    "distance_of_solutions": 0
                 }
                 self.__simulation_controller.store(data)
                 print("Done!")
