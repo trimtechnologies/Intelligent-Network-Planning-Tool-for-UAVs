@@ -1,8 +1,7 @@
 
-
 from PyQt5.QtCore import pyqtSlot
 from PyQt5 import uic
-from PyQt5.QtWidgets import QDialog, QProgressBar, QTableWidgetItem, QTableWidget, QLabel, QComboBox
+from PyQt5.QtWidgets import QDialog, QProgressBar, QTableWidgetItem, QTableWidget, QLabel, QComboBox, QMessageBox
 from pandas import DataFrame
 from datetime import datetime
 
@@ -367,3 +366,15 @@ class AnatelDialogClass(QDialog):
         self.label_last_update.setText("Updated local database!")
 
         self.__create_or_update_last_updated_date()
+
+    def closeEvent(self, event):
+        reply = QMessageBox.question(self, 'Window Close', 'If a database update was performed, remember to restart '
+                                                           'the application so that the Base Station information is '
+                                                           'loaded again.',
+                                     QMessageBox.Ok, QMessageBox.Ok)
+
+        if reply == QMessageBox.Ok:
+            event.accept()
+            print('Window closed')
+        else:
+            event.ignore()
