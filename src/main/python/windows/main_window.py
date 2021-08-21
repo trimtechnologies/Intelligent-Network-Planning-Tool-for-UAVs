@@ -1004,7 +1004,8 @@ class MainWindow(QMainWindow):
             positions.append({
                 'latitude': bs.latitude,
                 'longitude': bs.longitude,
-                'color': bs.color
+                'color': bs.color,
+                'is_to_move': bs.is_to_move
             })
 
         return positions
@@ -1033,18 +1034,18 @@ class MainWindow(QMainWindow):
         FOs = []
 
         # Add drone in array solution and add copies of base station selected in the array of solution
-        s_array = [drone]
+        s_array = base_stations + [drone]
 
         # Clone solution array
         s0 = s_array.copy()
 
-        antenna_height = base_stations.altura
+        antenna_height = drone.altura
         possible_heights = self.generates_heights(antenna_height)
-        print("possible_heights=", str(possible_heights))
+        print("possible_drone_heights=", str(possible_heights))
 
-        antenna_power_received = base_stations.potencia_transmissao
+        antenna_power_received = drone.potencia_transmissao
         possible_powers_received = self.generates_received_powers(antenna_power_received)
-        print("possible_powers_received=", str(possible_powers_received))
+        print("possible_drone_powers_received=", str(possible_powers_received))
 
         print("Initial Solution: ")
         print(self.get_lat_lng_from_array_solution(s0))
@@ -1078,8 +1079,13 @@ class MainWindow(QMainWindow):
                 initial_solutions_array = s_array.copy()
 
                 # Disturbs one of the transmitters at each SA iteration
-                i_ap = (i_ap + 1) % int(self.input_number_of_erb_solutions.text())
+                # i_ap = (i_ap + 1) % int(self.input_number_of_erb_solutions.text())
 
+                # get the index of the array of the base station that is allowed to move
+                # First there must be only one item (the drone)
+                i_ap = next((i for i, item in enumerate(s_array) if item.is_to_move), -1)
+
+                # get a new position for the base station (drone)
                 initial_solutions_array[i_ap] = self.disturb_solution(s_array[i_ap])
 
                 # For all possible antenna heights
@@ -1088,6 +1094,7 @@ class MainWindow(QMainWindow):
                     print("antenna height=", height)
                     initial_solutions_array[i_ap].altura = height
 
+                    # For all possible antenna powers received
                     for power in possible_powers_received:
                         print("transmission power=", power)
                         initial_solutions_array[i_ap].potencia_transmissao = power
