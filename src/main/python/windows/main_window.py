@@ -857,6 +857,10 @@ class MainWindow(QMainWindow):
             # self.print_simulation_result(best_array, extra_bs)
             self.print_simulation_result(best_array[0], best_array[1:])
 
+            # Get solution
+            index = next((i for i, item in enumerate(best_array) if item.is_to_move), -1) # only the drone can move
+            best_solution = best_array[index]  # the drone
+
             print("len(FOs)=", len(FOs))
 
             print('(propagation_model)=', propagation_model)
@@ -884,10 +888,10 @@ class MainWindow(QMainWindow):
                     "started_at": str(start_at),
                     "ended_at": str(end_at),
                     "propagation_model": str(propagation_model),
-                    "best_latitude": str(best_array.latitude),
-                    "best_longitude": str(best_array.longitude),
-                    "best_height": str(best_array.altura),
-                    "best_power_transmission": str(best_array.potencia_transmissao),
+                    "best_latitude": str(best_solution.latitude),
+                    "best_longitude": str(best_solution.longitude),
+                    "best_height": str(best_solution.altura),
+                    "best_power_transmission": str(best_solution.potencia_transmissao),
                     "best_objective_function": str(best_fo),
                     "solutions": FOs
                 }
