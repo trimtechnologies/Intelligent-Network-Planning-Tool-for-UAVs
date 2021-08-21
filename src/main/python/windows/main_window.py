@@ -768,16 +768,19 @@ class MainWindow(QMainWindow):
         bs_copy_1 = copy.deepcopy(base_station_selected)
         bs_copy_1.latitude = -21.229976
         bs_copy_1.longitude = -44.974247
+        bs_copy_1.is_to_move = False  # Base stations will not move
         base_stations.append(bs_copy_1)
 
         bs_copy_2 = copy.deepcopy(base_station_selected)
         bs_copy_2.latitude = -21.222517
         bs_copy_2.longitude = -44.968944
+        bs_copy_2.is_to_move = False  # Base stations will not move
         base_stations.append(bs_copy_2)
 
         bs_copy_3 = copy.deepcopy(base_station_selected)
         bs_copy_3.latitude = -21.230336
         bs_copy_3.longitude = -44.981993
+        bs_copy_3.is_to_move = False  # Base stations will not move
         base_stations.append(bs_copy_3)
 
         return base_stations
