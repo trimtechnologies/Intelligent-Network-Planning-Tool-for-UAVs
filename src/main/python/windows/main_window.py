@@ -1119,13 +1119,19 @@ class MainWindow(QMainWindow):
                         # Minimization: delta_fi >= 0
                         # Maximization: delta_fi <= 0
                         # Acceptance test of a new solution
-                        if (delta_fi <= 0) or (exp(-delta_fi / T) > random.random()):
+                        boltzmann = exp(-delta_fi / T)
+                        if (delta_fi <= 0) or (boltzmann > random.random()):
 
+                            # Copy the solution array
                             s_array = initial_solutions_array.copy()
+
+                            # Update FO solution
                             f_s = f_si
 
+                            # increments the of successes
                             n_success = n_success + 1
 
+                            # Accept the current FO as the best
                             if f_s > best_fs:
                                 best_fs = f_s
                                 best_s_array = s_array.copy()
