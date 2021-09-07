@@ -130,7 +130,7 @@ def get_anatel_data(uf_sigle: str, country_id: int = None) -> DataFrame:
         "filter": 1,  # se filtro aplicado ou nao
         "rpp": 50,  # quantidade por página
         "sort_0": 0,  # status
-        "sort_1": 0,  # entidade
+        "sort_1": 0,  # entity
         "sort_2": 0,  # fistel
         "sort_3": 0,  # num servico
         "sort_4": 0,  # ato de rf
@@ -138,8 +138,8 @@ def get_anatel_data(uf_sigle: str, country_id: int = None) -> DataFrame:
         "sort_6": 0,  # endereco
         "sort_7": 0,  # UF
         "sort_8": 0,  # Municipio
-        "sort_9": 0,  # emissao
-        "sort_10": 0,  # tecnologia
+        "sort_9": 0,  # registration
+        "sort_10": 0,  # technology
         "sort_11": 0,  # meio acesso
         "sort_12": 0,  # freq ini
         "sort_13": 0,  # freq final
@@ -153,9 +153,9 @@ def get_anatel_data(uf_sigle: str, country_id: int = None) -> DataFrame:
         "sort_21": 0,  # ganho antena
         "sort_22": 0,  # frente costa
         "sort_23": 0,  # angulo meia potencia
-        "sort_24": 0,  # elevacao
-        "sort_25": 0,  # polarizacao
-        "sort_26": 0,  # altura antena
+        "sort_24": 0,  # elevation_degree
+        "sort_25": 0,  # polarization
+        "sort_26": 0,  # height antena
         "sort_27": 0,  # homologacao transmissao
         "sort_28": 0,  # potencia transmissao
         "sort_29": 0,  # latitude
@@ -163,7 +163,7 @@ def get_anatel_data(uf_sigle: str, country_id: int = None) -> DataFrame:
         "sort_31": 0,  # cod deb tfi
         "sort_32": 0,  # data primeiro licenciamento
         "fc_0": None,  # status
-        "fc_1": None,  # entidade
+        "fc_1": None,  # entity
         "fc_2": None,  # fistel
         "fc_3": None,  # num servico
         "fc_4": None,  # ato de rf
@@ -171,8 +171,8 @@ def get_anatel_data(uf_sigle: str, country_id: int = None) -> DataFrame:
         "fc_6": None,  # endereco
         "fc_7": uf_sigle,  # UF
         "fc_8": country_id,  # Municipio
-        "fc_9": None,  # emissao
-        "fc_10": None,  # tecnologia
+        "fc_9": None,  # registration
+        "fc_10": None,  # technology
         "fc_11": None,  # meio acesso
         "fc_12": None,  # freq ini
         "fc_13": None,  # freq final
@@ -186,9 +186,9 @@ def get_anatel_data(uf_sigle: str, country_id: int = None) -> DataFrame:
         "fc_21": None,  # ganho antena
         "fc_22": None,  # frente costa
         "fc_23": None,  # angulo meia potencia
-        "fc_24": None,  # elevacao
-        "fc_25": None,  # polarizacao
-        "fc_26": None,  # altura antena
+        "fc_24": None,  # elevation_degree
+        "fc_25": None,  # polarization
+        "fc_26": None,  # height antena
         "fc_27": None,  # homologacao transmissao
         "fc_28": None,  # potencia transmissao
         "fc_29": None,  # latitude

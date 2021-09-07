@@ -74,15 +74,15 @@ class ConfirmSimulationDialogClass(QDialog):
         self.label_radio_maximo_value: QLabel
 
         # Transmissor
-        self.label_entidade_value: QLabel
-        self.label_uf_municipio_value: QLabel
-        self.label_endereco_value: QLabel
+        self.label_entity_value: QLabel
+        self.label_uf_county_value: QLabel
+        self.label_address_value: QLabel
         self.label_frequencia_value: QLabel
         self.label_ganho_value: QLabel
-        self.label_potencia_transmissao_value: QLabel
-        self.label_elevacao_value: QLabel
-        self.label_polarizacao_value: QLabel
-        self.label_altura_value: QLabel
+        self.label_transmit_power_value: QLabel
+        self.label_elevation_degree_value: QLabel
+        self.label_polarization_value: QLabel
+        self.label_height_value: QLabel
         self.label_latitude_value: QLabel
         self.label_longitude_value: QLabel
 
@@ -95,7 +95,7 @@ class ConfirmSimulationDialogClass(QDialog):
         self.label_alpha_value: QLabel
 
         # Receptor details
-        self.label_bs_altura_value: QLabel
+        self.label_bs_height_value: QLabel
         self.label_bs_ganho_value: QLabel
         self.label_bs_sensibilidade_value: QLabel
 
@@ -103,18 +103,18 @@ class ConfirmSimulationDialogClass(QDialog):
         self.label_modelo_propagacao_value.setText(simulation['propagation_model'])
         self.label_ambiente_value.setText(simulation['environment'])
         self.label_radio_maximo_value.setText(simulation['max_ray'])
-        self.label_entidade_value.setText(transmitter['entity'])
-        self.label_uf_municipio_value.setText(transmitter['municipal'])
-        self.label_endereco_value.setText(transmitter['address'])
+        self.label_entity_value.setText(transmitter['entity'])
+        self.label_uf_county_value.setText(transmitter['municipal'])
+        self.label_address_value.setText(transmitter['address'])
         self.label_frequencia_value.setText(transmitter['frequency'])
         self.label_ganho_value.setText(transmitter['gain'])
-        self.label_potencia_transmissao_value.setText(transmitter['transmission_power'])
-        self.label_elevacao_value.setText(transmitter['elevation'])
-        self.label_polarizacao_value.setText(transmitter['polarization'])
-        self.label_altura_value.setText(transmitter['height'])
+        self.label_transmit_power_value.setText(transmitter['transmission_power'])
+        self.label_elevation_degree_value.setText(transmitter['elevation'])
+        self.label_polarization_value.setText(transmitter['polarization'])
+        self.label_height_value.setText(transmitter['height'])
         self.label_latitude_value.setText(transmitter['latitude'])
         self.label_longitude_value.setText(transmitter['longitude'])
-        self.label_bs_altura_value.setText(receptor['height'])
+        self.label_bs_height_value.setText(receptor['height'])
         self.label_bs_ganho_value.setText(receptor['gain'])
         self.label_bs_sensibilidade_value.setText(receptor['sensitivity'])
         self.label_solucao_inicial_value.setText(heuristic['initial_solution'])
@@ -144,18 +144,18 @@ class ConfirmSimulationDialogClass(QDialog):
         # label_ambiente_value
         # label_radio_maximo_value
 
-        # label_entidade_value
-        # label_uf_municipio_value
-        # label_endereco_value
+        # label_entity_value
+        # label_uf_county_value
+        # label_address_value
         # label_frequencia_value
         # label_ganho_value
-        # label_elevacao_value
-        # label_polarizacao_value
-        # label_altura_value
+        # label_elevation_degree_value
+        # label_polarization_value
+        # label_height_value
         # label_latitude_value
         # label_longitude_value
 
-        # label_bs_altura_value
+        # label_bs_height_value
         # label_bs_ganho_value
         # label_bs_sensibilidade_value
 

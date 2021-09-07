@@ -250,40 +250,40 @@ class AnatelDialogClass(QDialog):
 
             self.anatel_table.setItem(table_row_count, 0, QTableWidgetItem(str(config.id)))
             self.anatel_table.setItem(table_row_count, 1, QTableWidgetItem(str(config.status)))
-            self.anatel_table.setItem(table_row_count, 2, QTableWidgetItem(str(config.entidade)))
-            self.anatel_table.setItem(table_row_count, 3, QTableWidgetItem(str(config.num_fistel)))
-            self.anatel_table.setItem(table_row_count, 4, QTableWidgetItem(str(config.num_servico)))
-            self.anatel_table.setItem(table_row_count, 5, QTableWidgetItem(str(config.num_ato_de_rf)))
-            self.anatel_table.setItem(table_row_count, 6, QTableWidgetItem(str(config.num_estacao)))
-            self.anatel_table.setItem(table_row_count, 7, QTableWidgetItem(str(config.endereco)))
+            self.anatel_table.setItem(table_row_count, 2, QTableWidgetItem(str(config.entity)))
+            self.anatel_table.setItem(table_row_count, 3, QTableWidgetItem(str(config.fistel_number)))
+            self.anatel_table.setItem(table_row_count, 4, QTableWidgetItem(str(config.service_number)))
+            self.anatel_table.setItem(table_row_count, 5, QTableWidgetItem(str(config.radio_frequency_authorization_number)))
+            self.anatel_table.setItem(table_row_count, 6, QTableWidgetItem(str(config.station_number)))
+            self.anatel_table.setItem(table_row_count, 7, QTableWidgetItem(str(config.address)))
             self.anatel_table.setItem(table_row_count, 8, QTableWidgetItem(str(config.uf)))
-            self.anatel_table.setItem(table_row_count, 9, QTableWidgetItem(str(config.municipio)))
-            self.anatel_table.setItem(table_row_count, 10, QTableWidgetItem(str(config.emissao)))
-            self.anatel_table.setItem(table_row_count, 11, QTableWidgetItem(str(config.tecnologia)))
-            self.anatel_table.setItem(table_row_count, 12, QTableWidgetItem(str(config.meio_acesso)))
-            self.anatel_table.setItem(table_row_count, 13, QTableWidgetItem(str(config.frequencia_inicial)))
-            self.anatel_table.setItem(table_row_count, 14, QTableWidgetItem(str(config.frequencia_final)))
+            self.anatel_table.setItem(table_row_count, 9, QTableWidgetItem(str(config.county)))
+            self.anatel_table.setItem(table_row_count, 10, QTableWidgetItem(str(config.registration)))
+            self.anatel_table.setItem(table_row_count, 11, QTableWidgetItem(str(config.technology)))
+            self.anatel_table.setItem(table_row_count, 12, QTableWidgetItem(str(config.access_resource)))
+            self.anatel_table.setItem(table_row_count, 13, QTableWidgetItem(str(config.initial_frequency)))
+            self.anatel_table.setItem(table_row_count, 14, QTableWidgetItem(str(config.final_frequency)))
             self.anatel_table.setItem(table_row_count, 15, QTableWidgetItem(str(config.azimute)))
-            self.anatel_table.setItem(table_row_count, 16, QTableWidgetItem(str(config.tipo_estacao)))
-            self.anatel_table.setItem(table_row_count, 17, QTableWidgetItem(str(config.classificacao_infra_fisica)))
-            self.anatel_table.setItem(table_row_count, 18, QTableWidgetItem(str(config.compartilhamento_infra_fisica)))
-            self.anatel_table.setItem(table_row_count, 19, QTableWidgetItem(str(config.disp_compartilhamento_infra)))
-            self.anatel_table.setItem(table_row_count, 20, QTableWidgetItem(str(config.tipo_antena)))
-            self.anatel_table.setItem(table_row_count, 21, QTableWidgetItem(str(config.homologacao_antena)))
-            self.anatel_table.setItem(table_row_count, 22, QTableWidgetItem(str(config.ganho_antena)))
-            self.anatel_table.setItem(table_row_count, 23, QTableWidgetItem(str(config.ganho_frente_costa)))
-            self.anatel_table.setItem(table_row_count, 24, QTableWidgetItem(str(config.angulo_meia_potencia)))
-            self.anatel_table.setItem(table_row_count, 25, QTableWidgetItem(str(config.elevacao)))
-            self.anatel_table.setItem(table_row_count, 26, QTableWidgetItem(str(config.polarizacao)))
-            self.anatel_table.setItem(table_row_count, 27, QTableWidgetItem(str(config.altura)))
-            self.anatel_table.setItem(table_row_count, 28, QTableWidgetItem(str(config.homologacao_transmissao)))
-            self.anatel_table.setItem(table_row_count, 29, QTableWidgetItem(str(config.potencia_transmissao)))
+            self.anatel_table.setItem(table_row_count, 16, QTableWidgetItem(str(config.station_type)))
+            self.anatel_table.setItem(table_row_count, 17, QTableWidgetItem(str(config.physical_infrastructure_classification)))
+            self.anatel_table.setItem(table_row_count, 18, QTableWidgetItem(str(config.physical_infrastructure_sharing)))
+            self.anatel_table.setItem(table_row_count, 19, QTableWidgetItem(str(config.availability_sharing_physical_infrastructure)))
+            self.anatel_table.setItem(table_row_count, 20, QTableWidgetItem(str(config.antenna_type)))
+            self.anatel_table.setItem(table_row_count, 21, QTableWidgetItem(str(config.antenna_approval)))
+            self.anatel_table.setItem(table_row_count, 22, QTableWidgetItem(str(config.antenna_gain)))
+            self.anatel_table.setItem(table_row_count, 23, QTableWidgetItem(str(config.gain_front_coast)))
+            self.anatel_table.setItem(table_row_count, 24, QTableWidgetItem(str(config.half_power_angle)))
+            self.anatel_table.setItem(table_row_count, 25, QTableWidgetItem(str(config.elevation_degree)))
+            self.anatel_table.setItem(table_row_count, 26, QTableWidgetItem(str(config.polarization)))
+            self.anatel_table.setItem(table_row_count, 27, QTableWidgetItem(str(config.height)))
+            self.anatel_table.setItem(table_row_count, 28, QTableWidgetItem(str(config.transmission_approval)))
+            self.anatel_table.setItem(table_row_count, 29, QTableWidgetItem(str(config.transmit_power)))
             self.anatel_table.setItem(table_row_count, 30, QTableWidgetItem(str(config.latitude)))
             self.anatel_table.setItem(table_row_count, 31, QTableWidgetItem(str(config.longitude)))
             self.anatel_table.setItem(table_row_count, 32, QTableWidgetItem(str(config.latitude_dms)))
             self.anatel_table.setItem(table_row_count, 33, QTableWidgetItem(str(config.longitude_dms)))
-            self.anatel_table.setItem(table_row_count, 34, QTableWidgetItem(str(config.cod_debito_tfi)))
-            self.anatel_table.setItem(table_row_count, 35, QTableWidgetItem(str(config.data_primeiro_licenciamento)))
+            self.anatel_table.setItem(table_row_count, 34, QTableWidgetItem(str(config.debit_code_tfi)))
+            self.anatel_table.setItem(table_row_count, 35, QTableWidgetItem(str(config.date_of_first_licensing)))
             self.anatel_table.setItem(table_row_count, 36, QTableWidgetItem(str(config.created_at)))
 
             processed = processed + 1
@@ -301,40 +301,40 @@ class AnatelDialogClass(QDialog):
         for row in erb_config.values:
             data = {
                 "status": row[0],
-                "entidade": row[1],
-                "num_fistel": row[2],
-                "num_servico": row[3],
-                "num_ato_de_rf": row[4],
-                "num_estacao": row[5],
-                "endereco": row[6],
+                "entity": row[1],
+                "fistel_number": row[2],
+                "service_number": row[3],
+                "radio_frequency_authorization_number": row[4],
+                "station_number": row[5],
+                "address": row[6],
                 "uf": row[7],
-                "municipio": row[8],
-                "emissao": row[9],
-                "tecnologia": row[10],
-                "meio_acesso": row[11],
-                "frequencia_inicial": float(row[12]),
-                "frequencia_final": float(row[13]),
+                "county": row[8],
+                "registration": row[9],
+                "technology": row[10],
+                "access_resource": row[11],
+                "initial_frequency": float(row[12]),
+                "final_frequency": float(row[13]),
                 "azimute": row[14],
-                "tipo_estacao": row[15],
-                "classificacao_infra_fisica": row[16],
-                "compartilhamento_infra_fisica": row[17],
-                "disp_compartilhamento_infra": row[18],
-                "tipo_antena": row[19],
-                "homologacao_antena": row[20],
-                "ganho_antena": float(row[21]),
-                "ganho_frente_costa": row[22],
-                "angulo_meia_potencia": row[23],
-                "elevacao": row[24],
-                "polarizacao": row[25],
-                "altura": float(row[26]),
-                "homologacao_transmissao": row[27],
-                "potencia_transmissao": float(row[28]),
+                "station_type": row[15],
+                "physical_infrastructure_classification": row[16],
+                "physical_infrastructure_sharing": row[17],
+                "availability_sharing_physical_infrastructure": row[18],
+                "antenna_type": row[19],
+                "antenna_approval": row[20],
+                "antenna_gain": float(row[21]),
+                "gain_front_coast": row[22],
+                "half_power_angle": row[23],
+                "elevation_degree": row[24],
+                "polarization": row[25],
+                "height": float(row[26]),
+                "transmission_approval": row[27],
+                "transmit_power": float(row[28]),
                 "latitude": dms_to_dd(row[29]),
                 "longitude": dms_to_dd(row[30]),
                 "latitude_dms": row[29],
                 "longitude_dms": row[30],
-                "cod_debito_tfi": row[31],
-                "data_primeiro_licenciamento": row[32],
+                "debit_code_tfi": row[31],
+                "date_of_first_licensing": row[32],
             }
             self.__base_station_controller.store(data)
 

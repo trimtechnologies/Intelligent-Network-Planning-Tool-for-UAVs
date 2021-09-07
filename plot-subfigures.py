@@ -816,7 +816,7 @@ fig, (axs_height, axs_power, axs_fo) = plt.subplots(3, figsize=(10, 6))
 
 fig.suptitle('Height and power per candidate solution (' + mp + ') \n Considering specific area')
 
-# Gráfico de altura
+# Gráfico de height
 axs_height.plot(plot_height, 'tab:blue')
 axs_height.plot([39.2] * len(FOs), 'tab:blue', linestyle='dashed')
 axs_height.plot([47.6] * len(FOs), 'tab:blue', linestyle='dashed')

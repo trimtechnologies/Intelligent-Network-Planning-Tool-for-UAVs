@@ -111,14 +111,14 @@
         </property>
         <layout class="QFormLayout" name="formLayout_2">
          <item row="0" column="0">
-          <widget class="QLabel" name="label_entidade">
+          <widget class="QLabel" name="label_entity">
            <property name="text">
             <string>Entity:</string>
            </property>
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QLabel" name="label_entidade_value">
+          <widget class="QLabel" name="label_entity_value">
            <property name="font">
             <font>
              <weight>75</weight>
@@ -134,7 +134,7 @@
           </widget>
          </item>
          <item row="1" column="0">
-          <widget class="QLabel" name="label_uf_municipio">
+          <widget class="QLabel" name="label_uf_county">
            <property name="text">
             <string>UF/Municipal:</string>
            </property>
@@ -148,14 +148,14 @@
           </widget>
          </item>
          <item row="2" column="0">
-          <widget class="QLabel" name="label_endereco">
+          <widget class="QLabel" name="label_address">
            <property name="text">
             <string>Address:</string>
            </property>
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLabel" name="label_uf_municipio_value">
+          <widget class="QLabel" name="label_uf_county_value">
            <property name="font">
             <font>
              <weight>75</weight>
@@ -171,7 +171,7 @@
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QLabel" name="label_endereco_value">
+          <widget class="QLabel" name="label_address_value">
            <property name="font">
             <font>
              <weight>75</weight>
@@ -226,14 +226,14 @@
           </widget>
          </item>
          <item row="6" column="0">
-          <widget class="QLabel" name="label_elevacao">
+          <widget class="QLabel" name="label_elevation_degree">
            <property name="text">
             <string>Elevation::</string>
            </property>
           </widget>
          </item>
          <item row="6" column="1">
-          <widget class="QLabel" name="label_elevacao_value">
+          <widget class="QLabel" name="label_elevation_degree_value">
            <property name="font">
             <font>
              <weight>75</weight>
@@ -249,21 +249,21 @@
           </widget>
          </item>
          <item row="7" column="0">
-          <widget class="QLabel" name="label_polarizacao">
+          <widget class="QLabel" name="label_polarization">
            <property name="text">
             <string>Polarization:</string>
            </property>
           </widget>
          </item>
          <item row="8" column="0">
-          <widget class="QLabel" name="label_altura">
+          <widget class="QLabel" name="label_height">
            <property name="text">
             <string>Height:</string>
            </property>
           </widget>
          </item>
          <item row="7" column="1">
-          <widget class="QLabel" name="label_polarizacao_value">
+          <widget class="QLabel" name="label_polarization_value">
            <property name="font">
             <font>
              <weight>75</weight>
@@ -279,7 +279,7 @@
           </widget>
          </item>
          <item row="8" column="1">
-          <widget class="QLabel" name="label_altura_value">
+          <widget class="QLabel" name="label_height_value">
            <property name="font">
             <font>
              <weight>75</weight>
@@ -341,14 +341,14 @@
           </widget>
          </item>
          <item row="4" column="0">
-          <widget class="QLabel" name="label_potencia_transmissao">
+          <widget class="QLabel" name="label_transmit_power">
            <property name="text">
             <string>Transmission Power:</string>
            </property>
           </widget>
          </item>
          <item row="4" column="1">
-          <widget class="QLabel" name="label_potencia_transmissao_value">
+          <widget class="QLabel" name="label_transmit_power_value">
            <property name="font">
             <font>
              <weight>75</weight>
@@ -658,14 +658,14 @@
         </property>
         <layout class="QFormLayout" name="formLayout_3">
          <item row="0" column="0">
-          <widget class="QLabel" name="label_bs_altura">
+          <widget class="QLabel" name="label_bs_height">
            <property name="text">
             <string>Height:</string>
            </property>
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QLabel" name="label_bs_altura_value">
+          <widget class="QLabel" name="label_bs_height_value">
            <property name="font">
             <font>
              <weight>75</weight>

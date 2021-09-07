@@ -222,7 +222,7 @@ class MainWindow(QMainWindow):
         if db_configs is not None:
             for i, config in enumerate(db_configs):
                 config: BaseStation
-                self.combo_box_anatel_base_station.addItem(config.entidade + " - " + config.endereco, config.id)
+                self.combo_box_anatel_base_station.addItem(config.entity + " - " + config.address, config.id)
 
     @pyqtSlot(name="on_combo_box_output_colour_scheme_changed")
     def on_combo_box_output_colour_scheme_changed(self) -> None:
@@ -263,7 +263,7 @@ class MainWindow(QMainWindow):
 
         erb = self.__base_station_controller.get_by_id(data)  # Check the function of this code
         print("Index: " + str(index))
-        print(erb.endereco)
+        print(erb.address)
         self.add_erb_map([erb])
         self.add_erb_in_details(erb)
 
@@ -355,15 +355,15 @@ class MainWindow(QMainWindow):
                 "max_ray": str(self.input_output_radius.text()) + "m"
             },
             "transmitter": {
-                "entity": str(base_station_selected.entidade),
+                "entity": str(base_station_selected.entity),
                 "municipal": str(base_station_selected.uf),
-                "address": str(base_station_selected.endereco)[0:35] + "...",
-                "frequency": str(base_station_selected.frequencia_inicial),
-                "transmission_power": str(base_station_selected.potencia_transmissao) + "W",
-                "gain": str(base_station_selected.ganho_antena) + "dBi",
-                "elevation": str(base_station_selected.elevacao),
-                "polarization": str(base_station_selected.polarizacao),
-                "height": str(base_station_selected.altura) + "m",
+                "address": str(base_station_selected.address)[0:35] + "...",
+                "frequency": str(base_station_selected.initial_frequency),
+                "transmission_power": str(base_station_selected.transmit_power) + "W",
+                "gain": str(base_station_selected.antenna_gain) + "dBi",
+                "elevation": str(base_station_selected.elevation_degree),
+                "polarization": str(base_station_selected.polarization),
+                "height": str(base_station_selected.height) + "m",
                 "latitude": str(base_station_selected.latitude),
                 "longitude": str(base_station_selected.longitude),
             },
@@ -418,7 +418,7 @@ class MainWindow(QMainWindow):
 
             folium.Marker(
                 location=erb_location,
-                popup=base_station.entidade,
+                popup=base_station.entity,
                 draggable=False,
                 icon=folium.Icon(prefix='glyphicon', icon=base_station.icon, color=base_station.color)
             ).add_to(m)
@@ -429,24 +429,24 @@ class MainWindow(QMainWindow):
         self.web_view.setHtml(data.getvalue().decode())
 
     def add_erb_in_details(self, base_station: BaseStation) -> None:
-        self.label_anatel_entity_value.setText(base_station.entidade)
-        self.label_anatel_station_number_value.setText(base_station.num_estacao)
+        self.label_anatel_entity_value.setText(base_station.entity)
+        self.label_anatel_station_number_value.setText(base_station.station_number)
         self.label_anatel_uf_value.setText(base_station.uf)
-        self.label_anatel_contry_value.setText(base_station.municipio)
-        self.label_anatel_address_value.setText(base_station.endereco)
-        self.label_anatel_final_frequency_value.setText(str(base_station.frequencia_final))
-        self.label_anatel_initial_frequency_value.setText(str(base_station.frequencia_inicial))
+        self.label_anatel_contry_value.setText(base_station.county)
+        self.label_anatel_address_value.setText(base_station.address)
+        self.label_anatel_final_frequency_value.setText(str(base_station.final_frequency))
+        self.label_anatel_initial_frequency_value.setText(str(base_station.initial_frequency))
         self.label_anatel_azimute_value.setText(base_station.azimute)
-        self.label_anatel_gain_antenna_value.setText(str(base_station.ganho_antena))
-        self.label_anatel_front_back_value.setText(base_station.ganho_frente_costa)
-        self.label_anatel_half_pot_value.setText(base_station.angulo_meia_potencia)
-        self.label_anatel_elevation_value.setText(base_station.elevacao)
-        self.label_anatel_polarization_value.setText(base_station.polarizacao)
-        self.label_anatel_height_antenna_value.setText(str(base_station.altura))
-        self.label_anatel_power_transmission_value.setText(str(base_station.potencia_transmissao))
+        self.label_anatel_gain_antenna_value.setText(str(base_station.antenna_gain))
+        self.label_anatel_front_back_value.setText(base_station.gain_front_coast)
+        self.label_anatel_half_pot_value.setText(base_station.half_power_angle)
+        self.label_anatel_elevation_value.setText(base_station.elevation_degree)
+        self.label_anatel_polarization_value.setText(base_station.polarization)
+        self.label_anatel_height_antenna_value.setText(str(base_station.height))
+        self.label_anatel_power_transmission_value.setText(str(base_station.transmit_power))
         self.label_anatel_latitude_value.setText(str(base_station.latitude))
         self.label_anatel_longitude_value.setText(str(base_station.longitude))
-        self.label_anatel_first_licensing_value.setText(base_station.data_primeiro_licenciamento)
+        self.label_anatel_first_licensing_value.setText(base_station.date_of_first_licensing)
 
     def __init_menus(self) -> None:
         self.menu_action_exit.triggered.disconnect()
@@ -635,7 +635,7 @@ class MainWindow(QMainWindow):
 
         erb_location = (base_station_selected.latitude, base_station_selected.longitude)
 
-        transmitted_power = base_station_selected.potencia_transmissao
+        transmitted_power = base_station_selected.transmit_power
 
         altitude_tx = get_altitude(lat=erb_location[0], long=erb_location[1])
 
@@ -667,13 +667,13 @@ class MainWindow(QMainWindow):
                 distance = calculates_distance_between_coordinates(mobile_base_location, erb_location)
 
                 # concatenation issue
-                tx_h = (base_station_selected.altura + altitude_tx) - min_altitude
+                tx_h = (base_station_selected.height + altitude_tx) - min_altitude
                 rx_h = (height_rx + altitude_lat_long_rx) - min_altitude
 
-                path_loss = self.calculates_path_loss(frequency=base_station_selected.frequencia_inicial,
+                path_loss = self.calculates_path_loss(frequency=base_station_selected.initial_frequency,
                                                       tx_h=tx_h, rx_h=rx_h, distance=distance, mode=SUBURBAN,
-                                                      pt=base_station_selected.potencia_transmissao,
-                                                      g_t=base_station_selected.ganho_antena, g_r=rx_gain)
+                                                      pt=base_station_selected.transmit_power,
+                                                      g_t=base_station_selected.antenna_gain, g_r=rx_gain)
 
                 received_power = transmitted_power - path_loss
 
@@ -730,7 +730,7 @@ class MainWindow(QMainWindow):
 
                 folium.Marker(
                     location=extra_erb_location,
-                    popup=erb.entidade,
+                    popup=erb.entity,
                     draggable=False,
                     icon=folium.Icon(prefix='glyphicon', icon=erb.icon, color=erb.color)
                 ).add_to(m)
@@ -738,7 +738,7 @@ class MainWindow(QMainWindow):
         # Print main point
         folium.Marker(
             location=main_erb_location,
-            popup=base_station_selected.entidade,
+            popup=base_station_selected.entity,
             draggable=False,
             icon=folium.Icon(prefix='glyphicon', icon=base_station_selected.icon, color=base_station_selected.color)
         ).add_to(m)
@@ -758,10 +758,10 @@ class MainWindow(QMainWindow):
 
         """
         drone = copy.deepcopy(base_station)
-        drone.potencia_transmissao = float(self.input_drone_transmit_power.text())
-        drone.frequencia_inicial = float(self.input_drone_frequency.text())
-        drone.altura = float(self.input_drone_height.text())
-        drone.entidade = "Drone"
+        drone.transmit_power = float(self.input_drone_transmit_power.text())
+        drone.initial_frequency = float(self.input_drone_frequency.text())
+        drone.height = float(self.input_drone_height.text())
+        drone.entity = "Drone"
         drone.color = 'red'
         drone.icon = 'plane'
         drone.is_to_move = True
@@ -887,8 +887,8 @@ class MainWindow(QMainWindow):
                 data = {
                     "initial_latitude": str(initial_solution.latitude),
                     "initial_longitude": str(initial_solution.longitude),
-                    "initial_height": str(initial_solution.altura),
-                    "initial_power_transmission": str(initial_solution.potencia_transmissao),
+                    "initial_height": str(initial_solution.height),
+                    "initial_power_transmission": str(initial_solution.transmit_power),
                     "initial_objective_function": str(initial_fo),
                     "number_of_solutions": len(FOs) - 1,
                     "execution_seconds": str(end_at - start_at),
@@ -897,8 +897,8 @@ class MainWindow(QMainWindow):
                     "propagation_model": str(propagation_model),
                     "best_latitude": str(best_solution.latitude),
                     "best_longitude": str(best_solution.longitude),
-                    "best_height": str(best_solution.altura),
-                    "best_power_transmission": str(best_solution.potencia_transmissao),
+                    "best_height": str(best_solution.height),
+                    "best_power_transmission": str(best_solution.transmit_power),
                     "best_objective_function": str(best_fo),
                     "solutions": FOs,
                     "distance_of_solutions": 0
@@ -1055,11 +1055,11 @@ class MainWindow(QMainWindow):
         # Clone solution array
         s0 = s_array.copy()
 
-        antenna_height = drone.altura
+        antenna_height = drone.height
         possible_heights = self.generates_heights(antenna_height)
         print("possible_drone_heights=", str(possible_heights))
 
-        antenna_power_received = drone.potencia_transmissao
+        antenna_power_received = drone.transmit_power
         possible_powers_received = self.generates_received_powers(antenna_power_received)
         print("possible_drone_powers_received=", str(possible_powers_received))
 
@@ -1108,12 +1108,12 @@ class MainWindow(QMainWindow):
                 for height in possible_heights:
                     print("-----------------------")
                     print("antenna height=", height)
-                    initial_solutions_array[i_ap].altura = height
+                    initial_solutions_array[i_ap].height = height
 
                     # For all possible antenna powers received
                     for power in possible_powers_received:
                         print("transmission power=", power)
-                        initial_solutions_array[i_ap].potencia_transmissao = power
+                        initial_solutions_array[i_ap].transmit_power = power
 
                         # Get objective function value
                         result = self.evaluate_solution_array(initial_solutions_array)

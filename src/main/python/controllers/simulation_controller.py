@@ -129,7 +129,7 @@ class SimulationController(BaseController):
         :return:
         """
         try:
-            return Simulation.select().group_by(Simulation.endereco).order_by(Simulation.id).execute()
+            return Simulation.select().group_by(Simulation.address).order_by(Simulation.id).execute()
         except BaseException as be:
             e = ApplicationException()
             to_log_error(e.get_message())

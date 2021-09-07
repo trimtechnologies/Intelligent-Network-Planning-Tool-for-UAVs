@@ -5,7 +5,7 @@ from src.main.python.support.database import BaseStationDAO
 base_station = {
     "status": "LIC-LIC-01",
     "entity": "TELEFÔNICA BRASIL S.A.",
-    "num_fistel": 50409146285,
+    "fistel_number": 50409146285,
     "num_service": 10,
     "num_ato": 16972008,
     "num_station": 5101891,
