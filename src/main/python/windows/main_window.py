@@ -174,8 +174,7 @@ class MainWindow(QMainWindow):
         base_station_selected = self.get_bs_selected()
         if base_station_selected is not None:
             variants = self.get_bs_variants(base_station_selected)
-            drone = self.get_bs_drone(base_station_selected)
-            base_stations = [drone] + [base_station_selected] + variants
+            base_stations = [base_station_selected] + variants
 
             self.add_erb_map(base_stations)
 
