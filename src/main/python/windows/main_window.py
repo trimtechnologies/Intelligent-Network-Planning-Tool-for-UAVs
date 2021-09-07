@@ -171,6 +171,7 @@ class MainWindow(QMainWindow):
         self.input_drone_height.setText("70")
         self.input_drone_frequency.setText("869.0")
 
+        # Initial points
         base_station_selected = self.get_bs_selected()
         if base_station_selected is not None:
             variants = self.get_bs_variants(base_station_selected)
@@ -747,9 +748,16 @@ class MainWindow(QMainWindow):
 
         self.web_view.setHtml(data.getvalue().decode())
 
-    def get_bs_drone(self, base_station_selected) -> BaseStation:
-        # Init the drone as base station clone and change the properties
-        drone = copy.deepcopy(base_station_selected)
+    def get_new_drone_location(self, base_station) -> BaseStation:
+        """
+        Init the drone as base station clone and change the properties
+        Args:
+            base_station: The reference base station
+
+        Returns: Return a drone as base station with a different location on the map
+
+        """
+        drone = copy.deepcopy(base_station)
         drone.potencia_transmissao = float(self.input_drone_transmit_power.text())
         drone.frequencia_inicial = float(self.input_drone_frequency.text())
         drone.altura = float(self.input_drone_height.text())
@@ -757,8 +765,7 @@ class MainWindow(QMainWindow):
         drone.color = 'red'
         drone.icon = 'plane'
         drone.is_to_move = True
-        drone.latitude = -21.225747  # ToDo: get dynamic location
-        drone.longitude = -44.969755  # ToDo: get dynamic location
+        drone = self.disturb_map_location(drone, 600)
 
         return drone
 
@@ -822,7 +829,8 @@ class MainWindow(QMainWindow):
             sa_num_max_success_per_iteration = int(self.input_sa_num_max_success_per_iteration.text())
             sa_alpha = float(self.input_sa_alpha.text())
 
-            drone = self.get_bs_drone(base_station_selected)
+            # Generate a drone with diferente location
+            drone = self.get_new_drone_location(base_station_selected)
 
             # get variantes of base station selected (with position fixed)
             variants = self.get_bs_variants(base_station_selected)
@@ -927,9 +935,9 @@ class MainWindow(QMainWindow):
         return self.objective_function(overlaid_matrix), overlaid_matrix
 
     @staticmethod
-    def disturb_solution(solution: BaseStation, disturbance_radius: float = 600) -> BaseStation:
+    def disturb_map_location(solution: BaseStation, disturbance_radius: float = 600) -> BaseStation:
         """
-        Disturb a specific solution
+        Disturb a specific map location
 
         Args:
             solution: A base station solution
@@ -1094,7 +1102,7 @@ class MainWindow(QMainWindow):
                 i_ap = next((i for i, item in enumerate(s_array) if item.is_to_move), -1)
 
                 # get a new position for the base station (drone)
-                initial_solutions_array[i_ap] = self.disturb_solution(s_array[i_ap])
+                initial_solutions_array[i_ap] = self.disturb_map_location(s_array[i_ap])
 
                 # For all possible antenna heights
                 for height in possible_heights:
