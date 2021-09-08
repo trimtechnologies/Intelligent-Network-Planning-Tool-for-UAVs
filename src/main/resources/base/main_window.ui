@@ -112,8 +112,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>285</width>
-                  <height>621</height>
+                  <width>263</width>
+                  <height>932</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -622,8 +622,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>285</width>
-                  <height>621</height>
+                  <width>277</width>
+                  <height>611</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -728,8 +728,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>285</width>
-                  <height>621</height>
+                  <width>277</width>
+                  <height>611</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_14">
@@ -867,8 +867,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>285</width>
-                  <height>621</height>
+                  <width>277</width>
+                  <height>611</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -1036,8 +1036,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>285</width>
-                  <height>621</height>
+                  <width>277</width>
+                  <height>611</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -1054,21 +1054,11 @@
                   <number>2</number>
                  </property>
                  <item>
-                  <widget class="QGroupBox" name="group_box_drone">
+                  <widget class="QGroupBox" name="group_box_drone_configuration">
                    <property name="title">
                     <string>Drone Settings</string>
                    </property>
                    <layout class="QFormLayout" name="formLayout_2">
-                    <item row="1" column="0">
-                     <widget class="QLabel" name="label_drone_height">
-                      <property name="text">
-                       <string>Height</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="1" column="1">
-                     <widget class="QLineEdit" name="input_drone_height"/>
-                    </item>
                     <item row="0" column="0">
                      <widget class="QLabel" name="label_drone_transmit_power">
                       <property name="text">
@@ -1079,8 +1069,15 @@
                     <item row="0" column="1">
                      <widget class="QLineEdit" name="input_drone_transmit_power"/>
                     </item>
-                    <item row="2" column="1">
-                     <widget class="QLineEdit" name="input_drone_frequency"/>
+                    <item row="1" column="0">
+                     <widget class="QLabel" name="label_drone_height">
+                      <property name="text">
+                       <string>Height</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="1">
+                     <widget class="QLineEdit" name="input_drone_height"/>
                     </item>
                     <item row="2" column="0">
                      <widget class="QLabel" name="label_drone_frequency">
@@ -1088,6 +1085,68 @@
                        <string>Frequency</string>
                       </property>
                      </widget>
+                    </item>
+                    <item row="2" column="1">
+                     <widget class="QLineEdit" name="input_drone_frequency"/>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QGroupBox" name="group_box_drone_flight_time">
+                   <property name="title">
+                    <string>Drone Flight Time</string>
+                   </property>
+                   <layout class="QFormLayout" name="formLayout_4">
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="label_drone_battery_capacity">
+                      <property name="text">
+                       <string>Battery Capacity (hA)</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="1">
+                     <widget class="QLineEdit" name="input_drone_battery_capacity"/>
+                    </item>
+                    <item row="1" column="0">
+                     <widget class="QLabel" name="label_drone_battery_discharge">
+                      <property name="text">
+                       <string>Battery discharge (%)</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="1">
+                     <widget class="QLineEdit" name="input_drone_battery_discharge"/>
+                    </item>
+                    <item row="2" column="0">
+                     <widget class="QLabel" name="label_drone_battery_voltage">
+                      <property name="text">
+                       <string>Battery voltage (V)</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="1">
+                     <widget class="QLineEdit" name="input_drone_battery_voltage"/>
+                    </item>
+                    <item row="3" column="0">
+                     <widget class="QLabel" name="label_drone_auw">
+                      <property name="text">
+                       <string>All up weight (kg)</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="3" column="1">
+                     <widget class="QLineEdit" name="input_drone_auw"/>
+                    </item>
+                    <item row="4" column="0">
+                     <widget class="QLabel" name="label_drone_watts_to_lift">
+                      <property name="text">
+                       <string>Watts to lift 1 kg (W/kg)</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="4" column="1">
+                     <widget class="QLineEdit" name="input_drone_watts_to_lift"/>
                     </item>
                    </layout>
                   </widget>
@@ -1125,8 +1184,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>285</width>
-                  <height>621</height>
+                  <width>277</width>
+                  <height>611</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_15">
@@ -1418,7 +1477,7 @@
      <x>0</x>
      <y>0</y>
      <width>1216</width>
-     <height>18</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_file">

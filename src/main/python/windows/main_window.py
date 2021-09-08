@@ -167,9 +167,21 @@ class MainWindow(QMainWindow):
         self.input_drone_height: QLineEdit
         self.input_drone_frequency: QLineEdit
 
+        self.input_drone_battery_capacity: QLineEdit
+        self.input_drone_battery_discharge: QLineEdit
+        self.input_drone_battery_voltage: QLineEdit
+        self.input_drone_auw: QLineEdit
+        self.input_drone_watts_to_lift: QLineEdit
+
         self.input_drone_transmit_power.setText("40")
         self.input_drone_height.setText("70")
         self.input_drone_frequency.setText("869.0")
+
+        self.input_drone_battery_capacity.setText("8.8")
+        self.input_drone_battery_discharge.setText("0.8")
+        self.input_drone_battery_voltage.setText("36")
+        self.input_drone_auw.setText("2.5")
+        self.input_drone_watts_to_lift.setText("170")
 
         # Initial points
         base_station_selected = self.get_bs_selected()
