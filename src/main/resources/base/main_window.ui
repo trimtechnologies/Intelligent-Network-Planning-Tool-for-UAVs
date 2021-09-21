@@ -112,8 +112,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>263</width>
-                  <height>932</height>
+                  <width>265</width>
+                  <height>854</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -622,8 +622,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>277</width>
-                  <height>611</height>
+                  <width>279</width>
+                  <height>613</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -728,8 +728,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>277</width>
-                  <height>611</height>
+                  <width>279</width>
+                  <height>613</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_14">
@@ -867,8 +867,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>277</width>
-                  <height>611</height>
+                  <width>279</width>
+                  <height>613</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -1036,8 +1036,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>277</width>
-                  <height>611</height>
+                  <width>279</width>
+                  <height>613</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -1148,6 +1148,20 @@
                     <item row="4" column="1">
                      <widget class="QLineEdit" name="input_drone_watts_to_lift"/>
                     </item>
+                    <item row="5" column="0">
+                     <widget class="QLabel" name="label_drone_flight_time">
+                      <property name="text">
+                       <string>Drone Flight Time</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="5" column="1">
+                     <widget class="QLineEdit" name="input_drone_flight_time">
+                      <property name="enabled">
+                       <bool>false</bool>
+                      </property>
+                     </widget>
+                    </item>
                    </layout>
                   </widget>
                  </item>
@@ -1184,8 +1198,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>277</width>
-                  <height>611</height>
+                  <width>279</width>
+                  <height>613</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_15">
@@ -1477,7 +1491,7 @@
      <x>0</x>
      <y>0</y>
      <width>1216</width>
-     <height>22</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_file">
