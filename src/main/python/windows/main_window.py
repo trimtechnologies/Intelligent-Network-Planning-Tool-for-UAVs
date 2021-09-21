@@ -109,6 +109,63 @@ class MainWindow(QMainWindow):
 
         self.peripheral_coordinates = []
 
+        self.launch_listeners()
+        self.show_drone_flight_time()
+
+    def launch_listeners(self):
+        self.input_drone_watts_to_lift.textChanged.connect(self.show_drone_flight_time)
+        self.input_drone_battery_capacity.textChanged.connect(self.show_drone_flight_time)
+        self.input_drone_battery_discharge.textChanged.connect(self.show_drone_flight_time)
+        self.input_drone_battery_voltage.textChanged.connect(self.show_drone_flight_time)
+        self.input_drone_auw.textChanged.connect(self.show_drone_flight_time)
+
+    def show_drone_flight_time(self):
+        drone_battery_capacity = float(self.input_drone_battery_capacity.text())
+        drone_battery_discharge = float(self.input_drone_battery_discharge.text())
+        drone_battery_voltage = float(self.input_drone_battery_voltage.text())
+        drone_auw = float(self.input_drone_auw.text())
+        drone_watts_to_lift = float(self.input_drone_watts_to_lift.text())
+
+        average_amp_draw, drone_flight_time = self.calculate_drone_flight_time(drone_battery_capacity,
+                                                                               drone_battery_discharge,
+                                                                               drone_battery_voltage, drone_auw,
+                                                                               drone_watts_to_lift)
+
+        if drone_flight_time > 1440:
+            result = str(round(drone_flight_time / 1440, 2)) + " days"
+        elif drone_flight_time > 60:
+            result = str(round(drone_flight_time / 60, 2)) + " hrs"
+        else:
+            result = str(drone_flight_time) + " min"
+
+        self.input_drone_flight_time.setText(result)
+
+        return result
+
+    @staticmethod
+    def calculate_drone_flight_time(battery_capacity: float, battery_discharge: float, battery_voltage: float,
+                                    all_up_weight: float, watts_to_lift_1_kg: float) -> object:
+        """
+        https://www.omnicalculator.com/other/drone-flight-time
+        @param battery_capacity:
+        @param battery_discharge:
+        @param battery_voltage:
+        @param all_up_weight:
+        @param watts_to_lift_1_kg:
+        @return:
+        """
+
+        # battery_capacity = 8.8  # Ah
+        # battery_discharge = 0.8  # 80%
+        # battery_voltage = 36  # V
+        # all_up_weight = 2.5  # kg
+        # watts_to_lift_1_kg = 170  # W/kg
+
+        average_amp_draw = all_up_weight * watts_to_lift_1_kg / battery_voltage
+        drone_flight_time = battery_capacity * battery_discharge / 100 / average_amp_draw * 60
+
+        return round(average_amp_draw, 2), round(drone_flight_time, 2)
+
     def set_default_values(self):
         # Transmission tab
         self.combo_box_anatel_base_station: QComboBox
@@ -179,7 +236,7 @@ class MainWindow(QMainWindow):
         self.input_drone_frequency.setText("869.0")
 
         self.input_drone_battery_capacity.setText("8.8")
-        self.input_drone_battery_discharge.setText("0.8")
+        self.input_drone_battery_discharge.setText("80")
         self.input_drone_battery_voltage.setText("36")
         self.input_drone_auw.setText("2.5")
         self.input_drone_watts_to_lift.setText("170")
@@ -879,7 +936,7 @@ class MainWindow(QMainWindow):
             self.print_simulation_result(best_array[0], best_array[1:])
 
             # Get solution
-            index = next((i for i, item in enumerate(best_array) if item.is_to_move), -1) # only the drone can move
+            index = next((i for i, item in enumerate(best_array) if item.is_to_move), -1)  # only the drone can move
             best_solution = best_array[index]  # the drone
 
             print("len(FOs)=", len(FOs))
