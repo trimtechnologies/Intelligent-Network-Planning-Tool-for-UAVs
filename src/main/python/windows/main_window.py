@@ -972,7 +972,8 @@ class MainWindow(QMainWindow):
                     "best_power_transmission": str(best_solution.transmit_power),
                     "best_objective_function": str(best_fo),
                     "solutions": FOs,
-                    "distance_of_solutions": 0
+                    "distance_of_solutions": 0,
+                    "drone_flight_time": self.show_drone_flight_time()
                 }
                 self.__simulation_controller.store(data)
                 print("Done!")
@@ -986,6 +987,7 @@ class MainWindow(QMainWindow):
         self.label_geral_info_1: QLabel
         self.label_geral_info_1.setText("Simulation successfully completed")
         print("Simulation run in %s seconds" % round(end_at - start_at, 2))
+        print("Drone Flight Time = ", self.show_drone_flight_time())
 
         print("End of simulation!")
 
