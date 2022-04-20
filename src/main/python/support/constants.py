@@ -1,6 +1,7 @@
 # Request constants
 REQUEST_ERROR = 1
 INVALID_UF = 2
+INVALID_COORDINATE = 3
 
 # Settings table constants
 CURRENT_UF_ID = 'CURRENT_UF_ID'

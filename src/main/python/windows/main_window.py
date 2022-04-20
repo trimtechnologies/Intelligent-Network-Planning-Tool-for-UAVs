@@ -334,9 +334,10 @@ class MainWindow(QMainWindow):
 
         erb = self.__base_station_controller.get_by_id(data)  # Check the function of this code
         print("Index: " + str(index))
-        print(erb.address)
-        self.add_erb_map([erb])
-        self.add_erb_in_details(erb)
+        if erb:
+            print(erb.address)
+            self.add_erb_map([erb])
+            self.add_erb_in_details(erb)
 
     @pyqtSlot(name="on_combo_box_tx_coordinates_changed")
     def on_combo_box_tx_coordinates_changed(self) -> None:

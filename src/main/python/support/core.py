@@ -36,6 +36,13 @@ def convert_to_degree(radians):
     return (radians * 180) / pi
 
 
+def convert_to_float(number):
+    try:
+        return float(number)
+    except ValueError:
+        return number
+
+
 def create_random_point_v2(x0, y0, distance):
     """
     Utility method for simulation of the points

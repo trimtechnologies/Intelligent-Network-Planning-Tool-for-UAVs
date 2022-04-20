@@ -1,3 +1,5 @@
+from typing import Union
+
 import pandas as pd
 import requests
 import re
@@ -97,9 +99,15 @@ def get_counties(uf: str) -> str:
         return constants.INVALID_UF
 
 
-def dms_to_dd(coordinate_in_dms: str) -> float:
+def dms_to_dd(coordinate_in_dms: str) -> Union[float, str]:
     if not any(c.isalpha() for c in coordinate_in_dms):
-        return float(coordinate_in_dms)
+        try:
+            return float(coordinate_in_dms)
+        except BaseException as be:
+            print(be)
+            e = ApplicationException()
+            to_log_error(e.get_message())
+            return coordinate_in_dms
 
     sign = -1 if re.search("[swSW]", coordinate_in_dms) else 1
     c = split_coordinates_dms(coordinate_in_dms)
@@ -125,6 +133,14 @@ def get_anatel_data(uf_sigle: str, country_id: int = None) -> DataFrame:
     request_url = url_base + "/se/public/view/b/export_licenciamento.php"
 
     parameters = {
+        "fa_freq1": 0,
+        "fa_freq2": 0,
+        "fa_gsearch": 3,
+        "fa_lat": None,
+        "fa_lon": None,
+        "fa_dist": None,
+        "fa_uf": uf_sigle,
+        "fa_municipio": country_id,
         "qidx": 0,
         "skip": 0,  # quantidade de linhas a pular
         "filter": 1,  # se filtro aplicado ou nao
@@ -162,6 +178,12 @@ def get_anatel_data(uf_sigle: str, country_id: int = None) -> DataFrame:
         "sort_30": 0,  # longitude
         "sort_31": 0,  # cod deb tfi
         "sort_32": 0,  # data primeiro licenciamento
+        "sort_33": 0,  # data primeiro licenciamento
+        "sort_34": 0,  # data primeiro licenciamento
+        "sort_35": 0,  # data primeiro licenciamento
+        "sort_36": 0,  # data primeiro licenciamento
+        "sort_37": 0,  # data primeiro licenciamento
+        "sort_38": 0,  # data primeiro licenciamento
         "fc_0": None,  # status
         "fc_1": None,  # entity
         "fc_2": None,  # fistel
@@ -169,9 +191,9 @@ def get_anatel_data(uf_sigle: str, country_id: int = None) -> DataFrame:
         "fc_4": None,  # ato de rf
         "fc_5": None,  # num estacao
         "fc_6": None,  # endereco
-        "fc_7": uf_sigle,  # UF
-        "fc_8": country_id,  # Municipio
-        "fc_9": None,  # registration
+        "fc_7": None,  # UF
+        "fc_8": None,  # UF
+        "fc_9": None,  # Municipio
         "fc_10": None,  # technology
         "fc_11": None,  # meio acesso
         "fc_12": None,  # freq ini
@@ -195,6 +217,12 @@ def get_anatel_data(uf_sigle: str, country_id: int = None) -> DataFrame:
         "fc_30": None,  # longitude
         "fc_31": None,  # cod deb tfi
         "fc_32": None,  # data primeiro licenciamento
+        "fc_33": None,  # data primeiro licenciamento
+        "fc_34": None,  # data primeiro licenciamento
+        "fc_35": None,  # data primeiro licenciamento
+        "fc_36": None,  # data primeiro licenciamento
+        "fc_37": None,  # data primeiro licenciamento
+        "fc_38": None,  # data primeiro licenciamento
         "wfid": "licencas",
         "view": 0
     }
@@ -215,7 +243,7 @@ def get_anatel_data(uf_sigle: str, country_id: int = None) -> DataFrame:
             with urlopen(url_base + redirect_url) as f:
                 with BytesIO(f.read()) as b, ZipFile(b) as zipfile:
                     file = zipfile.open(zipfile.namelist()[0])
-                    df = pd.read_csv(file, encoding="ISO-8859-1")
+                    df = pd.read_csv(file, encoding="ISO-8859-1", dtype='unicode')
 
             print("Download successful!")
             return df
