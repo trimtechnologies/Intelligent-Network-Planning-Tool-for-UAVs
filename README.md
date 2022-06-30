@@ -83,3 +83,8 @@ $ sudo dpkg --purge analysis-of-antenna-coverage
 $ designer
 ```
 ## Steps to be followed in running the program
+1. After successfully setting up the environment, delete the existing databse.
+2. Run the application and update database.
+3. After successful update, close the application and re-run so that the database can syn with the application
+4. Set the parameters for each of the modules as per specification and execute the simulation
+5. Open SQlite and access the gnerated results in excel sheets.
