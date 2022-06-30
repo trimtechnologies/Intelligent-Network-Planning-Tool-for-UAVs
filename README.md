@@ -1,4 +1,4 @@
-# Analysis of allocation of antenna coverage
+# Intelligent Network Planning Tool (iNPT) for UAV-BS location optimization
 
 ![Release Multi Platform](https://github.com/samuelterra22/Analysis-of-antenna-coverage/workflows/Release%20Multi%20Platform/badge.svg)
 
@@ -82,4 +82,4 @@ $ sudo dpkg --purge analysis-of-antenna-coverage
 ```shell
 $ designer
 ```
-
+## Steps to be followed in running the program
