@@ -268,24 +268,23 @@ class AnatelDialogClass(QDialog):
             self.anatel_table.setItem(table_row_count, 16, QTableWidgetItem(str(config.station_type)))
             self.anatel_table.setItem(table_row_count, 17, QTableWidgetItem(str(config.physical_infrastructure_classification)))
             self.anatel_table.setItem(table_row_count, 18, QTableWidgetItem(str(config.physical_infrastructure_sharing)))
-            self.anatel_table.setItem(table_row_count, 19, QTableWidgetItem(str(config.availability_sharing_physical_infrastructure)))
-            self.anatel_table.setItem(table_row_count, 20, QTableWidgetItem(str(config.antenna_type)))
-            self.anatel_table.setItem(table_row_count, 21, QTableWidgetItem(str(config.antenna_approval)))
-            self.anatel_table.setItem(table_row_count, 22, QTableWidgetItem(str(config.antenna_gain)))
-            self.anatel_table.setItem(table_row_count, 23, QTableWidgetItem(str(config.gain_front_coast)))
-            self.anatel_table.setItem(table_row_count, 24, QTableWidgetItem(str(config.half_power_angle)))
-            self.anatel_table.setItem(table_row_count, 25, QTableWidgetItem(str(config.elevation_degree)))
-            self.anatel_table.setItem(table_row_count, 26, QTableWidgetItem(str(config.polarization)))
-            self.anatel_table.setItem(table_row_count, 27, QTableWidgetItem(str(config.height)))
-            self.anatel_table.setItem(table_row_count, 28, QTableWidgetItem(str(config.transmission_approval)))
-            self.anatel_table.setItem(table_row_count, 29, QTableWidgetItem(str(config.transmit_power)))
-            self.anatel_table.setItem(table_row_count, 30, QTableWidgetItem(str(config.latitude)))
-            self.anatel_table.setItem(table_row_count, 31, QTableWidgetItem(str(config.longitude)))
-            self.anatel_table.setItem(table_row_count, 32, QTableWidgetItem(str(config.latitude_dms)))
-            self.anatel_table.setItem(table_row_count, 33, QTableWidgetItem(str(config.longitude_dms)))
-            self.anatel_table.setItem(table_row_count, 34, QTableWidgetItem(str(config.debit_code_tfi)))
-            self.anatel_table.setItem(table_row_count, 35, QTableWidgetItem(str(config.date_of_first_licensing)))
-            self.anatel_table.setItem(table_row_count, 36, QTableWidgetItem(str(config.created_at)))
+            self.anatel_table.setItem(table_row_count, 19, QTableWidgetItem(str(config.antenna_type)))
+            self.anatel_table.setItem(table_row_count, 20, QTableWidgetItem(str(config.antenna_approval)))
+            self.anatel_table.setItem(table_row_count, 21, QTableWidgetItem(str(config.antenna_gain)))
+            self.anatel_table.setItem(table_row_count, 22, QTableWidgetItem(str(config.gain_front_coast)))
+            self.anatel_table.setItem(table_row_count, 23, QTableWidgetItem(str(config.half_power_angle)))
+            self.anatel_table.setItem(table_row_count, 24, QTableWidgetItem(str(config.elevation_degree)))
+            self.anatel_table.setItem(table_row_count, 25, QTableWidgetItem(str(config.polarization)))
+            self.anatel_table.setItem(table_row_count, 26, QTableWidgetItem(str(config.height)))
+            self.anatel_table.setItem(table_row_count, 27, QTableWidgetItem(str(config.transmission_approval)))
+            self.anatel_table.setItem(table_row_count, 28, QTableWidgetItem(str(config.transmit_power)))
+            self.anatel_table.setItem(table_row_count, 29, QTableWidgetItem(str(config.latitude)))
+            self.anatel_table.setItem(table_row_count, 30, QTableWidgetItem(str(config.longitude)))
+            self.anatel_table.setItem(table_row_count, 31, QTableWidgetItem(str(config.latitude_dms)))
+            self.anatel_table.setItem(table_row_count, 32, QTableWidgetItem(str(config.longitude_dms)))
+            self.anatel_table.setItem(table_row_count, 33, QTableWidgetItem(str(config.debit_code_tfi)))
+            self.anatel_table.setItem(table_row_count, 34, QTableWidgetItem(str(config.date_of_first_licensing)))
+            self.anatel_table.setItem(table_row_count, 35, QTableWidgetItem(str(config.created_at)))
 
             processed = processed + 1
             self.progress_bar_anatel.setValue(round(((processed / total) * 100), 2))
@@ -313,14 +312,14 @@ class AnatelDialogClass(QDialog):
                 "county": row[9],
                 "registration": row[10],
                 "technology": row[11],
-                "access_resource": row[12],
-                "initial_frequency": convert_to_float(row[13]),
-                "final_frequency": convert_to_float(row[14]),
-                "azimute": row[15],
-                "station_type": row[16],
-                "physical_infrastructure_classification": row[17],
-                "physical_infrastructure_sharing": row[18],
-                "availability_sharing_physical_infrastructure": row[19],
+                "technology_type": row[12],
+                "access_resource": row[13],
+                "initial_frequency": convert_to_float(row[14]),
+                "final_frequency": convert_to_float(row[15]),
+                "azimute": row[16],
+                "station_type": row[17],
+                "physical_infrastructure_classification": row[18],
+                "physical_infrastructure_sharing": row[19],
                 "antenna_type": row[20],
                 "antenna_approval": row[21],
                 "antenna_gain": convert_to_float(row[22]),
@@ -342,6 +341,7 @@ class AnatelDialogClass(QDialog):
                 "item_id": row[36],
                 "date_validation": row[37],
                 "fistel_number_assoc": row[38],
+                "associate_entity_name": row[39],
             }
             self.__base_station_controller.store(data)
 

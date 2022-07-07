@@ -135,12 +135,11 @@ def get_anatel_data(uf_sigle: str, country_id: int = None) -> DataFrame:
     parameters = {
         "fa_freq1": 0,
         "fa_freq2": 0,
-        "fa_gsearch": 3,
-        "fa_lat": None,
-        "fa_lon": None,
-        "fa_dist": None,
-        "fa_uf": uf_sigle,
-        "fa_municipio": country_id,
+        "fa_gsearch": 1,
+        "fa_lat": 0,
+        "fa_lon": 0,
+        "fa_dist": '',
+        "fa_uf": '',
         "qidx": 0,
         "skip": 0,  # quantidade de linhas a pular
         "filter": 1,  # se filtro aplicado ou nao
@@ -184,6 +183,7 @@ def get_anatel_data(uf_sigle: str, country_id: int = None) -> DataFrame:
         "sort_36": 0,  # data primeiro licenciamento
         "sort_37": 0,  # data primeiro licenciamento
         "sort_38": 0,  # data primeiro licenciamento
+        "sort_39": 0,  # data primeiro licenciamento
         "fc_0": None,  # status
         "fc_1": None,  # entity
         "fc_2": None,  # fistel
@@ -192,8 +192,8 @@ def get_anatel_data(uf_sigle: str, country_id: int = None) -> DataFrame:
         "fc_5": None,  # num estacao
         "fc_6": None,  # endereco
         "fc_7": None,  # UF
-        "fc_8": None,  # UF
-        "fc_9": None,  # Municipio
+        "fc_8": uf_sigle,  # UF
+        "fc_9": country_id,  # Municipio
         "fc_10": None,  # technology
         "fc_11": None,  # meio acesso
         "fc_12": None,  # freq ini
@@ -223,6 +223,7 @@ def get_anatel_data(uf_sigle: str, country_id: int = None) -> DataFrame:
         "fc_36": None,  # data primeiro licenciamento
         "fc_37": None,  # data primeiro licenciamento
         "fc_38": None,  # data primeiro licenciamento
+        "fc_39": None,  # data primeiro licenciamento
         "wfid": "licencas",
         "view": 0
     }
